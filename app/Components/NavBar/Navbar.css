@@ -1,0 +1,93 @@
+/* Estilos gerais da navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Lista de navegação */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* Estilos dos links normais */
+.nav-link {
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Link ativo */
+.nav-link.active {
+  color: rgb(var(--primary-blue));
+  font-weight: bold;
+  position: relative;
+}
+
+/* Barrinha indicadora abaixo do link ativo */
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background-color: rgb(var(--primary-blue));
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link.active:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Link inativo */
+.nav-link.inactive {
+  color: black;
+  opacity: 0.7;
+}
+
+/* Efeito hover nos links */
+.nav-link:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo específico para o botão "Entrar" */
+.login-link {
+  color: black;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-link:hover {
+  color: rgb(var(--primary-blue));
+  transform: scale(1.05);
+}
+
+/* Suaviza a rolagem ao clicar nos links */
+html {
+  scroll-behavior: smooth;
+}
