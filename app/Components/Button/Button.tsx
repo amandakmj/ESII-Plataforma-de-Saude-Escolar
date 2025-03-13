@@ -1,5 +1,5 @@
 import React from "react";
-import "./Button.css";
+import styles from "./button.module.css";
 
 
 interface ButtonProps {
@@ -9,8 +9,8 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({text}) => {
   return (
 
-      <div className="button-container">
-        <h1 className="text">{text}</h1>
+      <div className={styles.button_container}>
+        <h1 className={styles.text}>{text}</h1>
       </div>
 
   );

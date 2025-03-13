@@ -1,6 +1,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --primary-blue: 32, 181, 251;
+  --secondary-blue: 11, 72, 102;
 }
 
 @media (prefers-color-scheme: dark) {

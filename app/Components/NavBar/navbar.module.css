@@ -10,7 +10,7 @@
   z-index: 1000;
 }
 
-.navbar-container {
+.navbar_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@
 }
 
 /* Lista de navegação */
-.nav-list {
+.nav_list {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -30,7 +30,7 @@
 }
 
 /* Estilos dos links normais */
-.nav-link {
+.nav_link {
   text-decoration: none;
   font-size: 1.2rem;
   padding: 0.5rem;
@@ -38,14 +38,14 @@
 }
 
 /* Link ativo */
-.nav-link.active {
+.nav_link.active {
   color: rgb(var(--primary-blue));
   font-weight: bold;
   position: relative;
 }
 
 /* Barrinha indicadora abaixo do link ativo */
-.nav-link.active::after {
+.nav_link.active::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -57,24 +57,24 @@
   transform: translateX(-50%);
 }
 
-.nav-link.active:hover::after,
-.nav-link.active::after {
+.nav_link.active:hover::after,
+.nav_link.active::after {
   width: 100%;
 }
 
 /* Link inativo */
-.nav-link.inactive {
+.nav_link.inactive {
   color: black;
   opacity: 0.7;
 }
 
 /* Efeito hover nos links */
-.nav-link:hover {
+.nav_link:hover {
   transform: scale(1.1);
 }
 
 /* Estilo específico para o botão "Entrar" */
-.login-link {
+.login_link {
   color: black;
   font-size: 1.2rem;
   text-decoration: none;
@@ -82,12 +82,9 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.login-link:hover {
+.login_link:hover {
   color: rgb(var(--primary-blue));
   transform: scale(1.05);
 }
 
-/* Suaviza a rolagem ao clicar nos links */
-html {
-  scroll-behavior: smooth;
-}
+

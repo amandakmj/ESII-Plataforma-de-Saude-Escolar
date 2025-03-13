@@ -1,0 +1,63 @@
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+
+.login_container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    height: 500px;
+    padding-top: 48px;
+    background-color: rgb(var(--primary-blue));
+    border-radius: 32px;
+}
+
+.header {
+    padding-left: 40px;
+    color: white;
+    width: 302px;
+    height: 57px;
+    font-size: 48px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.link {
+    text-decoration: underline;
+}
+
+.text {
+    color: white;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.input_box {
+    margin-top: 4px;
+    width: 295px;
+    height: 48px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.button {
+    background-color: rgb(var(--secondary-blue));
+    width: 272px;
+    height: 64px;
+    color: white;
+    padding: 16px;
+    margin: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+}
