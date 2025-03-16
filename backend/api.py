@@ -3,6 +3,7 @@ import psycopg2
 from passlib.context import CryptContext
 from pydantic import BaseModel, EmailStr
 from enum import Enum
+from datetime import date
 
 class UserTypeEnum(str, Enum):
     manager = "manager"
@@ -56,7 +57,14 @@ def create_usuario(usuario: UsuarioCreate):
         # Se o usuário for um responsável (parent), adicioná-lo na tabela responsavel
         if usuario.tipo_usuario == "parent":
             cur.execute("INSERT INTO responsavel (usuario_id) VALUES (%s);", (usuario_id,))
+        # Se o tipo de usuário for 'manager' (gestor escolar), adicioná-lo na tabela gestor_escolar
+        if usuario.tipo_usuario == "manager":
+            cur.execute("INSERT INTO gestor_escolar (usuario_id) VALUES (%s);", (usuario_id,))
+        # Se o tipo de usuário for 'instructor' (gestor escolar), adicioná-lo na tabela gestor_escolar
+        if usuario.tipo_usuario == "instructor":
+            cur.execute("INSERT INTO professor (usuario_id) VALUES (%s);", (usuario_id,))
 
+        
         conn.commit()
         cur.close()
         conn.close()
@@ -67,13 +75,92 @@ def create_usuario(usuario: UsuarioCreate):
         conn.rollback()
         raise HTTPException(status_code=400, detail=f"Erro ao criar usuário: {e}")
 
+# @app.post("/criar_saude_aluno")
+# def criar_saude_aluno(usuario_id: int, matricula: int, altura: float, peso: float, alergias: str, atividade_fisica: str):
+#     conn = connect_db()
+#     if not conn:
+#         raise HTTPException(status_code=500, detail= "ERRO ao conectar ao banco de dados")
+#     try: 
+#         cur = conn.cursor()
+#         # Verificar se o usuário existe e se é um responsável (parent)
+#         cur.execute("SELECT tipo_usuario FROM usuario WHERE id = %s;", (usuario_id,))
+#         tipo_usuario = cur.fetchone()
+    
+#         if not tipo_usuario or tipo_usuario[0] != 'parent':
+#             cur.close()
+#             conn.close()
+#             raise HTTPException(status_code=400, detail="O usuário não é um responsável")
+    
+#         cur.execute("SELECT id FROM aluno WHERE matricula = %s;",(str(matricula),))
+#         aluno = cur.fetchone()
+#         if not aluno:
+#             cur.close()
+#             conn.close()
+#             raise HTTPException(status_code=404, detail="Aluno não encontrado")
+        
+#         aluno_id = aluno[0]
+
+#         imc = peso/(altura**2) if altura > 0 else None
+
+#         # Inserir dados de saúde do aluno
+#         cur.execute("""
+#             INSERT INTO saude (altura, peso, imc, alergias, atividade_fisica)
+#             VALUES (%s, %s, %s, %s, %s) RETURNING id;
+#         """, (altura, peso, imc, alergias, atividade_fisica))
+
+#         saude_id = cur.fetchone()[0]
+
+#         conn.commit()
+#         cur.close()
+#         conn.close()
+#         return {"message": "Saude do aluno adicionado com sucesso!", "saude_id": saude_id}
+    
+#     except Exception as e:
+#         conn.rollback()
+#         conn.close()
+#         raise HTTPException(status_code=500, detail=f"Erro ao adicionar saude do aluno: {e}")
+
+@app.post("/criar_aluno/")
+def criar_aluno(usuario_id: int, matricula: str, data_nascimento: date):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="Erro ao conectar ao banco de dados")
+
+    try:
+        cur = conn.cursor()
+        # Verificar se o usuário existe e se é um responsável (parent)
+        cur.execute("SELECT tipo_usuario FROM usuario WHERE id = %s;", (usuario_id,))
+        tipo_usuario = cur.fetchone()
+
+        if not tipo_usuario or tipo_usuario[0] != 'parent':
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=400, detail="O usuário não é um responsável")
+
+        # Inserir aluno na tabela aluno
+        cur.execute("""
+            INSERT INTO aluno (matricula, data_nascimento)
+            VALUES (%s, %s) RETURNING id;
+        """, (matricula, data_nascimento))
+
+        aluno_id = cur.fetchone()[0]
+
+        conn.commit()
+        cur.close()
+        conn.close()
+        return {"message": "Aluno adicionado com sucesso!", "aluno_id": aluno_id}
+
+    except Exception as e:
+        conn.rollback()
+        conn.close()
+        raise HTTPException(status_code=500, detail=f"Erro ao adicionar aluno: {e}")
+
 @app.post("/adicionar_especialidade/")
 def adicionar_especialidade(usuario_id: int, especialidade: str):
     conn = connect_db()
     if conn:
         try:
             cur = conn.cursor()
-
             # Verificar se o usuário existe e se é um profissional de saúde
             cur.execute('''
                 SELECT tipo_usuario FROM usuario WHERE id = %s;
@@ -88,7 +175,7 @@ def adicionar_especialidade(usuario_id: int, especialidade: str):
                 INSERT INTO profissional_saude (usuario_id, especialidade)
                 VALUES (%s, %s);
             ''', (usuario_id, especialidade))
-
+            
             conn.commit()
             cur.close()
             conn.close()
@@ -139,7 +226,7 @@ def get_usuario(usuario_id: int):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao buscar usuário: {e}")
-    
+
 @app.put("/usuario/{usuario_id}")
 def update_usuario(usuario_id: int, nome: str = None, email: str = None, senha: str = None, tipo_usuario: UserTypeEnum = None):
     conn = connect_db()
@@ -208,3 +295,5 @@ def delete_usuario(usuario_id: int):
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao excluir usuário: {e}")
+
+
