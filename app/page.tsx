@@ -8,20 +8,43 @@ export default function Home() {
      <>
       <Navbar />
       <div className={styles.page}>
-        <section id="home" className={styles.section}> 
-          <h2>Home</h2>
-          <p>Bem-vindo à página inicial.</p>
+
+        {/* Seção Home */}
+        <section id="home" className={styles.section}>
+          <div className={styles.container}>
+            <img src="/images/saude-inicial.svg" alt="Médicos conversando" className={styles.image} />
+            <div className={styles.text}>
+              <h2>Bem-vindo(a) à HealthSchool!</h2>
+            </div>
+          </div>
         </section>
 
+        {/* Seção Sobre */}
         <section id="sobre" className={styles.section}>
-          <h2>Sobre</h2>
-          <p>Saiba mais sobre nós.</p>
+          <div className={styles.container}>
+            <div className={styles.text}>
+              <h2>Sobre</h2>
+              <p>A HealthSchool foi criada para ajudar você a gerenciar e monitorar o estado de saúde dos alunos e sua progressão.</p>
+            </div>
+            <img src="/images/saude-sobre.svg" alt="Médica analisando exames" className={styles.image} />
+          </div>
         </section>
 
+        {/* Seção Contato */}
         <section id="contato" className={styles.section}>
-          <h2>Contato</h2>
-          <p>Entre em contato conosco.</p>
+          <div className={styles.container}>
+            <img src="/images/saude-contato.svg" alt="Pessoa segurando smartphone" className={styles.image} />
+            <div className={styles.text}>
+              <h2>Contato</h2>
+              <p>Tem alguma dúvida, sugestão ou precisa de suporte? Nossa equipe está pronta para ajudar!</p>
+              <p><strong>Informações:</strong></p>
+              <p>Email: exemplo@hotmail.com</p>
+              <p>WhatsApp: 29 87181889</p>
+              <p>Horário de atendimento: dias e horas</p>
+            </div>
+          </div>
         </section>
+
       </div>
       <Footer/>
     </>

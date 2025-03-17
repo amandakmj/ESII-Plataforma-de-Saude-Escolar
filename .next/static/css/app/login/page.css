@@ -1,0 +1,180 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/Components/NavBar/navbar.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/* Estilos gerais da navbar */
+.navbar_navbar__y7bb2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.navbar_navbar_container__dgCCD {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Lista de navegação */
+.navbar_nav_list__qXdl3 {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* Estilos dos links normais */
+.navbar_nav_link__gFjFd {
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Link ativo */
+.navbar_nav_link__gFjFd.navbar_active__tCUfo {
+  color: rgb(var(--primary-blue));
+  font-weight: bold;
+  position: relative;
+}
+
+/* Barrinha indicadora abaixo do link ativo */
+.navbar_nav_link__gFjFd.navbar_active__tCUfo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background-color: rgb(var(--primary-blue));
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar_nav_link__gFjFd.navbar_active__tCUfo:hover::after,
+.navbar_nav_link__gFjFd.navbar_active__tCUfo::after {
+  width: 100%;
+}
+
+/* Link inativo */
+.navbar_nav_link__gFjFd.navbar_inactive__AHnFD {
+  color: black;
+  opacity: 0.7;
+}
+
+/* Efeito hover nos links */
+.navbar_nav_link__gFjFd:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo específico para o botão "Entrar" */
+.navbar_login_link__lsixn {
+  color: black;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar_login_link__lsixn:hover {
+  color: rgb(var(--primary-blue));
+  transform: scale(1.05);
+}
+
+
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/Components/Button/button.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.button_button_container__vnf64 {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(var(--primary-blue));
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.button_text__O_kxq {
+    font-size: 16px;
+    
+}  
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/login/page.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+.page_page___e_sO {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+
+.page_login_container__w33q4 {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-direction: column;
+    width: 600px;
+    height: 500px;
+    padding-top: 48px;
+    background-color: rgb(var(--primary-blue));
+    border-radius: 32px;
+}
+
+.page_header__boOGM {
+    padding-left: 40px;
+    color: white;
+    width: 302px;
+    height: 57px;
+    font-size: 48px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.page_link__PVaHN {
+    text-decoration: underline;
+}
+
+.page_text__tT2eU {
+    color: white;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.page_input_box__61Vfg {
+    margin-top: 4px;
+    width: 295px;
+    height: 48px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+}
+
+.page_button__SKF7s {
+    background-color: rgb(var(--secondary-blue));
+    width: 272px;
+    height: 64px;
+    color: white;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    padding: 16px;
+    margin: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+}

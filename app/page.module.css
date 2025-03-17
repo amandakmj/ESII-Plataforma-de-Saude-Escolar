@@ -7,13 +7,48 @@
   padding-top: 2rem;
 }
 
-
 .section {
-  background-color: lightblue;
-  width: 80%;
+  background-color: #f0f8ff; 
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
-  flex-direction: column; 
   align-items: center; 
-  height: 80vh; 
+  height: auto; 
+  padding: 3rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  gap: 2rem;
+}
+
+.image {
+  width: 45%;
+  max-width: 300px;
+  height: auto;
+}
+
+.text {
+  width: 50%;
+  text-align: left;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text, .image {
+    width: 100%;
+  }
 }
