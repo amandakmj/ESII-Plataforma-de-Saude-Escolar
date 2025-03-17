@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.page {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-primary);
+}
+
+.register_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 700px;
+    gap: 16px;
+    border-radius: 8px;
+    background-color: rgb(var(--primary-blue));
+}
+
+.header {
+    
+    font-size: 48px;
+    color: white;
+    font-weight: bold;
+}
+
+.text {
+    color: white;
+    font-size: 16px;
+    padding-bottom: 8px;
+    
+}
+.input_box {
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    padding: 8px;
+    color: gray;
+}
+
+.input_selection {
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    color: gray;
+    font-family: var(--font-primary);
+
+
+}
+
+.selection_option {
+    font-size: 24px;
+    font-family: var(--font-primary);
+
+}
+
+.button {
+    margin: 40px;
+    width: 270px;
+    height: 64px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: rgb(var(--secondary-blue));
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--font-primary);
+    color: white;
+}

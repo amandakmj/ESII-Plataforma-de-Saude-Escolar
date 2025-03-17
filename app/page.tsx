@@ -1,6 +1,7 @@
-import Image from 'next/image'
 import styles from './page.module.css'
 import Navbar from './Components/NavBar/navbar'
+import Footer from './Components/Footer/footer'
+
 export default function Home() {
   return (
     <main>
@@ -21,8 +22,8 @@ export default function Home() {
           <h2>Contato</h2>
           <p>Entre em contato conosco.</p>
         </section>
-      
       </div>
+      <Footer/>
     </>
     </main>
   )

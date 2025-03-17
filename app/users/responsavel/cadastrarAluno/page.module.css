@@ -1,0 +1,17 @@
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(var(--light-gray));
+    border-radius: 24px;
+    width: 1280px;
+    height: 3750px;
+    padding: 38px;
+    gap: 32px;
+}
