@@ -11,7 +11,7 @@ class UserTypeEnum(str, Enum):
     parent = "parent"
     health_professional = "health_professional"
 
-class UsuarioCreate(BaseModel):
+class UserCreate(BaseModel):
     nome: str
     email: EmailStr
     senha: str

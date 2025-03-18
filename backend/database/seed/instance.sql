@@ -29,6 +29,12 @@ CREATE TABLE saude (
     peso FLOAT,
     imc FLOAT,
     alergias VARCHAR(500),
+    doencas_cronicas VARCHAR(500),
+    medicamentos_continuos VARCHAR(500),
+    vacinas VARCHAR(500),
+    cirurgias_internacoes VARCHAR(500),
+    deficiencias_necessidades VARCHAR(500),
+    plano_saude VARCHAR(500),
     atividade_fisica VARCHAR(100)
 );
 
