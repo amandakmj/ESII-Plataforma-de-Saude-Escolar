@@ -1,12 +1,31 @@
 .button_container {
     display: flex;
     justify-content: center;
-    background-color: rgb(var(--primary-blue));
     border-radius: 8px;
     padding: 0.5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    min-width: 150px;
+    transition: 0.5s;
+}
+
+.button_container:hover {
+    transition: 0.5s;
+    opacity: 0.5;
+}
+
+
+.primary {
+    background-color: rgb(var(--primary-blue));
+
+}
+
+.secondary {
+    background-color: rgb(var(--secondary-blue));
 }
 
 .text {
     font-size: 16px;
-    
+    color: white;
 }  

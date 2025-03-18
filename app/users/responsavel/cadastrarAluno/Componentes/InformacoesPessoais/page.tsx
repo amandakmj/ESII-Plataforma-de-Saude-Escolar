@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
-import InputBox from "../../../Compontentes/InputBox/inputBox";
+import InputBox from "../../../Componentes/InputBox/inputBox";
 
 const InformacoesPessoais: React.FC = () => {
     return (
@@ -10,11 +10,11 @@ const InformacoesPessoais: React.FC = () => {
                 
                 <div className={styles.input_column_section}>
                     <InputBox text="Idade"/>
-                    <InputBox text="Vinculo com o aluno"/>
+                    <InputBox text="Vínculo com o aluno"/>
                 </div>
 
                 <div className={styles.input_column_section}>
-                    <InputBox text="Genero"/>
+                    <InputBox text="Gênero"/>
                     <InputBox text="Telefone do responsável"/>
                 </div>
 
@@ -23,6 +23,6 @@ const InformacoesPessoais: React.FC = () => {
             <InputBox text="Endereço (cidade, estado, bairro, CEP)"/>
         </div>    
     );
-  };
-  
-  export default InformacoesPessoais;
+};
+
+export default InformacoesPessoais;

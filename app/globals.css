@@ -3,7 +3,7 @@
   --primary-blue: 32, 181, 251;
   --secondary-blue: 11, 72, 102;
   --light-gray: 217, 217, 217;
-  --font-primary: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  --font-primary: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 
@@ -22,7 +22,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  padding: 1rem;
+  
 }
 
 a {

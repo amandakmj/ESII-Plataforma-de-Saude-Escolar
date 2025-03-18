@@ -14,12 +14,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
-/* Lista de navegação */
 .nav_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+/* Lista de navegação */
+.nav_section {
   display: flex;
   align-items: center;
   gap: 1.5rem;
