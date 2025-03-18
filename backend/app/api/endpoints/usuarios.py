@@ -2,15 +2,15 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.schemas.usuario import UserCreate, UserResponse
-from app.services.user_services import criar_usuario, listar_usuarios
+from app.services.user_services import create_user, get_users
 from typing import List
 
 router = APIRouter()
 
 @router.post("/", response_model=UserResponse)
 async def criar_novo_usuario(user: UserCreate, db: AsyncSession = Depends(get_db)):
-    return await criar_usuario(db, user)
+    return await create_user(db, user)
 
-@router.get("/", response_model=List[UserResponse])
-async def listar_usuarios(db: AsyncSession = Depends(get_db)):
-    return await listar_usuarios(db)
+@router.get("/listar_usuarios/", response_model=List[UserResponse])
+async def listar_todos_usuarios(db: AsyncSession = Depends(get_db)):
+    return await get_users(db)
