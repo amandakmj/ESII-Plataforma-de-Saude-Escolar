@@ -1,8 +1,20 @@
-CREATE TABLE responsavel (
+-- Criar os tipos ENUM antes das tabelas
+CREATE TYPE USER_TYPE AS ENUM ('manager', 'instructor', 'parent', 'health_professional');
+CREATE TYPE ACESS_LEVEL AS ENUM ('reader', 'admin', 'editor');
+
+-- Agora, crie as tabelas
+CREATE TABLE usuario (
     id SERIAL NOT NULL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    senha VARCHAR(200) NOT NULL
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(200) NOT NULL,
+    tipo_usuario USER_TYPE NOT NULL
+);
+
+CREATE TABLE responsavel (
+    id SERIAL NOT NULL PRIMARY KEY,
+    usuario_id INT NOT NULL UNIQUE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE aluno (
@@ -17,6 +29,12 @@ CREATE TABLE saude (
     peso FLOAT,
     imc FLOAT,
     alergias VARCHAR(500),
+    doencas_cronicas VARCHAR(500),
+    medicamentos_continuos VARCHAR(500),
+    vacinas VARCHAR(500),
+    cirurgias_internacoes VARCHAR(500),
+    deficiencias_necessidades VARCHAR(500),
+    plano_saude VARCHAR(500),
     atividade_fisica VARCHAR(100)
 );
 
@@ -30,16 +48,14 @@ CREATE TABLE exame_medico (
 
 CREATE TABLE gestor_escolar (
     id SERIAL NOT NULL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    senha VARCHAR(200) NOT NULL
+    usuario_id INT NOT NULL UNIQUE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE professor (
     id SERIAL NOT NULL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    senha VARCHAR(200) NOT NULL
+    usuario_id INT NOT NULL UNIQUE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE turma (
@@ -48,16 +64,12 @@ CREATE TABLE turma (
     serie VARCHAR(100)
 );
 
-CREATE TABLE profissional_saude(
+CREATE TABLE profissional_saude (
     id SERIAL NOT NULL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
+    usuario_id INT NOT NULL UNIQUE,
     especialidade VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    senha VARCHAR(200) NOT NULL
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
-
-CREATE TYPE USER_TYPE AS ENUM ('manager', 'instructor', 'parent', 'health_professional');
-CREATE TYPE ACESS_LEVEL AS ENUM ('reader', 'admin', 'editor');
 
 CREATE TABLE permissao_usuario (
     id SERIAL NOT NULL PRIMARY KEY,
