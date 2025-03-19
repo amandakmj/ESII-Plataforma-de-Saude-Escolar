@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Enum
 from app.models.base import Base
 from enum import Enum as PyEnum
+from sqlalchemy.orm import relationship #jv add
 
 class UserType(PyEnum):
     MANAGER = "manager"
@@ -21,3 +22,6 @@ class Usuario(Base):
     email = Column(String, index=True, nullable=False, unique=True)
     segredo = Column(String, index=True, nullable=False)
     tipo_usuario = Column(Enum(UserType), nullable=False)
+
+    alunos = relationship("Aluno", back_populates="usuario") #jv add
+   
