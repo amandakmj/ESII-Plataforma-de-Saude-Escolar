@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from enum import Enum
+from app.models.usuario import UserType
 
 class UserType(str, Enum):
     MANAGER = "manager"
