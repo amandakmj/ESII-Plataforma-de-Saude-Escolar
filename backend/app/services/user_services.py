@@ -7,7 +7,7 @@ from app.core.security import hash_senha
 from sqlalchemy.future import select
 
 # insere um novo usuário no banco
-def criar_usuario(usuario):
+def create_user(usuario):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")

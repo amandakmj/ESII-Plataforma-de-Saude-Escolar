@@ -19,25 +19,28 @@ CREATE TABLE responsavel (
 
 CREATE TABLE aluno (
     id SERIAL NOT NULL PRIMARY KEY,
-    matricula VARCHAR(15) NOT NULL,
+    matricula VARCHAR(15) NOT NULL UNIQUE,
     data_nascimento DATE NOT NULL
 );
 
-CREATE TABLE saude (
+CREATE TABLE saude ( 
     id SERIAL NOT NULL PRIMARY KEY,
     altura FLOAT,
     peso FLOAT,
     imc FLOAT,
-    alergias VARCHAR(500),
-    doencas_cronicas VARCHAR(500),
-    medicamentos_continuos VARCHAR(500),
-    vacinas VARCHAR(500),
-    cirurgias_internacoes VARCHAR(500),
-    deficiencias_necessidades VARCHAR(500),
-    plano_saude VARCHAR(500),
-    atividade_fisica VARCHAR(100)
+    alergias VARCHAR(300),
+    atividade_fisica VARCHAR(200),
+    doencasCronicas VARCHAR(100),
+    medicamentosContinuos VARCHAR(100),
+    cirugiaisInternacoes VARCHAR(100),
+    vacinas VARCHAR(200),
+    deficienciasNecessidades VARCHAR(200),
+    planoSaude VARCHAR(100),
+    aluno_id INT NOT NULL,  -- Mantém a coluna aluno_id
+    matricula VARCHAR(15),  -- Adiciona a coluna matricula (não mais com NOT NULL neste momento)
+    FOREIGN KEY (aluno_id) REFERENCES aluno(id) ON DELETE CASCADE,  -- Chave estrangeira para aluno_id
+    FOREIGN KEY (matricula) REFERENCES aluno(matricula) ON DELETE CASCADE  -- Chave estrangeira para matricula
 );
-
 CREATE TABLE exame_medico (
     id SERIAL NOT NULL PRIMARY KEY,
     tipo VARCHAR(100) NOT NULL,

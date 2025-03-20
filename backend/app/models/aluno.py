@@ -9,3 +9,5 @@ class Aluno(Base):
     id = Column(Integer, primary_key=True, index=True)
     matricula = Column(String(15), nullable=False, unique=True)
     data_nascimento = Column(Date, nullable=False)
+
+    saude = relationship("Saude", back_populates="aluno", uselist=False)

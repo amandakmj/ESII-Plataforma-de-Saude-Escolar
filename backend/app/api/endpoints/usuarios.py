@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends
 from app.schemas.usuario import UserCreate
-from app.services.user_services import criar_usuario, get_usuario, get_usuario_id
+from app.services.user_services import create_user, get_usuario, get_usuario_id
 
 router = APIRouter()
 
 @router.post("/create")
 def criar_novo_usuario(user: UserCreate):
-    return criar_usuario(user)
+    return create_user(user)
 
 @router.get("/get")
 def pegar_usuario():
