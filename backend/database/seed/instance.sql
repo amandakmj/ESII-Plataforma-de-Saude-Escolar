@@ -83,5 +83,7 @@ CREATE TABLE permissao_usuario (
 CREATE TABLE alerta (
     id SERIAL NOT NULL PRIMARY KEY,
     mensagem VARCHAR(200),
-    data_criacao DATE NOT NULL
+    data_criacao DATE NOT NULL,
+    responsavel_id INT NOT NULL,
+    FOREIGN KEY (responsavel_id) REFERENCES responsavel(id) ON DELETE CASCADE
 );

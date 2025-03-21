@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr
+from typing import Optional
 from enum import Enum
 from app.models.usuario import UserType
 
@@ -15,6 +16,13 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     segredo: str # a senha será aplicada somente na criação
+
+class UserUpdate(BaseModel):
+    id: int
+    nome: Optional[str] = None
+    email: Optional[str] = None
+    segredo: Optional[str] = None
+    tipo_usuario: Optional[str] = None
 
 class UserResponse(UserBase):
     id: int
