@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     font-family: var(--font-primary);
 }
 
@@ -18,6 +19,12 @@
     padding-top: 48px;
     background-color: rgb(var(--primary-blue));
     border-radius: 32px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .header {
@@ -40,6 +47,10 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.input_section {
+    display: flex;
+    flex-direction: column;
+}
 
 .input_box {
     margin-top: 4px;
@@ -53,18 +64,16 @@
     border-radius: 8px;
 }
 
+.invalid {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+   
+}
+
+.error_message {
+    color: red
+}
 .button {
-    background-color: rgb(var(--secondary-blue));
-    width: 272px;
-    height: 64px;
-    color: white;
-    appearance: none;
-    padding: 16px;
-    margin: 8px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 8px;
+    display: flex;
+    justify-content: center;
 }

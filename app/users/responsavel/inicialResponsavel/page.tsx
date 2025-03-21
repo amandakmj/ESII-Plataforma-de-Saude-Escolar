@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './page.module.css';
-import Navbar from '@/app/Components/NavBar/navbar'
-import MenuLateral from '../Componentes/MenuLateral/menuLateral';
-const LoginResponsavelPage = () => {
+import Navbar from '@/app/Componentes/NavBar/navbar'
+import MenuLateral from '@/app/Componentes/MenuLateral/menuLateral';
+
+const inicialResponsavelPage = () => {
   return (
     <div>
       {/* <Navbar/> */}
@@ -14,15 +15,15 @@ const LoginResponsavelPage = () => {
           <div className={styles.profile_section}>
             <img src="/placeholder-image.jpg" alt="Profile" className={styles.profile_image} />
             <div>
-              <h2 className={styles.responsavel}>Responsável</h2>
+              <h2 className={styles.responsavel}>Responsável pelo aluno</h2>
               <p className={styles.nome}>Nome do responsável</p>
             </div>
           </div>
           <div className={styles.buttons_section}>
-            <button className={styles.button}>Cadastrar aluno</button>
+            <button className={styles.button}><a href="./cadastrarAluno">Cadastrar aluno</a></button>
             <button className={styles.button}>Ver aluno cadastrado</button>
             <button className={styles.button}>Adicionar Exame</button>
-            <button className={styles.button}>Meus relatórios</button>
+            <button className={styles.button}>Enviar Notificação</button>
             <button className={styles.button}>Ver últimas notificações</button>
           </div>
         </div>
@@ -32,4 +33,4 @@ const LoginResponsavelPage = () => {
   );
 };
 
-export default LoginResponsavelPage;
+export default inicialResponsavelPage;

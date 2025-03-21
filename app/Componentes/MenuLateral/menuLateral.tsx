@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./menuLateral.module.css";
-import Button, { ButtonColor } from "@/app/Components/Button/button";
+import Button, { ButtonColor } from "@/app/Componentes/Button/button";
 
 export enum Category {
     Responsavel = "users/responsavel",

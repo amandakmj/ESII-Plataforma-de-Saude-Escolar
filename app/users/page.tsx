@@ -1,8 +1,12 @@
 import React from 'react'
 import "./page.module.css"
+import Navbar from './Componentes/NavBar/navbar'
+import MenuLateral from '@/app/Componentes/MenuLateral/menuLateral';
+
 const UsersPage = () => {
   return (
     <div> <nav className="menu-lateral">
+        <Navbar/>
     <ul>
         <li className="icones-menu">
             <button data-shop-target="#shop" className="button-nav">

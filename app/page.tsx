@@ -1,6 +1,6 @@
 import styles from './page.module.css'
-import Navbar from './Components/NavBar/navbar'
-import Footer from './Components/Footer/footer'
+import Navbar from './Componentes/NavBar/navbar'
+import Footer from './Componentes/Footer/footer'
 
 export default function Home() {
   return (

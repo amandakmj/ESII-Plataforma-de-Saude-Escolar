@@ -1,8 +1,16 @@
+"use client"
+
 import React from 'react';
 import styles from './page.module.css';
-import Navbar from '@/app/Components/NavBar/navbar'
+import Navbar from '@/app/Componentes/NavBar/navbar';
 
+import { useRouter } from 'next/navigation';
 const ResponsavelPage = () => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.replace("/users/responsavel/loginResponsavel")
+  }
+
   return (
     <div>
       {/* <Navbar/> */}
@@ -12,7 +20,7 @@ const ResponsavelPage = () => {
             <img src="/placeholder-image.jpg" alt="Profile" className={styles.profile_image} />
             <span className={styles.edit_icon}>✏️</span>
           </div>
-          <h2 className={styles.name}>Amanda Freitas Silva Araujo</h2>
+          <h2 className={styles.name}>Nome Responsavel pelo Aluno</h2>
           <form className={styles.form}>
             <label className={styles.label}>CPF*</label>
             <input type="text" className={styles.input_box} />
@@ -35,7 +43,7 @@ const ResponsavelPage = () => {
             <label className={styles.label}>Endereço (cidade, estado, bairro, CEP)*</label>
             <input type="text" className={styles.input_box} />
             
-            <button className={styles.button}>Confirmar</button>
+            <button className={styles.button} onClick={handleClick}>Confirmar</button>
           </form>
         </div>
       </div>
