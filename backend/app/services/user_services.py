@@ -6,12 +6,16 @@ from app.utils.database import connect_db
 from app.core.security import hash_senha
 from sqlalchemy.future import select
 
-# insere um novo usuário no banco
+""" 
+Cria um novo registro na tabela usuário no banco de dados
+@JvReis
+"""
 def create_user(usuario):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")
 
+    # Cria um hash da senha utilizando o bycript
     senha_hash = hash_senha(usuario.segredo)
 
     try:
@@ -37,7 +41,10 @@ def create_user(usuario):
 #     result = db.execute(select(Usuario))
 #     return result.scalars().all()
 
-#Pega todos os usuário do banco
+"""
+Retorna uma lista com todos os usuários
+@JvReis
+"""
 def get_usuario():
     conn = connect_db()
     if not conn:
