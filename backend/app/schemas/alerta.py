@@ -3,8 +3,9 @@ from datetime import date
 
 class AlertBase(BaseModel):
     mensagem: str
-    data_criacao: date
     responsavel_id: int
+    visualizado: int
+    remetente: int
 
 class AlertCreate(AlertBase):
     pass

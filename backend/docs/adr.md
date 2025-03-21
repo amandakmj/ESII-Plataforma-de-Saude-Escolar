@@ -18,3 +18,8 @@ Padrão de escrita: snake_case; minúsculo; em português;
 - Classes:
 Padrão de escrita: CamelCase; em inglês.
 Padrão de escrita: snake_case; minúsculo; em português;
+
+### Services
+- Funções:
+Padrão de escrita: snae_case; minúsculo; em português;
+Padrão de estrutura: utilizar try/except/finally para estrutura fluxo de execução e controle de erros.
