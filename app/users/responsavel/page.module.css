@@ -2,7 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
+    flex-direction: column;
+    padding-top: 40px;
+}
+
+.pageTitle {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.containerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .container {
@@ -13,32 +28,6 @@
     padding: 32px;
     border-radius: 16px;
     width: 500px;
-}
-
-.profile_container {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin-bottom: 16px;
-}
-
-.profile_image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.edit_icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    border-radius: 50%;
-    padding: 4px;
-    cursor: pointer;
-    font-size: 16px;
 }
 
 .name {
@@ -67,25 +56,47 @@
     outline: none;
 }
 
+.error {
+    color: red;
+    font-size: 12px;
+}
+
 .button {
-    background-color: rgb(var(--secondary-blue));
+    background-color: rgb(var(--primary-blue));
     color: white;
-    width: 272px;
-    height: 64px;
+    width: 100%;
+    height: 50px;
     appearance: none;
     padding: 16px;
-    margin: 8px auto;
+    margin: 16px auto;
     outline: none;
     border: none;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
     border-radius: 8px;
 }
 
 .button:hover {
-    background-color: #003d82;
+    background-color: #0056b3;
 }
 
+.addPhotoCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    border: 2px dashed #ccc;
+}
 
-
+.hidden {
+    display: none;
+}
