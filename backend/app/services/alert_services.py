@@ -2,6 +2,9 @@ from fastapi import HTTPException
 from fastapi.responses import JSONResponses
 from app.utils.database import connect_db
 
+"""
+@AnotherOne07
+"""
 def create_alert(alert):
     conn = connect_db()
     if not conn:
@@ -17,3 +20,4 @@ def create_alert(alert):
             cur.close()
         if conn:
             conn.close()
+
