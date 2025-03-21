@@ -40,6 +40,6 @@ def atualizar_usuario (user: UserResponse):
 Endpoint destinado a excluir um registro de usuário
 @AnotherOne07
 """
-@router.get("/delete/{usuario_id}")
+@router.delete("/delete/{usuario_id}")
 def deletar_usuario(usuario_id):
     return delete_user(usuario_id)

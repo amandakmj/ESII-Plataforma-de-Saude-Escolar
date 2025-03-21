@@ -59,7 +59,7 @@ def create_saude_student(usuario_id: int, matricula: str, altura: float, peso: f
             conn.close()
 
 
-def get_saude_id(matricula: int):
+def get_saude_id(saude_id: int):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")
@@ -67,7 +67,7 @@ def get_saude_id(matricula: int):
     try:
         cur = conn.cursor()
         cur.execute("SELECT id, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, "
-        "medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude  FROM saude WHERE matricula = %s;", (matricula,))
+        "medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude  FROM saude WHERE id = %s;", (saude_id,))
         saude = cur.fetchall()
         cur.close()
         conn.close()
@@ -138,7 +138,7 @@ def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, at
             raise HTTPException(status_code=400, detail="Nenhuma informação para atualizar")
 
         valores.append(saude_id)
-        query = f"UPDATE saude SET {', '.join(updates)} WHERE id = %s RETURNING id, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude  ;"
+        query = f"UPDATE saude SET {', '.join(updates)} WHERE saude_id = %s RETURNING id, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude  ;"
         cur.execute(query, tuple(valores))
         saude_atualizada = cur.fetchone()
 

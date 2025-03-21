@@ -24,4 +24,6 @@ class Usuario(Base):
     tipo_usuario = Column(Enum(UserType), nullable=False)
 
     alunos = relationship("Aluno", back_populates="usuario") #jv add
-   
+    
+    # Relacionamento com a tabela ProfissionalSaude
+    profissional_saude = relationship("ProfissionalSaude", back_populates="usuario", uselist=False)

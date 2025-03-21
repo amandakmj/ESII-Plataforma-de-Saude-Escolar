@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import date
 
 class AlertBase(BaseModel):
     mensagem: str
