@@ -29,8 +29,8 @@ def create_alert(alert: AlertCreate):
         return JSONResponse(
             content={"message": "Alerta salvo com sucesso!"}, 
             status_code=200)
-    except:
-        raise HTTPException(status_code=500, detail="Erro ao criar um novo alerta")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erro ao criar um novo alerta: {e}")
     
     finally:
         if cur:
@@ -65,8 +65,8 @@ def get_alerts(responsavel_id):
             content={"alerts": alerts},
             status_code=200
         )
-    except:
-        raise HTTPException(status_code=500, detail="Erro ao criar um novo alerta")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erro ao criar um novo alerta: {e}")
     
     finally:
         if cur:
