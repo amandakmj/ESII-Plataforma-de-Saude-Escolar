@@ -82,8 +82,10 @@ def get_usuario_id(usuario_id: int):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao buscar usuário: {e}")
-
-
+"""
+Adiciona as especialidades aos usuários do tipo "health_professional"
+@JvReis
+"""
 def update_user(usuario):
     conn = connect_db()
     if not conn:

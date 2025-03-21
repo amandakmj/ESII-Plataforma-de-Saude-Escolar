@@ -1,5 +1,5 @@
 from fastapi import HTTPException
-from fastapi.responses import JSONResponses
+from fastapi.responses import JSONResponse
 from app.utils.database import connect_db
 
 def create_alert(alert):

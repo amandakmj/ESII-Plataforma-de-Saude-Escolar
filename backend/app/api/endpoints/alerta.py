@@ -1,4 +1,4 @@
-from fastpi import APIRouter
+from fastapi import APIRouter
 from app.schemas.alerta import AlertCreate
 from app.services.alert_services import create_alert
 
