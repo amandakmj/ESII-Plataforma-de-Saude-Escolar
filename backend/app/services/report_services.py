@@ -1,7 +1,11 @@
 from app.utils.database import connect_db
 from fastapi import HTTPException
 
-def gerar_relatorio_individual_aluno(aluno_id: int):
+"""
+Adiciona as especialidades aos usuários do tipo "health_professional"
+@JvReis
+"""
+def gen_report_ind_aluno(aluno_id: int):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")
@@ -9,54 +13,72 @@ def gerar_relatorio_individual_aluno(aluno_id: int):
     try:
         cur = conn.cursor()
 
-        # Consulta as informações de saúde do aluno
-        cur.execute("""
-            SELECT 
-                a.matricula,
-                saude.altura,
-                saude.peso,
-                saude.imc,
-                saude.alergias,
-                saude.atividade_fisica,
-                saude.doencasCronicas,
-                saude.medicamentosContinuos,
-                saude.cirugiaisInternacoes,
-                saude.vacinas,
-                saude.deficienciasNecessidades,
-                saude.planoSaude
-            FROM aluno a
-            JOIN saude saude ON a.id = saude.aluno_id
-            WHERE a.id = %s
-        """, (aluno_id,))
+        # Consulta a VIEW
+        cur.execute("SELECT * FROM relatorio_individual_aluno WHERE aluno_id = %s", (aluno_id,))
+        resultado = cur.fetchone()
 
-        # Recupera os dados do aluno
-        dados_aluno = cur.fetchone()
+        if not resultado:
+            raise HTTPException(status_code=404, detail="Nenhum dado encontrado para o aluno")
 
-        if not dados_aluno:
-            raise HTTPException(status_code=404, detail="Aluno não encontrado")
+        print(resultado)  # Debug: veja o que está retornando
 
-        # Processamento adicional, se necessário
         relatorio = {
-            "matricula": dados_aluno[0],
-            "altura": dados_aluno[1],
-            "peso": dados_aluno[2],
-            "imc": dados_aluno[3],
-            "alergias": dados_aluno[4],
-            "atividade_fisica": dados_aluno[5],
-            "doencas_cronicas": dados_aluno[6],
-            "medicamentos_continuos": dados_aluno[7],
-            "cirurgias_internacoes": dados_aluno[8],
-            "vacinas": dados_aluno[9],
-            "deficiencias_necessidades": dados_aluno[10],
-            "plano_saude": dados_aluno[11],
+            "matricula": resultado[1],
+            "data_nascimento": resultado[2],
+            "altura": resultado[3],
+            "peso": resultado[4],
+            "imc": resultado[5],
+            "alergias": resultado[6],
+            "atividade_fisica": resultado[7],
+            "doencasCronicas": resultado[8],
+            "medicamentosContinuos": resultado[9],
+            "cirugiaisInternacoes": resultado[10],
+            "vacinas": resultado[11],
+            "deficienciasNecessidades": resultado[12],
+            "planoSaude": resultado[13]
         }
 
-        conn.commit()
         cur.close()
         conn.close()
 
         return relatorio
-    
+
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao gerar relatório de saúde: {e}")
+
+"""
+Adiciona as especialidades aos usuários do tipo "health_professional"
+@JvReis
+"""
+def gen_report_total():
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")
+
+    try:
+        cur = conn.cursor()
+
+        cur.execute("SELECT * FROM relatorio_geral")
+        resultado = cur.fetchone()
+
+        if not resultado:
+            raise   HTTPException(status_code=404, detail="Nenhum dado encontrado")
+        
+        relatorio ={
+            "media_altura": resultado[0],
+            "media_peso": resultado[1],
+            "media_imc": resultado[2],
+            "alergias": resultado[3],
+            "doencas_cronicas": resultado[4],
+            "deficienciasNecessidades": resultado[5]
+        }
+
+        cur.close()
+        conn.close()
+
+        return relatorio
+
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro ao gerar relatório estatístico: {e}")

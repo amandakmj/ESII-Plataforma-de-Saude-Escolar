@@ -32,7 +32,7 @@ def pegar_usuario(usuario_id):
 Endpoint destinado a atualizar os dados de um usuário
 @JvReis
 """
-@router.post("/update")
+@router.put("/update")
 def atualizar_usuario (user: UserResponse):
     return update_user(user)
 

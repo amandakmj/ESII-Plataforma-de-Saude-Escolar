@@ -2,9 +2,10 @@ from fastapi import HTTPException
 from app.utils.database import connect_db
 from datetime import date
 
-#Função de criação do aluno, como o responsável
-#é quem deve cadastrar o aluno, então é usado o id
-#do usuário
+"""
+Função de criação do aluno
+@JvReis
+"""
 def create_aluno(usuario_id: int, matricula: str, data_nascimento: date):
     conn = connect_db()
     if not conn:
@@ -39,7 +40,10 @@ def create_aluno(usuario_id: int, matricula: str, data_nascimento: date):
         conn.close()
         raise HTTPException(status_code=500, detail=f"Erro ao adicionar aluno: {e}")
 
-#Função que pega e exibi as informações do aluno através do id
+"""
+Função para pegar/listar os dados do estudanto de acordo com o id
+@JvReis
+"""
 def get_aluno_id(aluno_id: int):
     conn = connect_db()
     if not conn:
@@ -60,9 +64,10 @@ def get_aluno_id(aluno_id: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao buscar aluno: {e}")
 
-#Função para atualizar as informações básica do aluno,
-#será usada principalmente se ocorrer algum erro no
-#cadastro do aluno
+"""
+Função para atualização do registro do aluno
+@JvReis
+"""
 def update_aluno_id(aluno_id: int, matricula: str = None, data_nascimento: date = None):
     conn = connect_db()
     if not conn:
@@ -101,7 +106,10 @@ def update_aluno_id(aluno_id: int, matricula: str = None, data_nascimento: date 
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao atualizar aluno: {e}")
 
-#Função para excluir um determinado aluno 
+"""
+Função para deletar o registro do aluno
+@JvReis
+"""
 def delete_aluno_id(aluno_id: int):
     conn = connect_db()
     if not conn:
