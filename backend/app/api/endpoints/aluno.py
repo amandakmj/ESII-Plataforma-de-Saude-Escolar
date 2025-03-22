@@ -5,7 +5,10 @@ from app.services.student_service import create_aluno, get_aluno_id, update_alun
 
 router = APIRouter()
 
-#Rota para criação do aluno
+"""
+Endpoint para criação do aluno
+@JvReis
+"""
 @router.post("/create_alunos")
 def criar_novo_aluno(aluno: AlunoCreate):
     return create_aluno(
@@ -14,16 +17,26 @@ def criar_novo_aluno(aluno: AlunoCreate):
         data_nascimento=aluno.data_nascimento
     )
 
-#Rota para exibição de determinado aluno
+"""
+Endpoint para retornar os dados de um aluno
+@JvReis
+"""
 @router.get("/get_aluno/{aluno_id}")
 def pegar_aluno_id(aluno_id):
     return get_aluno_id(aluno_id)
 
-#Rota para update de um determinado aluno
+"""
+Endpoint para atualizar os dados de um aluno
+@JvReis
+"""
 @router.put("/update_aluno/{aluno_id}")
 def atualizar_aluno_id(aluno_id, aluno: AlunoBase):
     return update_aluno_id
 
+"""
+Endpoint para deletar os dados de um aluno
+@JvReis
+"""
 @router.delete("/delete_aluno/{aluno_id}")
 def remover_aluno_id(aluno_id):
     return delete_aluno_id(aluno_id)

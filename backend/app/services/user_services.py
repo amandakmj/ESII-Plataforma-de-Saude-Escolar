@@ -96,6 +96,7 @@ def update_user(usuario):
 
         updates = []
         valores = []
+        
         if usuario.nome:
             updates.append("nome = %s")
             valores.append(usuario.nome)
