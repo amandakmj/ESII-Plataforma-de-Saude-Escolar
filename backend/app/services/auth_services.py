@@ -1,9 +1,10 @@
 from fastapi import HTTPException
-from fastapi import JSONResponses
 from fastapi.security import OAuth2PasswordBearer
 from app.schemas.auth import TokenData
 from app.utils.database import connect_db
-from app.core.security import verificar_token_jwt, check_password
+from app.core.security import verify_token_jwt, check_password, create_jwt_token
+from app.schemas.usuario import UserBase
+from datetime import timedelta
 import jwt
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
@@ -35,3 +36,9 @@ def authenticate_user(email: str, segredo: str):
         cur.close()
         conn.close()
 
+"""
+Cria novo token para usuário
+@AnotherOne07
+"""
+def generate_token_for_user(usuario: UserBase):
+    return create_jwt_token({"sub": usuario.email}, expires_delta=timedelta(minutes=30))
