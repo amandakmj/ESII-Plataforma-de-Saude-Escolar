@@ -1,7 +1,10 @@
 from fastapi import HTTPException
 from app.utils.database import connect_db  
 
-# Função para atualizar ou criar especialidade
+"""
+Adiciona as especialidades aos usuários do tipo "health_professional"
+@JvReis
+"""
 def update_especialidade(usuario_id: int, especialidade: str):
     conn = connect_db()
     if not conn:

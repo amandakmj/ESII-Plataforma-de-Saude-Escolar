@@ -1,15 +1,13 @@
-# schemas/profissional_saude.py
-
 from pydantic import BaseModel
 
 class ProfissionalSaudeBase(BaseModel):
     especialidade: str
 
     class Config:
-        orm_mode = True  # Isso permite que o Pydantic trabalhe com objetos SQLAlchemy diretamente
+        orm_mode = True  
 
 class ProfissionalSaudeCreate(ProfissionalSaudeBase):
-    pass  # Se houver algum outro campo específico para criação, adicione aqui
+    pass  
 
 class ProfissionalSaudeResponse(BaseModel):
     usuario_id: int
