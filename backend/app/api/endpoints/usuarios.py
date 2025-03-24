@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from app.schemas.usuario import UserCreate, UserBase, UserResponse
 from app.services.user_services import create_user, get_usuario, get_usuario_id, update_user, delete_user
+from app.core.security import get_current_user
 
 router = APIRouter()
 
@@ -8,7 +9,7 @@ router = APIRouter()
 Endpoint destinado a criação de um novo usuário
 @JvReis
 """
-@router.post("/create")
+@router.post("/create", dependencies=[Depends(get_current_user)])
 def criar_novo_usuario(user: UserCreate):
     return create_user(user)
 
@@ -16,7 +17,7 @@ def criar_novo_usuario(user: UserCreate):
 Endpoint destinado a retornar uma lista de usuários
 @JvReis
 """
-@router.get("/")
+@router.get("/", dependencies=[Depends(get_current_user)])
 def listar_usuarios():
     return get_usuario()
 
@@ -24,7 +25,7 @@ def listar_usuarios():
 Endpoint destinado a retornar dados de um usuário
 @JvReis
 """
-@router.get("/get/{usuario_id}") 
+@router.get("/get/{usuario_id}", dependencies=[Depends(get_current_user)]) 
 def pegar_usuario(usuario_id):
     return get_usuario_id(usuario_id) 
 
@@ -32,7 +33,7 @@ def pegar_usuario(usuario_id):
 Endpoint destinado a atualizar os dados de um usuário
 @JvReis
 """
-@router.put("/update")
+@router.post("/update", dependencies=[Depends(get_current_user)])
 def atualizar_usuario (user: UserResponse):
     return update_user(user)
 
@@ -40,6 +41,6 @@ def atualizar_usuario (user: UserResponse):
 Endpoint destinado a excluir um registro de usuário
 @AnotherOne07
 """
-@router.delete("/delete/{usuario_id}")
+@router.delete("/delete/{usuario_id}", dependencies=[Depends(get_current_user)])
 def deletar_usuario(usuario_id):
     return delete_user(usuario_id)
