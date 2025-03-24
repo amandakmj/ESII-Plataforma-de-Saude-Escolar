@@ -2,7 +2,10 @@ from fastapi import HTTPException
 from app.utils.database import connect_db
 from datetime import date
 
-
+"""
+Função de criação do registro de saudo do aluno
+@JvReis
+"""
 def create_saude_student(usuario_id: int, matricula: str, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencasCronicas: str, medicamentosContinuos: str, cirugiaisInternacoes: str, vacinas: str, deficienciasNecessidades: str, planoSaude: str):
     conn = connect_db()
     if not conn:
@@ -59,6 +62,10 @@ def create_saude_student(usuario_id: int, matricula: str, altura: float, peso: f
             conn.close()
 
 
+"""
+Função para pegar/listar o registro de saúde do aluno de acordo com o id
+@JvReis
+"""
 def get_saude_id(saude_id: int):
     conn = connect_db()
     if not conn:
@@ -82,7 +89,10 @@ def get_saude_id(saude_id: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao buscar dados de saúde: {e}")
 
-
+"""
+Função para autalização do registro de saude do aluno
+@JvReis
+"""
 def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencasCronicas: str, medicamentosContinuos: str, cirugiaisInternacoes: str, vacinas: str, deficienciasNecessidades: str, planoSaude: str):
     conn = connect_db()
     if not conn:
@@ -158,7 +168,10 @@ def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, at
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao atualizar dados de saúde: {e}")
 
-
+"""
+Função para deletar o registro de saúde do aluno
+@JvReis
+"""
 def delete_saude_id(saude_id: int):
     conn = connect_db()
     if not conn:

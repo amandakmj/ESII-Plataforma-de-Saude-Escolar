@@ -89,3 +89,38 @@ CREATE TABLE alerta (
     remetente TINYINT NOT NULL,
     FOREIGN KEY (responsavel_id) REFERENCES responsavel(id) ON DELETE CASCADE
 );
+
+CREATE VIEW relatorio_individual_aluno AS
+SELECT 
+    a.id AS aluno_id,
+    a.matricula,
+    a.data_nascimento,  
+    saude.altura,
+    saude.peso,
+    saude.imc,
+    saude.alergias,
+    saude.atividade_fisica,
+    saude.doencasCronicas,
+    saude.medicamentosContinuos,
+    saude.cirugiaisInternacoes,
+    saude.vacinas,
+    saude.deficienciasNecessidades,
+    saude.planoSaude,
+    u.email AS email_responsavel  -- Adiciona o email do responsável
+FROM aluno a
+JOIN saude saude ON a.id = saude.aluno_id
+JOIN responsavel r ON r.usuario_id = (SELECT id FROM usuario WHERE id = r.usuario_id)
+JOIN usuario u ON r.usuario_id = u.id;  -- Faz o JOIN com a tabela usuario para pegar o email
+
+CREATE VIEW relatorio_geral AS
+SELECT 
+    AVG(altura) AS media_altura,
+    AVG(peso) AS media_peso,
+    AVG(imc) AS media_imc,
+    
+    STRING_AGG(DISTINCT alergias, ', ') AS alergias,
+
+    STRING_AGG(DISTINCT doencasCronicas, ', ') AS doencas_cronicas,
+
+    STRING_AGG(DISTINCT deficienciasNecessidades, ', ') AS deficienciasNecessidades
+FROM saude;
