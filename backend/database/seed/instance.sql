@@ -105,9 +105,12 @@ SELECT
     saude.cirugiaisInternacoes,
     saude.vacinas,
     saude.deficienciasNecessidades,
-    saude.planoSaude
+    saude.planoSaude,
+    u.email AS email_responsavel  -- Adiciona o email do responsável
 FROM aluno a
-JOIN saude saude ON a.id = saude.aluno_id;
+JOIN saude saude ON a.id = saude.aluno_id
+JOIN responsavel r ON r.usuario_id = (SELECT id FROM usuario WHERE id = r.usuario_id)
+JOIN usuario u ON r.usuario_id = u.id;  -- Faz o JOIN com a tabela usuario para pegar o email
 
 CREATE VIEW relatorio_geral AS
 SELECT 

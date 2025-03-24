@@ -35,7 +35,8 @@ def gen_report_ind_aluno(aluno_id: int):
             "cirugiaisInternacoes": resultado[10],
             "vacinas": resultado[11],
             "deficienciasNecessidades": resultado[12],
-            "planoSaude": resultado[13]
+            "planoSaude": resultado[13],
+            "email_responsavel": resultado[14]
         }
 
         cur.close()
