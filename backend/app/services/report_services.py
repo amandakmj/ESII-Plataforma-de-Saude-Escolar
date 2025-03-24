@@ -83,3 +83,46 @@ def gen_report_total():
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao gerar relatório estatístico: {e}")
+
+
+from app.utils.database import connect_db
+from fastapi import HTTPException
+
+from app.utils.database import connect_db
+from fastapi import HTTPException
+
+def gen_report_saude_class(turma_id: int):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")
+
+    try:
+        cur = conn.cursor()
+
+        # Consulta a VIEW de saúde por turma
+        cur.execute("SELECT * FROM relatorio_saude_turma WHERE turma_id = %s", (turma_id,))
+        resultado = cur.fetchone()
+
+        if not resultado:
+            raise HTTPException(status_code=404, detail="Nenhum dado encontrado para a turma")
+
+        relatorio = {
+            "turma_id": resultado[0],
+            "codigo_turma": resultado[1],
+            "total_alunos": resultado[2],
+            "media_altura": resultado[3],
+            "media_peso": resultado[4],
+            "media_imc": resultado[5],
+            "alergias": resultado[6],
+            "doencas_cronicas": resultado[7],
+            "deficiencias_necessidades": resultado[8],
+        }
+
+        cur.close()
+        conn.close()
+
+        return relatorio
+
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro ao gerar relatório de saúde por turma: {e}")

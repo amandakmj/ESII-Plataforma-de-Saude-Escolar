@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 from fastapi import HTTPException, Depends
 from app.utils.database import connect_db
 import jwt
+from fastapi.security import OAuth2PasswordBearer
 
 # Configuração do algoritmo de criptografia das senhas
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
