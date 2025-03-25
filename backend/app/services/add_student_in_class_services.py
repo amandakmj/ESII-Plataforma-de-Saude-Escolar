@@ -2,6 +2,11 @@ from app.utils.database import connect_db
 from fastapi import HTTPException
 from typing import List
 
+
+"""
+Adiciona o estudante a uma turma
+@JvReis
+"""
 def add_student_to_class(aluno_id: int, turma_id: int):
     conn = connect_db()
     if not conn:
@@ -27,7 +32,10 @@ def add_student_to_class(aluno_id: int, turma_id: int):
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao adicionar aluno à turma: {e}")
 
-
+"""
+Deleta o estudante de uma turma
+@JvReis
+"""
 def delete_student_from_class(aluno_id: int, turma_id: int):
     conn = connect_db()
     if not conn:
@@ -53,6 +61,10 @@ def delete_student_from_class(aluno_id: int, turma_id: int):
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao remover aluno da turma: {e}")
 
+"""
+Lista um  estudante de uma turma
+@JvReis
+"""
 def list_students_by_class(turma_id: int):
     conn = connect_db()
     if not conn:

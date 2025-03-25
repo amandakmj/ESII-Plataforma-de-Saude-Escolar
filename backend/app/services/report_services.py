@@ -1,8 +1,12 @@
 from app.utils.database import connect_db
 from fastapi import HTTPException
+from app.utils.database import connect_db
+from fastapi import HTTPException
 
+from app.utils.database import connect_db
+from fastapi import HTTPException
 """
-Adiciona as especialidades aos usuários do tipo "health_professional"
+Gera o relatório individual dos alunos
 @JvReis
 """
 def gen_report_ind_aluno(aluno_id: int):
@@ -49,7 +53,7 @@ def gen_report_ind_aluno(aluno_id: int):
         raise HTTPException(status_code=500, detail=f"Erro ao gerar relatório de saúde: {e}")
 
 """
-Adiciona as especialidades aos usuários do tipo "health_professional"
+Geral o relatório total, de todos os alunos que contém "saúde" no banco de dados
 @JvReis
 """
 def gen_report_total():
@@ -84,13 +88,10 @@ def gen_report_total():
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao gerar relatório estatístico: {e}")
 
-
-from app.utils.database import connect_db
-from fastapi import HTTPException
-
-from app.utils.database import connect_db
-from fastapi import HTTPException
-
+"""
+Geral o relatório de uma turma de acordo com o id dela
+@JvReis
+"""
 def gen_report_saude_class(turma_id: int):
     conn = connect_db()
     if not conn:

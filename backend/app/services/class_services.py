@@ -2,7 +2,10 @@ from app.utils.database import connect_db
 from fastapi import HTTPException
 from typing import List
 
-# Criar uma turma
+"""
+Cria uma turma
+@JvReis
+"""
 def create_class(codigo: str, serie: str):
     conn = connect_db()
     if not conn:
@@ -21,7 +24,10 @@ def create_class(codigo: str, serie: str):
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao criar turma: {e}")
 
-# Obter todas as turmas
+"""
+Pega as turmas
+@JvReis
+"""
 def get_class():
     conn = connect_db()
     if not conn:
@@ -39,7 +45,10 @@ def get_class():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao obter turmas: {e}")
 
-# Obter uma turma pelo ID
+"""
+Pega uma turma pelo id
+@JvReis
+"""
 def get_class_by_id(turma_id: int):
     conn = connect_db()
     if not conn:
@@ -60,7 +69,10 @@ def get_class_by_id(turma_id: int):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao obter turma: {e}")
 
-# Atualizar uma turma
+"""
+Atualiza uma turma
+@JvReis
+"""
 def update_class_id(turma_id: int, codigo: str, serie: str):
     conn = connect_db()
     if not conn:
@@ -83,7 +95,10 @@ def update_class_id(turma_id: int, codigo: str, serie: str):
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao atualizar turma: {e}")
 
-# Deletar uma turma
+"""
+Deleta uma turma
+@JvReis
+"""
 def delete_class_id(turma_id: int):
     conn = connect_db()
     if not conn:
