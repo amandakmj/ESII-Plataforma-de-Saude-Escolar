@@ -7,7 +7,6 @@ import Button, { ButtonColor } from "../Componentes/Button/button";
 import Footer from "../Componentes/Footer/footer";
 import { useRouter } from "next/navigation";
 import mockUsers from "../Mocks/usuariosMocks";
-
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     usuario: "",

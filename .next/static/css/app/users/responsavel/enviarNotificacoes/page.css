@@ -1,0 +1,98 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/users/responsavel/enviarNotificacoes/page.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_container__2sTZi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.page_header__z2fyu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.page_profilePic__1sG7a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.page_title__Uuc9n {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.page_textarea__zVggd {
+  width: 100%;
+  max-width: 500px;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  background-color: #e3f2fd;
+}
+
+.page_button__uAAlM {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.page_button__uAAlM:hover {
+  background-color: #0056b3;
+}
+
+.page_notificacoesContainer__dHT_Q {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.page_notificacao__F41ac {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.page_dataEnvio__1IPYK {
+  display: block;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.page_semNotificacao__dk262 {
+  color: gray;
+  text-align: center;
+}
+
+.page_voltarButton__ZKaQh {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.page_voltarButton__ZKaQh:hover {
+  background-color: #a71d2a;
+}
+

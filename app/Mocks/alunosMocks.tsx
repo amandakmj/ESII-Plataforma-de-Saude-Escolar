@@ -1,6 +1,6 @@
 const mockAlunos = [{
     nome: "Artur", 
-    idade: "12", 
+    idade: "20", 
     genero: "Homem",
     endereco: "nossa casa", 
     nomeResponsavel: "Nome de alguem",
@@ -12,7 +12,7 @@ const mockAlunos = [{
 },
 { 
     nome: "Amanda",
-    idade: "18",
+    idade: "25",
     genero: "mulher",
     endereco: "nossa casa",
     nomeResponsavel: "Outra pessoa",

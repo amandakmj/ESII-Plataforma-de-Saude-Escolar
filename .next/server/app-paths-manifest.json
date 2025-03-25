@@ -1,1 +1,5 @@
-{}
+{
+  "/users/responsavel/verAlunoCadastrado/page": "app/users/responsavel/verAlunoCadastrado/page.js",
+  "/users/responsavel/adicionarExame/page": "app/users/responsavel/adicionarExame/page.js",
+  "/users/professor/listaAlunos/page": "app/users/professor/listaAlunos/page.js"
+}
