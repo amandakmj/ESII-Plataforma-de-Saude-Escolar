@@ -19,16 +19,37 @@ CREATE TABLE escola (
     telefone VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE turma (
+    id SERIAL NOT NULL PRIMARY KEY,
+    codigo VARCHAR (10) NOT NULL,
+    serie VARCHAR(100),
+    escola_id INT NOT NULL,
+    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE
+);
+
 CREATE TABLE responsavel (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
+    telefone VARCHAR(20) NULL,
+    parentesco VARCHAR(50) NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE aluno (
     id SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    altura VARCHAR(10) NULL,
+    peso VARCHAR(10) NULL,
+    endereco VARCHAR(100) NULL,
     matricula VARCHAR(15) NOT NULL UNIQUE,
-    data_nascimento DATE NOT NULL
+    data_nascimento DATE NOT NULL,
+    serie_atual INT NULL,
+    responsavel_id INT NULL,
+    termo_medicamento_escola SMALLINT NULL,
+    termo_atendimento_medico SMALLINT NULL,
+    termo_compartilhamento_dados SMALLINT NULL,
+    FOREIGN KEY (serie_atual) REFERENCES turma(id) ON DELETE SET NULL,
+    FOREIGN KEY (responsavel_id) REFERENCES usuario(id) ON DELETE SET NULL
 );
 
 CREATE TABLE saude ( 
@@ -62,21 +83,13 @@ CREATE TABLE gestor_escolar (
     usuario_id INT NOT NULL UNIQUE,
     escola_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE,
-    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE,
+    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE
 );
 
 CREATE TABLE professor (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
-);
-
-CREATE TABLE turma (
-    id SERIAL NOT NULL PRIMARY KEY,
-    codigo VARCHAR (10) NOT NULL,
-    serie VARCHAR(100),
-    escola_id INT NOT NULL,
-    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE
 );
 
 CREATE TABLE profissional_saude (
@@ -97,8 +110,8 @@ CREATE TABLE alerta (
     mensagem VARCHAR(200),
     data_criacao TIMESTAMP NOT NULL,
     responsavel_id INT NOT NULL,
-    visualizado TINYINT NOT NULL DEFAULT 0,
-    remetente TINYINT NOT NULL,
+    visualizado SMALLINT NOT NULL DEFAULT 0,
+    remetente SMALLINT NOT NULL,
     FOREIGN KEY (responsavel_id) REFERENCES responsavel(id) ON DELETE CASCADE
 );
 
@@ -156,8 +169,8 @@ SELECT
     AVG(s.peso) AS media_peso,
     AVG(s.imc) AS media_imc,
     STRING_AGG(DISTINCT s.alergias, ', ') AS alergias,
-    STRING_AGG(DISTINCT s.doencasCronicas, ', ') AS doencas_cronicas,
-    STRING_AGG(DISTINCT s.deficienciasNecessidades, ', ') AS deficiencias_necessidades
+    STRING_AGG(DISTINCT s.doencas_cronicas, ', ') AS doencas_cronicas,
+    STRING_AGG(DISTINCT s.deficiencias_necessidades, ', ') AS deficiencias_necessidades
 FROM turma t
 JOIN aluno_turma at ON t.id = at.turma_id
 JOIN aluno a ON at.aluno_id = a.id
