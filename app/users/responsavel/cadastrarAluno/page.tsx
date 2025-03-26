@@ -73,10 +73,10 @@ const CadastraAluno = () => {
     }, []);
 
   
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
-    };
+    };    
   
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
@@ -159,6 +159,7 @@ const CadastraAluno = () => {
           <label className={styles.label}>Endereço (cidade, estado, bairro, CEP)*</label>
           <input type="text" name="endereco" className={styles.input_box} onChange={handleInputChange} />
           {errors.endereco && <p className={styles.error}>{errors.endereco}</p>}
+
 
           <label className={styles.label}>Escola (nome da instituição)*</label>
           <select name="escola" className={styles.input_box} onChange={handleInputChange}>
