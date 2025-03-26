@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./page.module.css";
-import Navbar from "@/app/Componentes/NavBar/navbar";
-import MenuLateral from "@/app/Componentes/MenuLateral/menuLateral";
+import Navbar from "../../Componentes/NavBar/navbar";
 import Footer from "@/app/Componentes/Footer/footer";
 import Link from "next/link";
 
@@ -34,10 +33,7 @@ const InicialResponsavelPage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.sidebar}>
-        <h1 className={styles.title}>HealthSchool</h1>
-      </div>
-
+      <Navbar />
       <div className={styles.container}>
         <div className={styles.profile_section}>
           <div className={styles.profile_container}>
@@ -80,7 +76,6 @@ const InicialResponsavelPage: React.FC = () => {
         </div>
       </div>
 
-      <MenuLateral />
       <Footer />
     </div>
   );

@@ -6,6 +6,18 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/users/responsavel/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/page.css",
+      "static/chunks/app/users/responsavel/page.js"
+    ],
+    "/users/responsavel/inicial/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/inicial/page.css",
+      "static/chunks/app/users/responsavel/inicial/page.js"
+    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
