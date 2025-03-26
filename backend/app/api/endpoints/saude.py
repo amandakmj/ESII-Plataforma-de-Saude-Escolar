@@ -18,12 +18,12 @@ def criar_novo_saude_aluno(usuario_id: int, dados_saude: SaudeCreate):
         peso=dados_saude.peso,
         alergias=dados_saude.alergias,
         atividade_fisica=dados_saude.atividade_fisica,
-        doencasCronicas=dados_saude.doencas_cronicas,
-        medicamentosContinuos=dados_saude.medicamentos_continuos,
-        cirugiaisInternacoes=dados_saude.cirurgias_internacoes,
+        doencas_cronicas=dados_saude.doencas_cronicas,
+        medicamentos_continuos=dados_saude.medicamentos_continuos,
+        cirugiais_internacoes=dados_saude.cirurgias_internacoes,
         vacinas=dados_saude.vacinas,
-        deficienciasNecessidades=dados_saude.deficiencias_necessidades,
-        planoSaude=dados_saude.plano_saude
+        deficiencias_necessidades=dados_saude.deficiencias_necessidades,
+        plano_saude=dados_saude.plano_saude
     )
 
 """
@@ -45,12 +45,12 @@ def atualizar_aluno_id(matricula: str, dados_saude: SaudeUpdate):
         peso=dados_saude.peso,
         alergias=dados_saude.alergias,
         atividade_fisica=dados_saude.atividade_fisica,
-        doencasCronicas=dados_saude.doencas_cronicas,
-        medicamentosContinuos=dados_saude.medicamentos_continuos,
-        cirugiaisInternacoes=dados_saude.cirurgias_internacoes,
+        doencas_cronicas=dados_saude.doencas_cronicas,
+        medicamentos_continuos=dados_saude.medicamentos_continuos,
+        cirugiais_internacoes=dados_saude.cirurgias_internacoes,
         vacinas=dados_saude.vacinas,
-        deficienciasNecessidades=dados_saude.deficiencias_necessidades,
-        planoSaude=dados_saude.plano_saude
+        deficiencias_necessidades=dados_saude.deficiencias_necessidades,
+        plano_saude=dados_saude.plano_saude
         )
 
 """

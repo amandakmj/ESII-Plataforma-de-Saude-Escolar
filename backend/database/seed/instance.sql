@@ -11,6 +11,14 @@ CREATE TABLE usuario (
     tipo_usuario USER_TYPE NOT NULL
 );
 
+CREATE TABLE escola (
+    id SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    cnpj VARCHAR(100) NOT NULL,
+    telefone VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE responsavel (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
@@ -30,12 +38,12 @@ CREATE TABLE saude (
     imc FLOAT,
     alergias VARCHAR(300),
     atividade_fisica VARCHAR(200),
-    doencasCronicas VARCHAR(100),
-    medicamentosContinuos VARCHAR(100),
-    cirugiaisInternacoes VARCHAR(100),
+    doencas_cronicas VARCHAR(100),
+    medicamentos_continuos VARCHAR(100),
+    cirugiais_internacoes VARCHAR(100),
     vacinas VARCHAR(200),
-    deficienciasNecessidades VARCHAR(200),
-    planoSaude VARCHAR(100),
+    deficiencias_necessidades VARCHAR(200),
+    plano_saude VARCHAR(100),
     aluno_id INT NOT NULL,  -- Mantém a coluna aluno_id
     matricula VARCHAR(15),  -- Adiciona a coluna matricula (não mais com NOT NULL neste momento)
     FOREIGN KEY (aluno_id) REFERENCES aluno(id) ON DELETE CASCADE,  -- Chave estrangeira para aluno_id
@@ -52,7 +60,9 @@ CREATE TABLE exame_medico (
 CREATE TABLE gestor_escolar (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
-    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+    escola_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE,
+    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE,
 );
 
 CREATE TABLE professor (
@@ -64,7 +74,9 @@ CREATE TABLE professor (
 CREATE TABLE turma (
     id SERIAL NOT NULL PRIMARY KEY,
     codigo VARCHAR (10) NOT NULL,
-    serie VARCHAR(100)
+    serie VARCHAR(100),
+    escola_id INT NOT NULL,
+    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE
 );
 
 CREATE TABLE profissional_saude (
@@ -100,12 +112,12 @@ SELECT
     saude.imc,
     saude.alergias,
     saude.atividade_fisica,
-    saude.doencasCronicas,
-    saude.medicamentosContinuos,
-    saude.cirugiaisInternacoes,
+    saude.doencas_cronicas,
+    saude.medicamentos_continuos,
+    saude.cirugiais_internacoes,
     saude.vacinas,
-    saude.deficienciasNecessidades,
-    saude.planoSaude
+    saude.deficiencias_necessidades,
+    saude.plano_saude
 FROM aluno a
 JOIN saude saude ON a.id = saude.aluno_id;
 
@@ -117,7 +129,7 @@ SELECT
     
     STRING_AGG(DISTINCT alergias, ', ') AS alergias,
 
-    STRING_AGG(DISTINCT doencasCronicas, ', ') AS doencas_cronicas,
+    STRING_AGG(DISTINCT doencas_cronicas, ', ') AS doencas_cronicas,
 
-    STRING_AGG(DISTINCT deficienciasNecessidades, ', ') AS deficienciasNecessidades
+    STRING_AGG(DISTINCT deficiencias_necessidades, ', ') AS deficiencias_necessidades
 FROM saude;

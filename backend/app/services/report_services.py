@@ -30,12 +30,12 @@ def gen_report_ind_aluno(aluno_id: int):
             "imc": resultado[5],
             "alergias": resultado[6],
             "atividade_fisica": resultado[7],
-            "doencasCronicas": resultado[8],
-            "medicamentosContinuos": resultado[9],
-            "cirugiaisInternacoes": resultado[10],
+            "doencas_cronicas": resultado[8],
+            "medicamentos_continuos": resultado[9],
+            "cirugiais_internacoes": resultado[10],
             "vacinas": resultado[11],
-            "deficienciasNecessidades": resultado[12],
-            "planoSaude": resultado[13]
+            "deficiencias_necessidades": resultado[12],
+            "plano_saude": resultado[13]
         }
 
         cur.close()
@@ -71,7 +71,7 @@ def gen_report_total():
             "media_imc": resultado[2],
             "alergias": resultado[3],
             "doencas_cronicas": resultado[4],
-            "deficienciasNecessidades": resultado[5]
+            "deficiencias_necessidades": resultado[5]
         }
 
         cur.close()

@@ -5,7 +5,7 @@
 - Para explicações diretas dentro do corpo de funções deve ser utilizado o estilo:  # Insira o comentário aqui...
 
 ### Padrão de código por tipo de arquivo do código-fonte
-#### Api/endpoints:
+### Api/endpoints:
 Padrão de escrita: snake_case; em português.
 
 #### Models:
@@ -14,12 +14,16 @@ Padrão de escrita: CamelCase; em inglês.
 - Variáveis:
 Padrão de escrita: snake_case; minúsculo; em português;
 
-### Schemas
+#### Schemas
 - Classes:
 Padrão de escrita: CamelCase; em inglês.
 Padrão de escrita: snake_case; minúsculo; em português;
 
-### Services
+#### Services
 - Funções:
 Padrão de escrita: snae_case; minúsculo; em português;
 Padrão de estrutura: utilizar try/except/finally para estrutura fluxo de execução e controle de erros.
+
+### Modelo de banco de dados e migrations
+- Tabelas/Colunas:
+Padrão de escrita: snake_case; minúsculo; em português;
