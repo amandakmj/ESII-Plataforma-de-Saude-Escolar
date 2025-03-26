@@ -11,7 +11,7 @@ const Navbar: React.FC<NavProps> = ({ isHome = true }) => {
     <div className={styles.navbar_container}>
       <nav className={styles.navbar}>
         <h1 className={styles.logo}>
-          <a href="/">HealthSchool</a>
+          <a href="/">Plataforma de Saúde Escolar</a>
         </h1>
         <div className={styles.menu_lateral}>
       

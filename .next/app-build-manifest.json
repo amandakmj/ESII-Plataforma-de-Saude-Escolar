@@ -6,11 +6,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/users/responsavel/page": [
+    "/users/responsavel/cadastrarAluno/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/page.css",
-      "static/chunks/app/users/responsavel/page.js"
+      "static/css/app/users/responsavel/cadastrarAluno/page.css",
+      "static/chunks/app/users/responsavel/cadastrarAluno/page.js"
     ],
     "/page": [
       "static/chunks/webpack.js",
@@ -18,23 +18,11 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/login/page.css",
-      "static/chunks/app/login/page.js"
-    ],
     "/register/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/register/page.css",
       "static/chunks/app/register/page.js"
-    ],
-    "/users/responsavel/inicial/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/inicial/page.css",
-      "static/chunks/app/users/responsavel/inicial/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

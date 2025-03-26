@@ -1,8 +1,6 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/users/responsavel/cadastrarAluno/page": "app/users/responsavel/cadastrarAluno/page.js",
   "/register/page": "app/register/page.js",
-  "/page": "app/page.js",
-  "/login/page": "app/login/page.js",
-  "/users/responsavel/inicial/page": "app/users/responsavel/inicial/page.js",
-  "/users/responsavel/page": "app/users/responsavel/page.js"
+  "/page": "app/page.js"
 }

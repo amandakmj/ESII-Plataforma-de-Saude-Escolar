@@ -1,11 +1,15 @@
 .page {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    min-height: 100vh; /* Faz a página ocupar toda a altura da tela */
+
 }
+
 
 .sidebar {
     position: absolute;
@@ -46,7 +50,27 @@
     font-size: 18px;
     font-weight: bold;
 }
-
+.profile_image {
+    width: 100px; /* Ajuste conforme necessário */
+    height: 100px;
+    border-radius: 50%; /* Para manter um formato circular */
+    object-fit: cover; /* Mantém a imagem bem ajustada */
+  }
+  .addPhotoCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    border: 2px dashed #ccc;
+}
 .nome {
     font-size: 16px;
 }
