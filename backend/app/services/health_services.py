@@ -148,13 +148,12 @@ def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, at
             raise HTTPException(status_code=400, detail="Nenhuma informação para atualizar")
 
         valores.append(saude_id)
-        query = f"UPDATE saude SET {', '.join(updates)} WHERE saude_id = %s RETURNING id, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude  ;"
+        query = f"UPDATE saude SET {', '.join(updates)} WHERE id = %s RETURNING id, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude  ;"
         cur.execute(query, tuple(valores))
         saude_atualizada = cur.fetchone()
 
         conn.commit()
-        cur.close()
-        conn.close()
+
 
         if saude_atualizada:
             return {"id": saude_atualizada[0], "altura": saude_atualizada[1], "peso": saude_atualizada[2], "imc": saude_atualizada[3], "alergias": saude_atualizada[4], "atividade_fisica": saude_atualizada[5]
@@ -167,6 +166,9 @@ def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, at
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao atualizar dados de saúde: {e}")
+    finally:
+        cur.close()
+        conn.close()
 
 """
 Função para deletar o registro de saúde do aluno
