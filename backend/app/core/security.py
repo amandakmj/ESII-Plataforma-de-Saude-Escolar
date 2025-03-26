@@ -67,8 +67,8 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     
     try:
         cur = conn.cursor()
-        query = "SELECT id, nome, email tipo_usuario FROM usuario WHERE id = %s"
-        cur.execute(query, usuario_id)
+        query = "SELECT id, nome, email, tipo_usuario FROM usuario WHERE id = %s"
+        cur.execute(query, (usuario_id,))
         usuario = cur.fetchone()
 
         if not usuario:
