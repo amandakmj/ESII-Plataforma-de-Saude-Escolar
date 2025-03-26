@@ -22,7 +22,7 @@ def authenticate_user(email: str, segredo: str):
     try:
         cur = conn.cursor()
         query = "SELECT * FROM usuario WHERE email = %s"
-        cur.execute(query, email)
+        cur.execute(query, (email,))
         
         usuario = cur.fetchone()
         
@@ -41,4 +41,4 @@ Cria novo token para usuário
 @AnotherOne07
 """
 def generate_token_for_user(usuario: UserBase):
-    return create_jwt_token({"sub": usuario.email}, expires_delta=timedelta(minutes=30))
+    return create_jwt_token({"sub": str(usuario[0])}, expires_delta=timedelta(minutes=30))
