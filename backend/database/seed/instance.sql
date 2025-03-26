@@ -117,9 +117,22 @@ SELECT
     saude.cirugiais_internacoes,
     saude.vacinas,
     saude.deficiencias_necessidades,
-    saude.plano_saude
+    saude.plano_saude,
+    u.email AS email_responsavel  -- Adiciona o email do responsável
 FROM aluno a
-JOIN saude saude ON a.id = saude.aluno_id;
+JOIN saude saude ON a.id = saude.aluno_id
+JOIN responsavel r ON r.usuario_id = (SELECT id FROM usuario WHERE id = r.usuario_id)
+JOIN usuario u ON r.usuario_id = u.id;  -- Faz o JOIN com a tabela usuario para pegar o email
+
+CREATE TABLE aluno_turma (
+    id SERIAL PRIMARY KEY,
+    aluno_id INT NOT NULL,
+    turma_id INT NOT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES aluno(id) ON DELETE CASCADE,
+    FOREIGN KEY (turma_id) REFERENCES turma(id) ON DELETE CASCADE,
+    UNIQUE (aluno_id, turma_id) -- Garante que um aluno não seja adicionado duas vezes à mesma turma
+);
+
 
 CREATE VIEW relatorio_geral AS
 SELECT 
@@ -133,3 +146,20 @@ SELECT
 
     STRING_AGG(DISTINCT deficiencias_necessidades, ', ') AS deficiencias_necessidades
 FROM saude;
+
+CREATE OR REPLACE VIEW relatorio_saude_turma AS
+SELECT 
+    t.id AS turma_id,
+    t.codigo AS codigo_turma,
+    COUNT(a.id) AS total_alunos,
+    AVG(s.altura) AS media_altura,
+    AVG(s.peso) AS media_peso,
+    AVG(s.imc) AS media_imc,
+    STRING_AGG(DISTINCT s.alergias, ', ') AS alergias,
+    STRING_AGG(DISTINCT s.doencasCronicas, ', ') AS doencas_cronicas,
+    STRING_AGG(DISTINCT s.deficienciasNecessidades, ', ') AS deficiencias_necessidades
+FROM turma t
+JOIN aluno_turma at ON t.id = at.turma_id
+JOIN aluno a ON at.aluno_id = a.id
+LEFT JOIN saude s ON a.id = s.aluno_id
+GROUP BY t.id, t.codigo;

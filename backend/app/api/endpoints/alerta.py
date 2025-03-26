@@ -19,3 +19,11 @@ Endpoint destinado a listagem de todos os alertas enviados e recebidos por um re
 @router.post("/getAlerts/{responsavel_id}")
 def listar_alertas(responsavel_id):
     return get_alerts(responsavel_id)
+
+"""
+Endpoint destinado a marcar uma mensagem como lida
+@AnotherOne07
+"""
+@router.post("/viewAlert/{alerta_id}")
+def marcar_alerta(alerta_id):
+    return view_alert(alerta_id)

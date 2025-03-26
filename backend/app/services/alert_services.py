@@ -74,6 +74,40 @@ def get_alerts(responsavel_id):
         if conn:
             conn.close()
 
+"""
+Marca um alerta como visualizado
+@AnotherOne07
+"""
+def view_alert(alerta_id):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="Erro ao conectar com o banco de dados")
+    
+    try:
+        cur = conn.cursor()
+        query = "UPDATE alerta SET visualizado = 1 WHERE id = %s returning id;"
+        cur.execute(query, alerta_id)
+
+        alerta_atualizado = cur.fetchone()
+        conn.commit()
+
+        if alerta_atualizado:
+            return JSONResponse(
+                content={"message": "Alerta marcado como lido com sucesso!", "alerta_id": alerta_id},
+                status_code=200
+            )
+        else:
+            raise HTTPException(status_code=404, detail="Alerta não encontrado")
+    except:
+        raise HTTPException(status_code=500, detail="Erro ao atualizar um alerta")
+    
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+
 # def get_alerts(responsavel_id):
 #     conn = connect_db()
 #     if not conn:

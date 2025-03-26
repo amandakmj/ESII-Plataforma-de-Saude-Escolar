@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.endpoints import relatorio, profissional_saude, usuarios, aluno, saude, alerta, site
+from app.api.endpoints import relatorio, profissional_saude, usuarios, aluno, saude, alerta, site, turma, aluno_turma
 
 api_router = APIRouter()
 
@@ -22,3 +22,9 @@ api_router.include_router(profissional_saude.router, prefix="/profissional_saude
 
 api_router.include_router(relatorio.router, prefix="/relatorio", tags=["relatorio"])
 # print("Rotas de saude inseridas com sucesso")
+
+api_router.include_router(turma.router, prefix="/turma", tags=["turma"])
+# print("Rotas de turma inseridas com sucesso")
+
+api_router.include_router(aluno_turma.router, prefix="/aluno_turma", tags=["aluno_turma"])
+# print("Rotas de turma inseridas com sucesso")
