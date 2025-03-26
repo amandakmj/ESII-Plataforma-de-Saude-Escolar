@@ -85,7 +85,7 @@ def create_usuario(usuario: UsuarioCreate):
         raise HTTPException(status_code=400, detail=f"Erro ao criar usuário: {e}")
 
 @app.post("/criar_saude_aluno/")
-def criar_saude_aluno(usuario_id: int, matricula: str, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencasCronicas: str, medicamentosContinuos: str, cirugiaisInternacoes: str, vacinas: str, deficienciasNecessidades: str, planoSaude: str):
+def criar_saude_aluno(usuario_id: int, matricula: str, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencas_cronicas: str, medicamentos_continuos: str, cirugiais_internacoes: str, vacinas: str, deficiencias_necessidades: str, plano_saude: str):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco de dados")
@@ -123,9 +123,9 @@ def criar_saude_aluno(usuario_id: int, matricula: str, altura: float, peso: floa
 
         # Inserir dados de saúde vinculados ao aluno
         cur.execute("""
-            INSERT INTO saude (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude)
+            INSERT INTO saude (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s ) RETURNING id;
-        """, (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude ))
+        """, (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude ))
 
         saude_id = cur.fetchone()[0]
 
