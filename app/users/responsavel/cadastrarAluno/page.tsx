@@ -17,8 +17,6 @@ const CadastraAluno = () => {
       genero: string;
       peso: string;
       altura: string;
-      vinculo: string;
-      telefone: string;
       endereco: string;
       escola: string;
       outraEscola: string;
@@ -41,8 +39,6 @@ const CadastraAluno = () => {
       genero: '',
       peso: '',
       altura: '',
-      vinculo: '',
-      telefone: '',
       endereco: '',
       escola: '',
       outraEscola: '',
@@ -70,9 +66,26 @@ const CadastraAluno = () => {
 
       // Simulação de busca de escolas no banco de dados
       setEscolas(["Escola A", "Escola B", "Escola C"]);
+
+      // Recupera os checkboxes salvos
+      const savedCheckboxes = JSON.parse(localStorage.getItem('formCheckboxes') || '{}');
+      setFormData((prev) => ({ ...prev, ...savedCheckboxes }));
     }, []);
 
-  
+    // Função para atualizar os valores do form e salvar no localStorage
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, checked } = e.target;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    
+      // Remover erro assim que o checkbox for marcado
+      setErrors((prevErrors) => {
+        const newErrors = { ...prevErrors };
+        delete newErrors[name];
+        return newErrors;
+      });
+    };
+    
+    
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -89,13 +102,16 @@ const CadastraAluno = () => {
       let newErrors: { [key: string]: string } = {};
     
       if (!formData.nomeAluno) newErrors.nomeAluno = "* Nome do Aluno é obrigatório.";
-      if (!formData.dataNascimento) newErrors.dataNascimento = "* Data de nascimento é obrigatória.";
-      if (!formData.vinculo) newErrors.vinculo = "* Vínculo com o aluno é obrigatório.";
-      if (!formData.telefone) newErrors.telefone = "* Telefone do responsável é obrigatório.";
+      if (!formData.dataNascimento) newErrors.dataNascimento = "* Data de nascimento é obrigatório.";
+      if (!formData.peso) newErrors.peso = "* Peso é obrigatório.";
+      if (!formData.altura) newErrors.altura = "* Altura é obrigatório.";
       if (!formData.endereco) newErrors.endereco = "* Endereço é obrigatório.";
       if (!formData.escola) newErrors.escola = "* Nome da escola é obrigatório.";
       if (!formData.serieTurma) newErrors.serieTurma = "* Série/Turma é obrigatória.";
       if (!formData.matricula) newErrors.matricula = "* Matrícula é obrigatória.";
+      if (!formData.alergias) newErrors.alergias = "* Alergias é obrigatória.";
+      if (!formData.doencasCronicas) newErrors.doencasCronicas = "* Doença Crônica é obrigatória.";
+      if (!formData.medicamentos) newErrors.medicamentos = "* Medicamentos é obrigatório.";
       if (!formData.termosCondicoes) newErrors.termosCondicoes = "* Aceitação dos Termos de Uso é obrigatória.";
     
       setErrors(newErrors);
@@ -138,24 +154,14 @@ const CadastraAluno = () => {
             <option value="Outro">Outro</option>
           </select>
           
-          <label className={styles.label}>Peso</label>
+          <label className={styles.label}>Peso*</label>
           <input type="text" name="peso" className={styles.input_box} onChange={handleInputChange} />
+          {errors.peso && <p className={styles.error}>{errors.peso}</p>}
 
-          <label className={styles.label}>Altura</label>
+          <label className={styles.label}>Altura*</label>
           <input type="text" name="altura" className={styles.input_box} onChange={handleInputChange} />
+          {errors.altura && <p className={styles.error}>{errors.altura}</p>}
 
-          <label className={styles.label}>Vínculo com o Aluno*</label>
-          <select name="vinculo" className={styles.input_box}>
-            <option value="Pai">Pai</option>
-            <option value="Mãe">Mãe</option>
-            <option value="Outro">Outro</option>
-          </select>
-          {errors.vinculo && <p className={styles.error}>{errors.vinculo}</p>}
-
-          <label className={styles.label}>Telefone do responsável</label>
-          <input type="tel" name="telefone" className={styles.input_box} onChange={handleInputChange} />
-          {errors.telefone && <p className={styles.error}>{errors.telefone}</p>}
-          
           <label className={styles.label}>Endereço (cidade, estado, bairro, CEP)*</label>
           <input type="text" name="endereco" className={styles.input_box} onChange={handleInputChange} />
           {errors.endereco && <p className={styles.error}>{errors.endereco}</p>}
@@ -185,16 +191,19 @@ const CadastraAluno = () => {
           <label className={styles.label}>Alergias (alimentos, medicamentos, picadas de insetos, etc.)*</label>
           <input type="text" name="alergias" className={styles.input_box} onChange={handleInputChange} />
           <input type="file" name="alergias" className={styles.input_box} onChange={handleInputChange} />
+          {errors.alergias && <p className={styles.error}>{errors.alergias}</p>}
 
           <label className={styles.label}>Doenças crônicas (diabetes, asma, cardiopatias, epilepsia, etc.)*</label>
           <input type="text" name="doencasCronicas" className={styles.input_box} onChange={handleInputChange} />
           <input type="file" name="doencasCronicas" className={styles.input_box} onChange={handleInputChange} />
+          {errors.doencasCronicas && <p className={styles.error}>{errors.doencasCronicas}</p>}
 
           <label className={styles.label}>Medicamentos de uso contínuo (nome do medicamento, dosagem, horários)*</label>
-          <input type="text" name="medicamentod" className={styles.input_box} onChange={handleInputChange} />
+          <input type="text" name="medicamentos" className={styles.input_box} onChange={handleInputChange} />
           <input type="file" name="medicamentos" className={styles.input_box} onChange={handleInputChange} />
+          {errors.medicamentos && <p className={styles.error}>{errors.medicamentos}</p>}
 
-          <label className={styles.label}>Cirurgias ou internações anteriores (se relevante)*</label>
+          <label className={styles.label}>Cirurgias ou internações anteriores (se relevante)</label>
           <input type="text" name="cirurgias" className={styles.input_box} onChange={handleInputChange} />
           <input type="file" name="cirurgias" className={styles.input_box} onChange={handleInputChange} />
 
@@ -222,8 +231,9 @@ const CadastraAluno = () => {
           </div>
 
           <div className={styles.checkboxContainer}>
-            <input type="checkbox" name="termosCondicoes" onChange={() => setFormData((prev) => ({ ...prev, termosCondicoes: !prev.termosCondicoes }))} />
-            <span> Eu aceito os <a href="/termos-de-uso">Termos de Uso</a> e a <a href="/politica-de-privacidade">Política de Privacidade</a></span>
+            <input type="checkbox" name="termosCondicoes" onChange={handleCheckboxChange} checked={formData.termosCondicoes} />
+            <span> Eu aceito os <a href="/termos-de-uso">Termos de Uso</a> e a <a href="/politica-de-privacidade">Política de Privacidade*</a></span>
+            {errors.termosCondicoes && <p className={styles.error}>{errors.termosCondicoes}</p>}
           </div>
 
           <label className={styles.label}>* indica um campo obrigatório</label>

@@ -38,9 +38,9 @@ export default function Home() {
               <h2>Contato</h2>
               <p>Tem alguma dúvida, sugestão ou precisa de suporte? Nossa equipe está pronta para ajudar!</p>
               <p><strong>Informações:</strong></p>
-              <p>Email: exemplo@hotmail.com</p>
-              <p>WhatsApp: 29 87181889</p>
-              <p>Horário de atendimento: dias e horas</p>
+              <p>Email: HealthSchoolSuporte@hotmail.com</p>
+              <p>WhatsApp: 82 2935-3310</p>
+              <p>Horário de atendimento: segunda à sexta-feira, de 8h às 17h</p>
             </div>
           </div>
         </section>
