@@ -111,7 +111,7 @@ CREATE TABLE alerta (
     data_criacao TIMESTAMP NOT NULL,
     responsavel_id INT NOT NULL,
     visualizado SMALLINT NOT NULL DEFAULT 0,
-    remetente SMALLINT NOT NULL,
+    remetente SMALLINT NOT NULL, -- 1 indica que o usuário é o remetente, 0 que a gestão é remetente
     FOREIGN KEY (responsavel_id) REFERENCES responsavel(id) ON DELETE CASCADE
 );
 

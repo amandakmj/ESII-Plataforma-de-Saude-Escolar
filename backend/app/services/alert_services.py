@@ -17,12 +17,12 @@ def create_alert(alert: AlertCreate):
         cur = conn.cursor()
         params = []
         params.append(alert.mensagem)
-        params.append(datetime.now)
+        params.append(datetime.now())
         params.append(alert.responsavel_id)
         params.append(alert.visualizado)
         params.append(alert.remetente)
 
-        query = "INSERTO INTO alerta(mensagem, data_criacao, responsavel_id, visualizado, remetente) VALUES(%s, %s, %s, %s, %s)"
+        query = "INSERT INTO alerta(mensagem, data_criacao, responsavel_id, visualizado, remetente) VALUES(%s, %s, %s, %s, %s)"
         cur.execute(query, params)
         conn.commit()
 
@@ -51,11 +51,11 @@ def get_alerts(responsavel_id):
     try:
         cur = conn.cursor()
         query = "SELECT * FROM alerta WHERE responsavel_id = %s"
-        cur.execute(query, responsavel_id)
+        cur.execute(query, (responsavel_id,))
         alerts = [{
             "id": alert[0],
             "mensagem": alert[1],
-            "data_criacao": alert[2],
+            "data_criacao": alert[2].isoformat(),
             "responsavel_id": alert[3],
             "visualizado": alert[4],
             "remetente": alert[5],

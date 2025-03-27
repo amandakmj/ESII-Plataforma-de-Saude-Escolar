@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.schemas.alerta import AlertCreate
-from app.services.alert_services import create_alert, get_alerts
+from app.services.alert_services import create_alert, get_alerts, view_alert
 
 router = APIRouter()
 
@@ -25,5 +25,5 @@ Endpoint destinado a marcar uma mensagem como lida
 @AnotherOne07
 """
 @router.post("/viewAlert/{alerta_id}")
-def marcar_alerta(alerta_id):
+def visualizar_alert(alerta_id):
     return view_alert(alerta_id)
