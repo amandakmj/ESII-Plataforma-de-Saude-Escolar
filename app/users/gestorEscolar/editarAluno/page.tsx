@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import styles from "./page.module.css";
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 import Button from "@/app/Componentes/Button/button";
 
 const editarAluno = () => {
@@ -58,6 +60,7 @@ const editarAluno = () => {
 
   return (
     <div className={styles.page}>
+      <Navbar/>
       <div className={styles.container}>
         <h2 className={styles.titulo}>Nome do gestor</h2>
         <div className={styles.alunoNome}>{aluno.nome}</div>
@@ -91,6 +94,7 @@ const editarAluno = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

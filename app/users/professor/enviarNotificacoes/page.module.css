@@ -92,3 +92,14 @@
 .voltarButton:hover {
   background-color: #a71d2a;
 }
+
+.page {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  padding-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+}

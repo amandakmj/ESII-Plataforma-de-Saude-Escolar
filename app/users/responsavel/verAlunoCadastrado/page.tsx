@@ -35,6 +35,7 @@ const VerAlunoCadastrado = () => {
     <div>
       <Navbar/>
     <div className={styles.page}>
+      <Navbar/>
       <div className={styles.container}>
         <h2 className={styles.titulo}>Aluno(s)</h2>
 

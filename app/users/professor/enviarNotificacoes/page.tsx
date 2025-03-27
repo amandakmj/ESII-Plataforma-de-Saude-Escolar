@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 import { useRouter } from "next/navigation";
 
 interface Notificacao {
@@ -43,6 +45,9 @@ const EnviarNotificacoesPage: React.FC = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
+    <div className={styles.page}>
     <div className={styles.container}>
       <div className={styles.header}>
         <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profilePic} />
@@ -71,6 +76,9 @@ const EnviarNotificacoesPage: React.FC = () => {
 
       <button className={styles.voltarButton} onClick={() => router.push("/tela-inicial")}>Voltar à tela inicial</button>
     </div>
+    </div>
+    <Footer />
+  </div>
   );
 };
 

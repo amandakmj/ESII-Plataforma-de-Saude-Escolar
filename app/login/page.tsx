@@ -22,7 +22,30 @@ const LoginPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    // Verifica se as credenciais correspondem a algum usuário mockado
+    const userFound = mockUsers.find(
+      (user) => user.usuario === formData.usuario && user.senha === formData.senha
+    );
+
+    if (userFound) {
+      router.replace(`/users/${userFound.perfilDeAcesso}/inicial`);
+      const usuario = {
+        nome: userFound.usuario,
+        perfilDeAcesso: userFound.perfilDeAcesso,
+      };
+    
+      sessionStorage.setItem("usuario", JSON.stringify(usuario));
+    } else {
+      setErrors((prevErrors) => ({ ...prevErrors, geral: "Usuário ou senha incorretos." }));
+    }
+  };
+
+  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000"
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
   //   if (!validateForm()) return;
 
@@ -32,47 +55,45 @@ const LoginPage = () => {
   //   );
 
   //   if (userFound) {
+  //     const usuario = {
+  //       nome: userFound.usuario,
+  //       perfilDeAcesso: userFound.perfilDeAcesso,
+  //     };
+  //     sessionStorage.setItem("usuario", JSON.stringify(usuario));
   //     router.replace(`/users/${userFound.perfilDeAcesso}/inicial`);
   //   } else {
   //     setErrors((prevErrors) => ({ ...prevErrors, geral: "Usuário ou senha incorretos." }));
+  //   try {
+  //     // TEMPORÁRIO
+  //     const response = await fetch(`${url}/site/login`, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/x-www-form-urlencoded",
+  //         },
+  //         body: new URLSearchParams({
+  //           username: formData.usuario,
+  //           password: formData.senha
+  //         }).toString(),
+  //       }
+  //     );
+
+  //     if(!response.ok) {
+  //       throw new Error("Usuário ou senha incorretos.");
+  //     }
+
+  //     // Adiciona o token de autenticação ao armazenamento local
+  //     const data = await response.json();
+  //     localStorage.setItem("token", data.access_token);
+
+  //     // Redirecionamento para a página inicial
+  //     router.push("/")
+
+  //   } catch (error: any) {
+  //     setErrors((prevErrors) => ({...prevErrors, geral: error.message}));
   //   }
   // };
 
-  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000"
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    try {
-      // TEMPORÁRIO
-      const response = await fetch(`${url}/site/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({
-            username: formData.usuario,
-            password: formData.senha
-          }).toString(),
-        }
-      );
-
-      if(!response.ok) {
-        throw new Error("Usuário ou senha incorretos.");
-      }
-
-      // Adiciona o token de autenticação ao armazenamento local
-      const data = await response.json();
-      localStorage.setItem("token", data.access_token);
-
-      // Redirecionamento para a página inicial
-      router.push("/")
-
-    } catch (error: any) {
-      setErrors((prevErrors) => ({...prevErrors, geral: error.message}));
-    }
-  }
-
+  
   const validateForm = () => {
     let newErrors: { usuario?: string; senha?: string } = {};
 

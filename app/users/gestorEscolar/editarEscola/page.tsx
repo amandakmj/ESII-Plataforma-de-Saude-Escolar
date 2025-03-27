@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import styles from "./page.module.css";
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 
 const editarEscola = () => {
   const [editando, setEditando] = useState(false);
@@ -33,6 +35,7 @@ const editarEscola = () => {
 
   return (
     <div className={styles.page}>
+    <Navbar/>
       <h2 className={styles.titulo}>
         {editando ? (
           <input
@@ -136,6 +139,7 @@ const editarEscola = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

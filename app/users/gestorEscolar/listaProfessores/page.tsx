@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 import { useRouter } from "next/navigation";
 
 interface Professor {
@@ -50,6 +52,8 @@ const ListaProfessores: React.FC = () => {
   };
 
   return (
+    <div className={styles.page}>
+    <Navbar/>
     <div className={styles.container}>
       <div className={styles.header}>
         <img src={fotoGestor} alt="Foto do gestor" className={styles.profilePic} />
@@ -101,6 +105,8 @@ const ListaProfessores: React.FC = () => {
       <button className={styles.voltarButton} onClick={() => router.push("/tela-inicial")}>
         Voltar à tela inicial
       </button>
+    </div>
+    <Footer />
     </div>
   );
 };

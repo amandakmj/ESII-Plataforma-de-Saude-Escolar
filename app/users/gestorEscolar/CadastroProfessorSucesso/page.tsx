@@ -2,6 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation"; 
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 import styles from "./page.module.css";
 
 const CadastroProfessorSucesso = () => {
@@ -13,11 +15,7 @@ const CadastroProfessorSucesso = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <img src={fotoGestor} alt="Foto do Gestor" className={styles.profileImage} />
-        <span className={styles.profileName}>{nomeGestor}</span>
-      </div>
-
+      <Navbar/>
       <div className={styles.container}>
         <p className={styles.successMessage}>Professor cadastrado com sucesso!<br /> O que deseja fazer agora?</p>
 
@@ -33,6 +31,7 @@ const CadastroProfessorSucesso = () => {
           Sair
         </button>
       </div>
+      <Footer />
     </div>
   );
 };
