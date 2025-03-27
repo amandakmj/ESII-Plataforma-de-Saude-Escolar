@@ -31,10 +31,6 @@ const inicialProfessorPage = () => {
             <button className={styles.button}>Visualizar Lista de Alunos</button>
             </Link>
 
-            <Link href="./verAlunoCadastrado">
-            <button className={styles.button}>Ver Alunos Cadastrados</button>
-            </Link>
-
             <Link href="./notificacoes">
             <button className={styles.button}>Notificações</button>
             </Link>
