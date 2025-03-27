@@ -38,7 +38,7 @@ const LoginPage = () => {
   //   }
   // };
 
-  const url = "http://localhost:8000"
+  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000"
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
