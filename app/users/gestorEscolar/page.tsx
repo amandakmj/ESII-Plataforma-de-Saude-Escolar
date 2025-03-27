@@ -56,25 +56,7 @@ const gestorEscolarPage = () => {
     <div>
       <div className={styles.page}>
         <div className={styles.container}>
-        <div className={styles.profile_container}>
-            <label htmlFor="fotoUpload" className={styles.profile_label}>
-              {formData.foto ? (
-                // Exibe a foto escolhida
-                <img src={formData.foto} alt="Foto do usuário" className={styles.profile_image} />
-              ) : (
-                // Se não houver foto, exibe um círculo com a mensagem
-                <div className={styles.addPhotoCircle}>Adicione uma foto aqui</div>
-              )}
-            </label>
-            <input
-              type="file"
-              id="fotoUpload"
-              className={styles.file_input}
-              onChange={handleFileChange}
-              accept="image/*"
-              hidden
-            />
-          </div>
+        
           <h2 className={styles.name}>Nome gestor escolar</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
             

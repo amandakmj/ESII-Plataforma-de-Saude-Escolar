@@ -1,10 +1,7 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/users/professor/inicial/page": "app/users/professor/inicial/page.js",
-  "/users/professor/cadastrarAluno/page": "app/users/professor/cadastrarAluno/page.js",
-  "/users/professor/notificacoes/page": "app/users/professor/notificacoes/page.js",
-  "/users/profissionalSaude/page": "app/users/profissionalSaude/page.js",
-  "/users/profissionalSaude/inicial/page": "app/users/profissionalSaude/inicial/page.js",
-  "/users/profissionalSaude/relatorios/page": "app/users/profissionalSaude/relatorios/page.js",
-  "/users/profissionalSaude/verAlunoCadastrado/page": "app/users/profissionalSaude/verAlunoCadastrado/page.js"
+  "/users/gestorEscolar/page": "app/users/gestorEscolar/page.js",
+  "/users/gestorEscolar/enviarNotificacoes/page": "app/users/gestorEscolar/enviarNotificacoes/page.js",
+  "/users/gestorEscolar/inicial/page": "app/users/gestorEscolar/inicial/page.js",
+  "/users/gestorEscolar/notificacoes/page": "app/users/gestorEscolar/notificacoes/page.js"
 }

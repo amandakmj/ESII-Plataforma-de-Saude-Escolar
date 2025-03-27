@@ -17,13 +17,10 @@ const EnviarNotificacoesPage: React.FC = () => {
   const [mensagem, setMensagem] = useState("");
   const [notificacoes, setNotificacoes] = useState<Notificacao[]>([]);
   const [nomeResponsavel, setNomeResponsavel] = useState("Nome do Responsável");
-  const [fotoResponsavel, setFotoResponsavel] = useState("/default-profile.png");
 
   useEffect(() => {
     const nomeSalvo = localStorage.getItem("nomeResponsavel") || "Nome do Responsável";
-    const fotoSalva = localStorage.getItem("fotoResponsavel") || "/default-profile.png";
     setNomeResponsavel(nomeSalvo);
-    setFotoResponsavel(fotoSalva);
 
     const notificacoesSalvas = JSON.parse(localStorage.getItem("notificacoes") || "[]");
     setNotificacoes(notificacoesSalvas);
@@ -50,7 +47,6 @@ const EnviarNotificacoesPage: React.FC = () => {
     <div className={styles.page}>
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profilePic} />
         <h2>{nomeResponsavel}</h2>
       </div>
 

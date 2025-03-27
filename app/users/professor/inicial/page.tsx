@@ -15,7 +15,6 @@ const inicialProfessorPage = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.profile_section}>
-            <img src="/placeholder-image.jpg" alt="Profile" className={styles.profile_image} />
             <div>
               <h2 className={styles.responsavel}>Professor</h2>
               <p className={styles.nome}>Nome do professor</p>

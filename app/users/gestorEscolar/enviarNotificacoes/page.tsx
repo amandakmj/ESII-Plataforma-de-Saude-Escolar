@@ -50,7 +50,6 @@ const EnviarNotificacoesPage: React.FC = () => {
     <div className={styles.page}>
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profilePic} />
         <h2>{nomeResponsavel}</h2>
       </div>
 

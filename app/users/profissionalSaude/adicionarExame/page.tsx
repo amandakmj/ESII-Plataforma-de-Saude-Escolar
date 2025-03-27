@@ -43,11 +43,7 @@ const adicionarExame: React.FC = () => {
       <Navbar/>
     <div className={styles.container}>
       <div className={styles.header}>
-      {fotoResponsavel === "/default-profile.png" ? (
-  <div className={styles.addPhotoCircle}>Sem foto</div>
-) : (
-  <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profile_image} />
-)}
+      
 
         <h2>{nomeResponsavel}</h2>
       </div>

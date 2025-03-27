@@ -18,13 +18,10 @@ const NotificacoesPage: React.FC = () => {
   const router = useRouter();
   const [notificacoes, setNotificacoes] = useState<Notificacoes[]>([]);
   const [nomeResponsavel, setNomeResponsavel] = useState("Nome do Responsável");
-  const [fotoResponsavel, setFotoResponsavel] = useState("/default-profile.png");
 
   useEffect(() => {
     const nomeSalvo = localStorage.getItem("nomeUsuario") || "Nome não encontrado";
-    const fotoSalva = localStorage.getItem("fotoResponsavel") || "/default-profile.png";
     setNomeResponsavel(nomeSalvo);
-    setFotoResponsavel(fotoSalva);
 
     const notificacoesSalvas = JSON.parse(localStorage.getItem("notificacoes") || "[]");
     const notificacoesAtualizadas = notificacoesSalvas.map((notif: Notificacoes) => ({
@@ -40,7 +37,6 @@ const NotificacoesPage: React.FC = () => {
     <div className={styles.page}>
       <Navbar/>
       <div className={styles.header}>
-        <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profilePic} />
         <h2>{nomeResponsavel}</h2>
       </div>
 

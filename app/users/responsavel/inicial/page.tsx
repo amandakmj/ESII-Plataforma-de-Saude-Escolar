@@ -25,12 +25,7 @@ const InicialResponsavelPage: React.FC = () => {
   });
   const [usuario, setUsuario] = useState<{ nome: string; email: string } | null>(null);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setFormData((prevData) => ({ ...prevData, foto: URL.createObjectURL(file) }));
-    }
-  };
+  
 
   useEffect(() => {
     const dados = sessionStorage.getItem("usuario");
@@ -43,21 +38,7 @@ const InicialResponsavelPage: React.FC = () => {
     <div className={styles.page}>
       <Navbar />
       <div className={styles.container}>
-        <div className={styles.profile_section}>
-          <div className={styles.profile_container}>
-            <label htmlFor="fotoUpload" className={styles.profile_label}>
-              {formData.foto ? (
-                <img src={formData.foto} alt="Foto do usuário" className={styles.profile_image} />
-              ) : (
-                <div className={styles.addPhotoCircle}>Adicione uma foto aqui</div>
-              )}
-            </label>
-            <input type="file" id="fotoUpload" className={styles.file_input} onChange={handleFileChange} accept="image/*" hidden />
-          </div>
-          <div>
-            <p className={styles.nome}>{usuario?.nome}</p>
-          </div>
-        </div>
+       
 
         <div className={styles.buttons_section}>
           <Link href="./cadastrarAluno">

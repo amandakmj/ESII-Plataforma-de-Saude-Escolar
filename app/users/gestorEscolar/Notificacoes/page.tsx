@@ -40,7 +40,6 @@ const NotificacoesPage: React.FC = () => {
     <div className={styles.page}>
       <Navbar/>
       <div className={styles.header}>
-        <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profilePic} />
         <h2>{nomeResponsavel}</h2>
       </div>
 

@@ -72,25 +72,7 @@ const ResponsavelPage: React.FC = () => {
       <div className={styles.page}>
       <h1 className={styles.pageTitle}>Finalize seu cadastro preenchendo os dados abaixo:</h1>
         <div className={styles.container}>
-        <div className={styles.profile_container}>
-  <label htmlFor="fotoUpload" className={styles.profile_label}>
-    {formData.foto ? (
-      // Exibe a foto escolhida
-      <img src={formData.foto} alt="Foto do usuário" className={styles.profile_image} />
-    ) : (
-      // Se não houver foto, exibe um círculo com a mensagem
-      <div className={styles.addPhotoCircle}>Adicione uma foto aqui</div>
-    )}
-  </label>
-  <input
-    type="file"
-    id="fotoUpload"
-    className={styles.file_input}
-    onChange={handleFileChange}
-    accept="image/*"
-    hidden
-  />
-</div>
+       
 
           <h2 className={styles.name}>{nomeUsuario}</h2>
           <form className={styles.form} onSubmit={handleSubmit}>

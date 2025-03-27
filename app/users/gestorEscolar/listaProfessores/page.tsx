@@ -56,7 +56,6 @@ const ListaProfessores: React.FC = () => {
     <Navbar/>
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={fotoGestor} alt="Foto do gestor" className={styles.profilePic} />
         <h2>{nomeGestor}</h2>
       </div>
 

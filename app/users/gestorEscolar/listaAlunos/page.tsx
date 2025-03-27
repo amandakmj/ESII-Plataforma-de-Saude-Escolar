@@ -59,7 +59,6 @@ const ListaAlunos: React.FC = () => {
       <div className={styles.page}>
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={fotoProfessor} alt="Foto do professor" className={styles.profilePic} />
         <h2>{nomeProfessor}</h2>
       </div>
 
