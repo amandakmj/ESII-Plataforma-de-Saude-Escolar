@@ -72,10 +72,10 @@ const registrarEscolaPage = () => {
             <label className={styles.label}>Séries/Turmas oferecidas</label>
             <input type="text" className={styles.input_box} onChange={handleInputChange}/>
             
-            <label className={styles.label}>Número médio de alunos</label>
+            <label className={styles.label}>Número de alunos</label>
             <input type="text" className={styles.input_box} onChange={handleInputChange}/>
             
-            <label className={styles.label}>Número médio de professores</label>
+            <label className={styles.label}>Número de professores</label>
             <input type="text" className={styles.input_box} onChange={handleInputChange}/>
 
             <label className={styles.label}>Profissionais de saúde na escola (se houver)</label>

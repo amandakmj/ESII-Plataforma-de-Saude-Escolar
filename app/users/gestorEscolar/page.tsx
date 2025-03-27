@@ -88,8 +88,8 @@ const gestorEscolarPage = () => {
             <label className={styles.label}>Gênero*</label>
             <select name="genero" className={styles.input_box} onChange={handleInputChange}>
               <option value=""></option>
-              <option value="Homem">Pai</option>
-              <option value="Mulher">Mãe</option>
+              <option value="Homem">Homem</option>
+              <option value="Mulher">Mulher</option>
               <option value="Outro">Outro</option>
             </select>
             {errors.genero && <p className={styles.error}>{errors.genero}</p>}
