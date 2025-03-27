@@ -4,8 +4,6 @@ from datetime import date
 
 class AlunoBase(BaseModel):
     nome: str
-    altura: Optional[str] = None
-    peso: Optional[str] = None
     endereco: Optional[str] = None
     matricula: str
     data_nascimento: date
@@ -20,12 +18,10 @@ class AlunoBase(BaseModel):
 
 class AlunoCreate(AlunoBase):
     usuario_id: int  # Referência ao id do usuário, obrigatório ao criar
-    
+
 class AlunoUpdate(BaseModel):
     id: Optional[int] = None 
     nome: Optional[str] = None
-    altura: Optional[str] = None
-    peso: Optional[str] = None
     endereco: Optional[str] = None
     matricula: Optional[str] = None
     data_nascimento: Optional[date] = None

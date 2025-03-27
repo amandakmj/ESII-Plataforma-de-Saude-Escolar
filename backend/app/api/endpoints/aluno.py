@@ -37,4 +37,3 @@ Endpoint para deletar os dados de um aluno
 @router.delete("/delete_aluno/{aluno_id}", dependencies=[Depends(get_current_user)])
 def remover_aluno_id(aluno_id):
     return delete_aluno_id(aluno_id)
-

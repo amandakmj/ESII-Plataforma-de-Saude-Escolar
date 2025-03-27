@@ -24,15 +24,13 @@ def create_aluno(aluno: AlunoCreate):
 
         # Inserir aluno na tabela aluno
         query = """
-            INSERT INTO aluno (nome, altura, peso, endereco, matricula, data_nascimento, 
+            INSERT INTO aluno (nome, endereco, matricula, data_nascimento, 
                                serie_atual, responsavel_id, termo_medicamento_escola, 
                                termo_atendimento_medico, termo_compartilhamento_dados)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id;
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id;
         """
         values = (
             aluno.nome,
-            aluno.altura,
-            aluno.peso,
             aluno.endereco,
             aluno.matricula,
             aluno.data_nascimento,
@@ -71,7 +69,7 @@ def get_aluno_id(aluno_id: int):
     try:
         cur = conn.cursor()
         cur.execute("""
-            SELECT id, nome, altura, peso, endereco, matricula, data_nascimento, serie_atual, 
+            SELECT id, nome, endereco, matricula, data_nascimento, serie_atual, 
                    responsavel_id, termo_medicamento_escola, termo_atendimento_medico, termo_compartilhamento_dados
             FROM aluno 
             WHERE id = %s;
@@ -82,16 +80,14 @@ def get_aluno_id(aluno_id: int):
             return {
                 "id": aluno[0],
                 "nome": aluno[1],
-                "altura": aluno[2],
-                "peso": aluno[3],
-                "endereco": aluno[4],
-                "matricula": aluno[5],
-                "data_nascimento": aluno[6],
-                "serie_atual": aluno[7],
-                "responsavel_id": aluno[8],
-                "termo_medicamento_escola": aluno[9],
-                "termo_atendimento_medico": aluno[10],
-                "termo_compartilhamento_dados": aluno[11]
+                "endereco": aluno[2],
+                "matricula": aluno[3],
+                "data_nascimento": aluno[4],
+                "serie_atual": aluno[5],
+                "responsavel_id": aluno[6],
+                "termo_medicamento_escola": aluno[7],
+                "termo_atendimento_medico": aluno[8],
+                "termo_compartilhamento_dados": aluno[9]
             }
         else:
             raise HTTPException(status_code=404, detail="Aluno não encontrado")
@@ -116,17 +112,15 @@ def update_aluno_id(aluno: AlunoUpdate):
 
         query = """
             UPDATE aluno 
-            SET nome = %s, altura = %s, peso = %s, endereco = %s, matricula = %s, 
+            SET nome = %s, endereco = %s, matricula = %s, 
                 data_nascimento = %s, serie_atual = %s, responsavel_id = %s, 
                 termo_medicamento_escola = %s, termo_atendimento_medico = %s, 
                 termo_compartilhamento_dados = %s 
             WHERE id = %s
-            RETURNING *; -- RETORNA SO DADOS ATUALIZADOS
+            RETURNING *;
         """
         values = (
             aluno.nome,
-            aluno.altura,
-            aluno.peso,
             aluno.endereco,
             aluno.matricula,
             aluno.data_nascimento,
@@ -146,16 +140,14 @@ def update_aluno_id(aluno: AlunoUpdate):
             return {
                 "id": aluno_atualizado[0],
                 "nome": aluno_atualizado[1],
-                "altura": aluno_atualizado[2],
-                "peso": aluno_atualizado[3],
-                "endereco": aluno_atualizado[4],
-                "matricula": aluno_atualizado[5],
-                "data_nascimento": aluno_atualizado[6],
-                "serie_atual": aluno_atualizado[7],
-                "responsavel_id": aluno_atualizado[8],
-                "termo_medicamento_escola": aluno_atualizado[9],
-                "termo_atendimento_medico": aluno_atualizado[10],
-                "termo_compartilhamento_dados": aluno_atualizado[11]
+                "endereco": aluno_atualizado[2],
+                "matricula": aluno_atualizado[3],
+                "data_nascimento": aluno_atualizado[4],
+                "serie_atual": aluno_atualizado[5],
+                "responsavel_id": aluno_atualizado[6],
+                "termo_medicamento_escola": aluno_atualizado[7],
+                "termo_atendimento_medico": aluno_atualizado[8],
+                "termo_compartilhamento_dados": aluno_atualizado[9]
             }
         else:
             raise HTTPException(status_code=404, detail="Aluno não encontrado")

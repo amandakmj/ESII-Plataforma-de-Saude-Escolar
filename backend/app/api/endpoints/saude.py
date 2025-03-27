@@ -41,18 +41,19 @@ Endpoint destinado a atualizar dados de saude de um usuário
 @JvReis
 """
 @router.put("/update_aluno_id/{saude_id}", dependencies=[Depends(get_current_user)])
-def atualizar_aluno_id(matricula: str, dados_saude: SaudeUpdate):
-     return update_saude_id(matricula=matricula,
-        altura=dados_saude.altura,
-        peso=dados_saude.peso,
-        alergias=dados_saude.alergias,
-        atividade_fisica=dados_saude.atividade_fisica,
-        doencas_cronicas=dados_saude.doencas_cronicas,
-        medicamentos_continuos=dados_saude.medicamentos_continuos,
-        cirugiais_internacoes=dados_saude.cirurgias_internacoes,
-        vacinas=dados_saude.vacinas,
-        deficiencias_necessidades=dados_saude.deficiencias_necessidades,
-        plano_saude=dados_saude.plano_saude
+def atualizar_saude_aluno(saude_id: int, dados_saude: SaudeUpdate):
+     return update_saude_id(
+          saude_id=saude_id,
+          altura=dados_saude.altura,
+          peso=dados_saude.peso,
+          alergias=dados_saude.alergias,
+          atividade_fisica=dados_saude.atividade_fisica,
+          doencas_cronicas=dados_saude.doencas_cronicas,
+          medicamentos_continuos=dados_saude.medicamentos_continuos,
+          cirugiais_internacoes=dados_saude.cirurgias_internacoes,
+          vacinas=dados_saude.vacinas,
+          deficiencias_necessidades=dados_saude.deficiencias_necessidades,
+          plano_saude=dados_saude.plano_saude
         )
 
 """
