@@ -19,15 +19,17 @@ const CadastroProfessorSucesso = () => {
       <div className={styles.container}>
         <p className={styles.successMessage}>Professor cadastrado com sucesso!<br /> O que deseja fazer agora?</p>
 
-        <button className={styles.button} onClick={() => router.push("/gestorEscolar/home")}>
+        <button className={styles.button} onClick={() => router.replace("./inicial")}>
           Ir para a página inicial do gestor escolar
         </button>
         
-        <button className={styles.button} onClick={() => router.push("/professor/home")}>
-          Ir para a página inicial do professor
-        </button>
         
-        <button className={styles.button} onClick={() => router.push("/logout")}>
+        <button className={styles.button} onClick={() => {
+          console.log("Usuário deslogado");
+          sessionStorage.removeItem("usuario")
+          router.replace("/");
+        }
+        }>
           Sair
         </button>
       </div>
