@@ -27,7 +27,7 @@
     border-radius: 0 16px 16px 0;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 
-    transform: translateX(-100%);
+    transform: translateX(100%);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -81,7 +81,7 @@
     font-weight: bold;
     padding: 10px 20px;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: 1s;
 }
 
 .menu_item a {
@@ -90,7 +90,8 @@
 }
 
 .menu_item:hover {
-    color: var(--primary-blue);
+    transition: 0.5s;
+    color: rgb(var(--primary-blue));
 }
 
 .logout_button {
@@ -102,8 +103,10 @@
     border: none;
     cursor: pointer;
     margin-top: 20px;
+    transition: 0.5s;
 }
 
 .logout_button:hover {
+    transition: 0.5s;
     background-color: grey;
 }

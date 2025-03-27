@@ -103,8 +103,8 @@ def update_user(usuario):
         if usuario.email:
             updates.append("email = %s")
             valores.append(usuario.email)
-        if usuario.senha:
-            senha_hash = hash_senha(usuario.senha)
+        if usuario.segredo:
+            senha_hash = hash_senha(usuario.segredo)
             updates.append("senha = %s")
             valores.append(senha_hash)
         if usuario.tipo_usuario:
@@ -120,8 +120,6 @@ def update_user(usuario):
         usuario_atualizado = cur.fetchone()
 
         conn.commit()
-        cur.close()
-        conn.close()
 
         if usuario_atualizado:
             return {"id": usuario_atualizado[0], "nome": usuario_atualizado[1], "email": usuario_atualizado[2], "tipo_usuario": usuario_atualizado[3]}
@@ -131,6 +129,9 @@ def update_user(usuario):
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao atualizar usuário: {e}")
+    finally:
+        cur.close()
+        conn.close()
 
 """
 Realiza a exclusão de um registro de usuário

@@ -11,16 +11,45 @@ CREATE TABLE usuario (
     tipo_usuario USER_TYPE NOT NULL
 );
 
+CREATE TABLE escola (
+    id SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    cnpj VARCHAR(100) NOT NULL,
+    telefone VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE turma (
+    id SERIAL NOT NULL PRIMARY KEY,
+    codigo VARCHAR (10) NOT NULL,
+    serie VARCHAR(100),
+    escola_id INT NOT NULL,
+    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE
+);
+
 CREATE TABLE responsavel (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
+    telefone VARCHAR(20) NULL,
+    parentesco VARCHAR(50) NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 CREATE TABLE aluno (
     id SERIAL NOT NULL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    altura VARCHAR(10) NULL,
+    peso VARCHAR(10) NULL,
+    endereco VARCHAR(100) NULL,
     matricula VARCHAR(15) NOT NULL UNIQUE,
-    data_nascimento DATE NOT NULL
+    data_nascimento DATE NOT NULL,
+    serie_atual INT NULL,
+    responsavel_id INT NULL,
+    termo_medicamento_escola SMALLINT NULL,
+    termo_atendimento_medico SMALLINT NULL,
+    termo_compartilhamento_dados SMALLINT NULL,
+    FOREIGN KEY (serie_atual) REFERENCES turma(id) ON DELETE SET NULL,
+    FOREIGN KEY (responsavel_id) REFERENCES usuario(id) ON DELETE SET NULL
 );
 
 CREATE TABLE saude ( 
@@ -30,12 +59,12 @@ CREATE TABLE saude (
     imc FLOAT,
     alergias VARCHAR(300),
     atividade_fisica VARCHAR(200),
-    doencasCronicas VARCHAR(100),
-    medicamentosContinuos VARCHAR(100),
-    cirugiaisInternacoes VARCHAR(100),
+    doencas_cronicas VARCHAR(100),
+    medicamentos_continuos VARCHAR(100),
+    cirugiais_internacoes VARCHAR(100),
     vacinas VARCHAR(200),
-    deficienciasNecessidades VARCHAR(200),
-    planoSaude VARCHAR(100),
+    deficiencias_necessidades VARCHAR(200),
+    plano_saude VARCHAR(100),
     aluno_id INT NOT NULL,  -- Mantém a coluna aluno_id
     matricula VARCHAR(15),  -- Adiciona a coluna matricula (não mais com NOT NULL neste momento)
     FOREIGN KEY (aluno_id) REFERENCES aluno(id) ON DELETE CASCADE,  -- Chave estrangeira para aluno_id
@@ -52,19 +81,15 @@ CREATE TABLE exame_medico (
 CREATE TABLE gestor_escolar (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
-    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+    escola_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE,
+    FOREIGN KEY (escola_id) REFERENCES escola(id) ON DELETE CASCADE
 );
 
 CREATE TABLE professor (
     id SERIAL NOT NULL PRIMARY KEY,
     usuario_id INT NOT NULL UNIQUE,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
-);
-
-CREATE TABLE turma (
-    id SERIAL NOT NULL PRIMARY KEY,
-    codigo VARCHAR (10) NOT NULL,
-    serie VARCHAR(100)
 );
 
 CREATE TABLE profissional_saude (
@@ -85,8 +110,8 @@ CREATE TABLE alerta (
     mensagem VARCHAR(200),
     data_criacao TIMESTAMP NOT NULL,
     responsavel_id INT NOT NULL,
-    visualizado TINYINT NOT NULL DEFAULT 0,
-    remetente TINYINT NOT NULL,
+    visualizado SMALLINT NOT NULL DEFAULT 0,
+    remetente SMALLINT NOT NULL,
     FOREIGN KEY (responsavel_id) REFERENCES responsavel(id) ON DELETE CASCADE
 );
 
@@ -100,17 +125,27 @@ SELECT
     saude.imc,
     saude.alergias,
     saude.atividade_fisica,
-    saude.doencasCronicas,
-    saude.medicamentosContinuos,
-    saude.cirugiaisInternacoes,
+    saude.doencas_cronicas,
+    saude.medicamentos_continuos,
+    saude.cirugiais_internacoes,
     saude.vacinas,
-    saude.deficienciasNecessidades,
-    saude.planoSaude,
+    saude.deficiencias_necessidades,
+    saude.plano_saude,
     u.email AS email_responsavel  -- Adiciona o email do responsável
 FROM aluno a
 JOIN saude saude ON a.id = saude.aluno_id
 JOIN responsavel r ON r.usuario_id = (SELECT id FROM usuario WHERE id = r.usuario_id)
 JOIN usuario u ON r.usuario_id = u.id;  -- Faz o JOIN com a tabela usuario para pegar o email
+
+CREATE TABLE aluno_turma (
+    id SERIAL PRIMARY KEY,
+    aluno_id INT NOT NULL,
+    turma_id INT NOT NULL,
+    FOREIGN KEY (aluno_id) REFERENCES aluno(id) ON DELETE CASCADE,
+    FOREIGN KEY (turma_id) REFERENCES turma(id) ON DELETE CASCADE,
+    UNIQUE (aluno_id, turma_id) -- Garante que um aluno não seja adicionado duas vezes à mesma turma
+);
+
 
 CREATE VIEW relatorio_geral AS
 SELECT 
@@ -120,7 +155,24 @@ SELECT
     
     STRING_AGG(DISTINCT alergias, ', ') AS alergias,
 
-    STRING_AGG(DISTINCT doencasCronicas, ', ') AS doencas_cronicas,
+    STRING_AGG(DISTINCT doencas_cronicas, ', ') AS doencas_cronicas,
 
-    STRING_AGG(DISTINCT deficienciasNecessidades, ', ') AS deficienciasNecessidades
+    STRING_AGG(DISTINCT deficiencias_necessidades, ', ') AS deficiencias_necessidades
 FROM saude;
+
+CREATE OR REPLACE VIEW relatorio_saude_turma AS
+SELECT 
+    t.id AS turma_id,
+    t.codigo AS codigo_turma,
+    COUNT(a.id) AS total_alunos,
+    AVG(s.altura) AS media_altura,
+    AVG(s.peso) AS media_peso,
+    AVG(s.imc) AS media_imc,
+    STRING_AGG(DISTINCT s.alergias, ', ') AS alergias,
+    STRING_AGG(DISTINCT s.doencas_cronicas, ', ') AS doencas_cronicas,
+    STRING_AGG(DISTINCT s.deficiencias_necessidades, ', ') AS deficiencias_necessidades
+FROM turma t
+JOIN aluno_turma at ON t.id = at.turma_id
+JOIN aluno a ON at.aluno_id = a.id
+LEFT JOIN saude s ON a.id = s.aluno_id
+GROUP BY t.id, t.codigo;

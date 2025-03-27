@@ -80,7 +80,7 @@ Marca um alerta como visualizado
 """
 def view_alert(alerta_id):
     conn = connect_db()
-    if not conn
+    if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar com o banco de dados")
     
     try:

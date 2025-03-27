@@ -1,1 +1,7 @@
-{}
+{
+  "/users/gestorEscolar/registrarEscola/page": "app/users/gestorEscolar/registrarEscola/page.js",
+  "/users/responsavel/page": "app/users/responsavel/page.js",
+  "/users/gestorEscolar/inicial/page": "app/users/gestorEscolar/inicial/page.js",
+  "/users/gestorEscolar/enviarNotificacoes/page": "app/users/gestorEscolar/enviarNotificacoes/page.js",
+  "/users/gestorEscolar/page": "app/users/gestorEscolar/page.js"
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './page.module.css';
 import Navbar from '@/app/Componentes/NavBar/navbar'
 import MenuLateral from '@/app/Componentes/MenuLateral/menuLateral';
+import Link from 'next/link';
+import Footer from '@/app/Componentes/Footer/footer';
 
 const inicialProfissionalSaudePage = () => {
   return (
@@ -20,15 +22,29 @@ const inicialProfissionalSaudePage = () => {
             </div>
           </div>
           <div className={styles.buttons_section}>
-            <button className={styles.button}><a href="./enviarNotificacoes">Enviar Notificação</a></button>
+            <Link href="./enviarNotificacoes">
+            <button className={styles.button}>Enviar Notificação</button>
+            </Link>
+            <Link href="./notificacoes">
             <button className={styles.button}>Notificações</button>
+            </Link>
+            
+            <Link href="./verAluno">
             <button className={styles.button}>Ver Aluno</button>
+            </Link>
+            
+            <Link href="./adicionarExame">
             <button className={styles.button}>Adicionar Exame</button>
+            </Link>
+            
+            <Link href="./relatorios">
             <button className={styles.button}>Relatório</button>
+            </Link>
           </div>
         </div>
         <MenuLateral/>
       </div>
+      <Footer/>
     </div>
   );
 };

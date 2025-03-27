@@ -54,7 +54,7 @@
     outline: none;
     border: none;
     border-radius: 8px;
-    margin-bottom: 16px; /* Espaçamento entre os campos */
+    margin-bottom: 10px; /* Espaçamento entre os campos */
 }
 
 .button {
@@ -70,9 +70,8 @@
 
 .error_message {
     color: red;
-    font-weight: normal; /* Remove o negrito da mensagem de erro */
     font-size: 14px;
-    margin-top: 4px;
+    font-family: 'Arial', sans-serif;
 }
 
 .link {

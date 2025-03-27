@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 80px;
+    padding-bottom: 2%;
 }
 
 .container {
@@ -15,6 +16,21 @@
     width: 500px;
 }
 
+.addPhotoCircle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    border: 2px dashed #ccc;
+}
 .profile_container {
     position: relative;
     width: 120px;
@@ -85,4 +101,8 @@
 
 .button:hover {
     background-color: #003d82;
+}
+.error {
+    color: red;
+    font-size: 12px;
 }

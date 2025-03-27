@@ -16,7 +16,7 @@ const Navbar: React.FC<NavProps> = ({isHome = true}) => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar_container}>
-        <h1 className={styles.logo}><a href="/">HealthSchool</a></h1>
+        <h1 className={styles.logo}><a href="/">Plataforma de Saúde Escolar</a></h1>
 
         <div className={styles.nav_list}>
 

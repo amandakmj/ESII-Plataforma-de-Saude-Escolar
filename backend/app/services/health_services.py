@@ -6,7 +6,7 @@ from datetime import date
 Função de criação do registro de saudo do aluno
 @JvReis
 """
-def create_saude_student(usuario_id: int, matricula: str, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencasCronicas: str, medicamentosContinuos: str, cirugiaisInternacoes: str, vacinas: str, deficienciasNecessidades: str, planoSaude: str):
+def create_saude_student(usuario_id: int, matricula: str, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencas_cronicas: str, medicamentos_continuos: str, cirugiais_internacoes: str, vacinas: str, deficiencias_necessidades: str, plano_saude: str):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco de dados")
@@ -40,9 +40,9 @@ def create_saude_student(usuario_id: int, matricula: str, altura: float, peso: f
 
         # Inserir dados de saúde vinculados ao aluno
         cur.execute("""
-            INSERT INTO saude (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude)
+            INSERT INTO saude (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s ) RETURNING id;
-        """, (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude ))
+        """, (aluno_id, matricula, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude ))
 
         saude_id = cur.fetchone()[0]
 
@@ -73,16 +73,16 @@ def get_saude_id(saude_id: int):
 
     try:
         cur = conn.cursor()
-        cur.execute("SELECT id, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, "
-        "medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude  FROM saude WHERE id = %s;", (saude_id,))
+        cur.execute("SELECT id, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, "
+        "medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude  FROM saude WHERE id = %s;", (saude_id,))
         saude = cur.fetchall()
         cur.close()
         conn.close()
 
         if saude:
             return [{"altura": s[1], "peso": s[2], "imc": s[3], "alergias": s[4], "atividade_fisica": s[5]
-                     , "doencasCronicas": s[6], "medicamentosContinuos": s[7], "cirugiaisInternacoes": s[8]
-                      , "vacinas": s[9], "deficienciasNecessidades": s[10], "planoSaude": s[11]} for s in saude]
+                     , "doencas_cronicas": s[6], "medicamentos_continuos": s[7], "cirugiais_internacoes": s[8]
+                      , "vacinas": s[9], "deficiencias_necessidades": s[10], "plano_saude": s[11]} for s in saude]
         else:
             raise HTTPException(status_code=404, detail="Dados de saúde do aluno não encontrados")
 
@@ -93,7 +93,7 @@ def get_saude_id(saude_id: int):
 Função para autalização do registro de saude do aluno
 @JvReis
 """
-def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencasCronicas: str, medicamentosContinuos: str, cirugiaisInternacoes: str, vacinas: str, deficienciasNecessidades: str, planoSaude: str):
+def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, atividade_fisica: str,  doencas_cronicas: str, medicamentos_continuos: str, cirugiais_internacoes: str, vacinas: str, deficiencias_necessidades: str, plano_saude: str):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Erro ao conectar ao banco")
@@ -125,30 +125,30 @@ def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, at
         if atividade_fisica:
             updates.append("atividade_fisica = %s")
             valores.append(atividade_fisica)
-        if doencasCronicas:
-            updates.append("doencasCronicas = %s")
-            valores.append(doencasCronicas)
-        if medicamentosContinuos:
-            updates.append("medicamentosContinuos = %s")
-            valores.append(medicamentosContinuos)
-        if cirugiaisInternacoes:
-            updates.append("cirugiaisInternacoes = %s")
-            valores.append(cirugiaisInternacoes)
+        if doencas_cronicas:
+            updates.append("doencas_cronicas = %s")
+            valores.append(doencas_cronicas)
+        if medicamentos_continuos:
+            updates.append("medicamentos_continuos = %s")
+            valores.append(medicamentos_continuos)
+        if cirugiais_internacoes:
+            updates.append("cirugiais_internacoes = %s")
+            valores.append(cirugiais_internacoes)
         if vacinas:
             updates.append("vacinas = %s")
             valores.append(vacinas)
-        if deficienciasNecessidades:
-            updates.append("deficienciasNecessidades = %s")
-            valores.append(deficienciasNecessidades)
-        if planoSaude:
-            updates.append("planoSaude = %s")
-            valores.append(planoSaude)
+        if deficiencias_necessidades:
+            updates.append("deficiencias_necessidades = %s")
+            valores.append(deficiencias_necessidades)
+        if plano_saude:
+            updates.append("plano_saude = %s")
+            valores.append(plano_saude)
 
         if not updates:
             raise HTTPException(status_code=400, detail="Nenhuma informação para atualizar")
 
         valores.append(saude_id)
-        query = f"UPDATE saude SET {', '.join(updates)} WHERE saude_id = %s RETURNING id, altura, peso, imc, alergias, atividade_fisica, doencasCronicas, medicamentosContinuos, cirugiaisInternacoes, vacinas, deficienciasNecessidades, planoSaude  ;"
+        query = f"UPDATE saude SET {', '.join(updates)} WHERE saude_id = %s RETURNING id, altura, peso, imc, alergias, atividade_fisica, doencas_cronicas, medicamentos_continuos, cirugiais_internacoes, vacinas, deficiencias_necessidades, plano_saude  ;"
         cur.execute(query, tuple(valores))
         saude_atualizada = cur.fetchone()
 
@@ -158,9 +158,9 @@ def update_saude_id(saude_id: int, altura: float, peso: float, alergias: str, at
 
         if saude_atualizada:
             return {"id": saude_atualizada[0], "altura": saude_atualizada[1], "peso": saude_atualizada[2], "imc": saude_atualizada[3], "alergias": saude_atualizada[4], "atividade_fisica": saude_atualizada[5]
-                    , "doencasCronicas": saude_atualizada[6], "medicamentosContinuos": saude_atualizada[7], "cirugiaisInternacoes": saude_atualizada[8]
-                    , "vacinas": saude_atualizada[9], "deficienciasNecessidades": saude_atualizada[10]
-                    , "planoSaude": saude_atualizada[11]}
+                    , "doencas_cronicas": saude_atualizada[6], "medicamentos_continuos": saude_atualizada[7], "cirugiais_internacoes": saude_atualizada[8]
+                    , "vacinas": saude_atualizada[9], "deficiencias_necessidades": saude_atualizada[10]
+                    , "plano_saude": saude_atualizada[11]}
         else:
             raise HTTPException(status_code=404, detail="Saúde do aluno não encontrada")
 

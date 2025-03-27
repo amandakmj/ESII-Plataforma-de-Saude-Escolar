@@ -1,3 +1,46 @@
 {
-  "pages": {}
+  "pages": {
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/users/gestorEscolar/registrarEscola/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/gestorEscolar/registrarEscola/page.css",
+      "static/chunks/app/users/gestorEscolar/registrarEscola/page.js"
+    ],
+    "/users/gestorEscolar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/gestorEscolar/page.css",
+      "static/chunks/app/users/gestorEscolar/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/users/responsavel/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/page.css",
+      "static/chunks/app/users/responsavel/page.js"
+    ],
+    "/users/gestorEscolar/inicial/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/gestorEscolar/inicial/page.css",
+      "static/chunks/app/users/gestorEscolar/inicial/page.js"
+    ],
+    "/users/gestorEscolar/enviarNotificacoes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/gestorEscolar/enviarNotificacoes/page.css",
+      "static/chunks/app/users/gestorEscolar/enviarNotificacoes/page.js"
+    ]
+  }
 }

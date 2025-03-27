@@ -1,5 +1,5 @@
-from fastapi import APIRouter, HTTPException, Depends
-from app.schemas.usuario import UserCreate, UserBase, UserResponse
+from fastapi import APIRouter, Depends
+from app.schemas.usuario import UserCreate, UserBase, UserUpdate
 from app.services.user_services import create_user, get_usuario, get_usuario_id, update_user, delete_user
 from app.core.security import get_current_user
 
@@ -9,7 +9,7 @@ router = APIRouter()
 Endpoint destinado a criação de um novo usuário
 @JvReis
 """
-@router.post("/create", dependencies=[Depends(get_current_user)])
+@router.post("/create")
 def criar_novo_usuario(user: UserCreate):
     return create_user(user)
 
@@ -34,7 +34,7 @@ Endpoint destinado a atualizar os dados de um usuário
 @JvReis
 """
 @router.post("/update", dependencies=[Depends(get_current_user)])
-def atualizar_usuario (user: UserResponse):
+def atualizar_usuario (user: UserUpdate):
     return update_user(user)
 
 """
