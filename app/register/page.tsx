@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import Navbar from "../Componentes/NavBar/navbar";
 import Footer from "../Componentes/Footer/footer";
 import Button, { ButtonColor } from "../Componentes/Button/button";
+import apiUrls from "../apiUrls";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -50,6 +51,11 @@ const RegisterPage = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
+    }
+
+    // Enviar dados para o back-end
+    try {
+      const response = await fetch(apiUrls.register)
     }
 
     console.log("Dados do usuário:", formData);

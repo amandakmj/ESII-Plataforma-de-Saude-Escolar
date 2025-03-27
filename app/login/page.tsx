@@ -7,6 +7,8 @@ import Button, { ButtonColor } from "../Componentes/Button/button";
 import Footer from "../Componentes/Footer/footer";
 import { useRouter } from "next/navigation";
 import mockUsers from "../Mocks/usuariosMocks";
+import apiUrls from "../apiUrls";
+
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     usuario: "",
@@ -38,14 +40,14 @@ const LoginPage = () => {
   //   }
   // };
 
-  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000"
+  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000";
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     try {
       // TEMPORÁRIO
-      const response = await fetch(`${url}/site/login`, {
+      const response = await fetch(apiUrls.login, {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
