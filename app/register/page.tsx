@@ -54,7 +54,7 @@ const RegisterPage = () => {
 
     // Enviar os dados para o back-end
     try {
-      const response = await fetch(apiUrls.createUser, {  // Usando a URL centralizada
+      const response = await fetch(apiUrls.createUser, { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
