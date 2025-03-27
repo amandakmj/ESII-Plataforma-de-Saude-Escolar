@@ -6,23 +6,17 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/users/gestorEscolar/registrarEscola/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/users/gestorEscolar/registrarEscola/page.css",
-      "static/chunks/app/users/gestorEscolar/registrarEscola/page.js"
-    ],
-    "/users/gestorEscolar/listaProfessores/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/users/gestorEscolar/listaProfessores/page.css",
-      "static/chunks/app/users/gestorEscolar/listaProfessores/page.js"
-    ],
     "/users/gestorEscolar/listaAlunos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/users/gestorEscolar/listaAlunos/page.css",
       "static/chunks/app/users/gestorEscolar/listaAlunos/page.js"
+    ],
+    "/users/gestorEscolar/verAlunoCadastrado/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/gestorEscolar/verAlunoCadastrado/page.css",
+      "static/chunks/app/users/gestorEscolar/verAlunoCadastrado/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

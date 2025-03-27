@@ -1,6 +1,5 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/users/gestorEscolar/registrarEscola/page": "app/users/gestorEscolar/registrarEscola/page.js",
-  "/users/gestorEscolar/listaProfessores/page": "app/users/gestorEscolar/listaProfessores/page.js",
-  "/users/gestorEscolar/listaAlunos/page": "app/users/gestorEscolar/listaAlunos/page.js"
+  "/users/gestorEscolar/listaAlunos/page": "app/users/gestorEscolar/listaAlunos/page.js",
+  "/users/gestorEscolar/verAlunoCadastrado/page": "app/users/gestorEscolar/verAlunoCadastrado/page.js"
 }
