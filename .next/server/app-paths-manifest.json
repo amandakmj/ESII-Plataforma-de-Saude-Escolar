@@ -1,8 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/users/responsavel/page": "app/users/responsavel/page.js",
-  "/users/responsavel/inicial/page": "app/users/responsavel/inicial/page.js",
-  "/users/responsavel/cadastrarAluno/page": "app/users/responsavel/cadastrarAluno/page.js",
-  "/page": "app/page.js"
+  "/users/responsavel/adicionarExame/page": "app/users/responsavel/adicionarExame/page.js",
+  "/users/responsavel/enviarNotificacoes/page": "app/users/responsavel/enviarNotificacoes/page.js",
+  "/users/responsavel/Notificacoes/page": "app/users/responsavel/Notificacoes/page.js",
+  "/users/responsavel/verAlunoCadastrado/page": "app/users/responsavel/verAlunoCadastrado/page.js",
+  "/users/responsavel/cadastrarAluno/page": "app/users/responsavel/cadastrarAluno/page.js"
 }

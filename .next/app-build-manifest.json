@@ -12,11 +12,29 @@
       "static/css/app/users/responsavel/page.css",
       "static/chunks/app/users/responsavel/page.js"
     ],
-    "/users/responsavel/inicial/page": [
+    "/users/responsavel/cadastrarAluno/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/inicial/page.css",
-      "static/chunks/app/users/responsavel/inicial/page.js"
+      "static/css/app/users/responsavel/cadastrarAluno/page.css",
+      "static/chunks/app/users/responsavel/cadastrarAluno/page.js"
+    ],
+    "/users/responsavel/adicionarExame/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/adicionarExame/page.css",
+      "static/chunks/app/users/responsavel/adicionarExame/page.js"
+    ],
+    "/users/responsavel/verAlunoCadastrado/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/verAlunoCadastrado/page.css",
+      "static/chunks/app/users/responsavel/verAlunoCadastrado/page.js"
+    ],
+    "/users/responsavel/Notificacoes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/Notificacoes/page.css",
+      "static/chunks/app/users/responsavel/Notificacoes/page.js"
     ],
     "/page": [
       "static/chunks/webpack.js",
@@ -24,11 +42,11 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/users/responsavel/cadastrarAluno/page": [
+    "/users/responsavel/enviarNotificacoes/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/cadastrarAluno/page.css",
-      "static/chunks/app/users/responsavel/cadastrarAluno/page.js"
+      "static/css/app/users/responsavel/enviarNotificacoes/page.css",
+      "static/chunks/app/users/responsavel/enviarNotificacoes/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

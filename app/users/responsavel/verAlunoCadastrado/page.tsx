@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import mockAlunos from '@/app/Mocks/alunosMocks';
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 import Button, { ButtonColor } from '@/app/Componentes/Button/button';
 import { gerarRelatorioPDF } from '@/app/utils/pdfGenerator';
 const VerAlunoCadastrado = () => {
@@ -30,6 +32,8 @@ const VerAlunoCadastrado = () => {
       });
   }, []);
   return (
+    <div>
+      <Navbar/>
     <div className={styles.page}>
       <div className={styles.container}>
         <h2 className={styles.titulo}>Aluno(s)</h2>
@@ -61,6 +65,8 @@ const VerAlunoCadastrado = () => {
         )}
       </div>
     </div>
+    <Footer />
+  </div>
   );
 };
 
