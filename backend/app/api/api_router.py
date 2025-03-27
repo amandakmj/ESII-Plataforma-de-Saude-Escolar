@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.endpoints import relatorio, profissional_saude, usuarios, aluno, saude, alerta, site, turma, aluno_turma, escola
+from app.api.endpoints import relatorio, profissional_saude, usuarios, aluno, saude, alerta, site, turma, aluno_turma, escola, responsavel
 
 api_router = APIRouter()
 
@@ -22,3 +22,5 @@ api_router.include_router(relatorio.router, prefix="/relatorio", tags=["relatori
 api_router.include_router(turma.router, prefix="/turma", tags=["turma"])
 
 api_router.include_router(aluno_turma.router, prefix="/aluno_turma", tags=["aluno_turma"])
+
+api_router.include_router(responsavel.router, prefix="/responsavel", tags=["responsavel"])
