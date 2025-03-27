@@ -7,6 +7,8 @@ import Button, { ButtonColor } from "../Componentes/Button/button";
 import Footer from "../Componentes/Footer/footer";
 import { useRouter } from "next/navigation";
 import mockUsers from "../Mocks/usuariosMocks";
+import apiUrls from "../utils/apiUrls";
+
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     usuario: "",
@@ -93,7 +95,41 @@ const LoginPage = () => {
   //   }
   // };
 
-  
+  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000";
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    try {
+      // TEMPORÁRIO
+      const response = await fetch(apiUrls.login, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            username: formData.usuario,
+            password: formData.senha
+          }).toString(),
+        }
+      );
+
+      if(!response.ok) {
+        throw new Error("Usuário ou senha incorretos.");
+      }
+
+      // Adiciona o token de autenticação ao armazenamento local
+      const data = await response.json();
+      localStorage.setItem("token", data.access_token);
+
+      // Redirecionamento para a página inicial
+      router.push("/")
+
+    } catch (error: any) {
+      setErrors((prevErrors) => ({...prevErrors, geral: error.message}));
+    }
+  }
+
   const validateForm = () => {
     let newErrors: { usuario?: string; senha?: string } = {};
 
