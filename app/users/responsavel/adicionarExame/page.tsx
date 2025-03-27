@@ -16,7 +16,6 @@ interface adicionarExame {
 const AdicionarExame: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [usuario, setUsuario] = useState<{ nome: string; email: string } | null>(null);
-  const [fotoResponsavel, setFotoResponsavel] = useState("/default-profile.png");
   const [alunos, setAlunos] = useState<any[]>([]);
   const [documentos, setDocumentos] = useState<adicionarExame[]>([
     { titulo: "Alergias: Morango", status: "ainda não foi enviado" },
@@ -33,7 +32,6 @@ const AdicionarExame: React.FC = () => {
       setUsuario(JSON.parse(dados));
     }
 
-    setFotoResponsavel(localStorage.getItem("fotoResponsavel") || "/default-profile.png");
 
     setTimeout(() => {
       setAlunos(mockAlunos);
@@ -62,12 +60,6 @@ const AdicionarExame: React.FC = () => {
       <Navbar />
       <div className={styles.container}>
         <div className={styles.header}>
-          {fotoResponsavel === "/default-profile.png" ? (
-            <div className={styles.addPhotoCircle}>Sem foto</div>
-          ) : (
-            <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profile_image} />
-          )}
-          <h2>{usuario?.nome || "Nome do responsável"}</h2>
         </div>
 
         {loading ? (

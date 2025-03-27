@@ -32,7 +32,6 @@ const CadastraAluno = () => {
       atendimentoUrgencia: boolean;
       compartilharDados: boolean;
       termosCondicoes: boolean;
-      foto: string | null;
     }>({
       nomeAluno: '',
       dataNascimento: '',
@@ -54,7 +53,6 @@ const CadastraAluno = () => {
       atendimentoUrgencia: false,
       compartilharDados: false,
       termosCondicoes: false,
-      foto: null,
     });
     
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -90,13 +88,7 @@ const CadastraAluno = () => {
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
     };    
-  
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) {
-        setFormData((prevData) => ({ ...prevData, foto: URL.createObjectURL(file) }));
-      }
-    };
+
    
     const validateForm = () => {
       let newErrors: { [key: string]: string } = {};
@@ -133,10 +125,6 @@ const CadastraAluno = () => {
     <h1 className={styles.pageTitle}>Cadastre o aluno abaixo:</h1>
       <div className={styles.container}>
         <div className={styles.profile_container}>
-          <label htmlFor="fotoUpload" className={styles.profile_label}>
-            <div className={styles.addPhotoCircle}>Adicione uma foto aqui</div>
-          </label>
-          <input type="file" id="fotoUpload" className={styles.file_input} onChange={handleFileChange} accept="image/*" hidden />
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <label className={styles.label}>Nome Completo*</label>
