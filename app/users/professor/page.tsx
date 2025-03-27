@@ -1,46 +1,144 @@
-import React from 'react';
-import styles from './page.module.css';
-import Navbar from '@/app/Componentes/NavBar/navbar'
+"use client"
 
-const professorPage = () => {
+import React, { useState, useEffect } from 'react';
+import styles from './page.module.css';
+import Footer from "../../Componentes/Footer/footer";
+import { useRouter } from 'next/navigation';
+
+
+const ProfessorPage: React.FC = () => {
+  const router = useRouter();
+  const [nomeUsuario, setNomeUsuario] = useState<string>('');
+  const [turmas, setTurmas] = useState<string[]>([]);
+  const [formData, setFormData] = useState<{
+    cpf: string;
+    dataNascimento: string;
+    genero: string;
+    instituicaoEnsino: string;
+    cargo: string;
+    turma: string;
+    outraTurma: string;
+    foto: string | null;
+  }>({
+    cpf: '',
+    dataNascimento: '',
+    genero: '',
+    instituicaoEnsino: '',
+    cargo: '',
+    turma: '',
+    outraTurma: '',
+    foto: null,
+  });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  useEffect(() => {
+    // Simula a busca do nome no registro (substitua isso por um fetch real, se necessário)
+    const nomeSalvo = localStorage.getItem('nomeUsuario') || 'Nome não encontrado';
+    setNomeUsuario(nomeSalvo);
+
+    setTurmas(["Turma A", "Turma B", "Turma C"]);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+  
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData((prevData) => ({ ...prevData, foto: URL.createObjectURL(file) }));
+    }
+  };
+
+  const validateForm = () => {
+    let newErrors: { [key: string]: string } = {};
+    if (!formData.cpf) newErrors.cpf = "* CPF é obrigatório.";
+    if (!formData.instituicaoEnsino) newErrors.instituicaoEnsino = "* Instituição de Ensino é obrigatório.";
+    if (!formData.cargo) newErrors.cargo= "* Cargo/Função é obrigatório.";
+    if (!formData.turma) newErrors.turma = "* Turma é obrigatório.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (validateForm()) {
+      router.replace("/users/professor/inicial");
+    }
+  };
+
   return (
     <div>
-      {/* <Navbar/> */}
       <div className={styles.page}>
+      <h1 className={styles.pageTitle}>Finalize seu cadastro preenchendo os dados abaixo:</h1>
         <div className={styles.container}>
-          <div className={styles.profile_container}>
-            <img src="/placeholder-image.jpg" alt="Profile" className={styles.profile_image} />
-            <span className={styles.edit_icon}>✏️</span>
-          </div>
-          <h2 className={styles.name}>Nome professor</h2>
-          <form className={styles.form}>
+        <div className={styles.profile_container}>
+  <label htmlFor="fotoUpload" className={styles.profile_label}>
+    {formData.foto ? (
+      // Exibe a foto escolhida
+      <img src={formData.foto} alt="Foto do usuário" className={styles.profile_image} />
+    ) : (
+      // Se não houver foto, exibe um círculo com a mensagem
+      <div className={styles.addPhotoCircle}>Adicione uma foto aqui</div>
+    )}
+  </label>
+  <input
+    type="file"
+    id="fotoUpload"
+    className={styles.file_input}
+    onChange={handleFileChange}
+    accept="image/*"
+    hidden
+  />
+</div>
+
+          <h2 className={styles.name}>{nomeUsuario}</h2>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.label}>CPF*</label>
-            <input type="text" className={styles.input_box} />
+            <input type="text" name="cpf" className={styles.input_box} onChange={handleInputChange} />
+            {errors.cpf && <p className={styles.error}>{errors.cpf}</p>}
             
             <label className={styles.label}>Data de nascimento</label>
-            <input type="date" className={styles.input_box} />
+            <input type="date" name="dataNascimento" className={styles.input_box} onChange={handleInputChange} />
             
             <label className={styles.label}>Gênero</label>
-            <input type="text" value="Mulher" className={styles.input_box} readOnly />
+            <select name="genero" className={styles.input_box}>
+            <option value=""></option>
+              <option value="Mulher">Mulher</option>
+              <option value="Homem">Homem</option>
+              <option value="Outro">Outro</option>
+            </select>
             
-            <label className={styles.label}>Instituição de ensino*</label>
-            <input type="text" value="Pai" className={styles.input_box} readOnly />
-            
+            <label className={styles.label}>Instituição de Ensino*</label>
+            <input type="text" name="instituicaoEnsino" className={styles.input_box} onChange={handleInputChange} />
+            {errors.instituicaoEnsino && <p className={styles.error}>{errors.instituicaoEnsino}</p>}
+
             <label className={styles.label}>Cargo/Função*</label>
-            <input type="text" className={styles.input_box} />
+            <input type="text" name="cargo" className={styles.input_box} onChange={handleInputChange} />
+            {errors.cargo && <p className={styles.error}>{errors.cargo}</p>}
             
-            <label className={styles.label}>Turma que leciona*</label>
-            <input type="text" className={styles.input_box} />
+            <label className={styles.label}>Turma</label>
+            <select name="turma" className={styles.input_box} onChange={handleInputChange}>
+                <option value="">Selecione uma turma</option>
+                {turmas.map((turma, index) => (
+                <option key={index} value={turma}>{turma}</option>
+                ))}
+                <option value="Outra">Outra</option>
+            </select>
+            {formData.turma === "Outra" && (
+                <input type="text" name="outraTurma" className={styles.input_box} placeholder="Digite o nome da turma" onChange={handleInputChange} />
+            )}
+            <label className={styles.label}>* indica um campo obrigatório</label>
             
-            <label className={styles.label}>Outras turmas</label>
-            <input type="text" className={styles.input_box} />
-            
-            <button className={styles.button}>Confirmar</button>
+            <button type="submit" className={styles.button}>Confirmar</button>
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
 
-export default professorPage;
+export default ProfessorPage;
