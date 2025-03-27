@@ -2,6 +2,8 @@
 
 import React from "react";
 import { useRouter } from "next/navigation"; 
+import Navbar from "../../Componentes/NavBar/navbar";
+import Footer from '@/app/Componentes/Footer/footer';
 import styles from "./page.module.css";
 
 const CadastroProfessorSucesso = () => {
@@ -13,26 +15,25 @@ const CadastroProfessorSucesso = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <img src={fotoGestor} alt="Foto do Gestor" className={styles.profileImage} />
-        <span className={styles.profileName}>{nomeGestor}</span>
-      </div>
-
+      <Navbar/>
       <div className={styles.container}>
         <p className={styles.successMessage}>Professor cadastrado com sucesso!<br /> O que deseja fazer agora?</p>
 
-        <button className={styles.button} onClick={() => router.push("/gestorEscolar/home")}>
+        <button className={styles.button} onClick={() => router.replace("./inicial")}>
           Ir para a página inicial do gestor escolar
         </button>
         
-        <button className={styles.button} onClick={() => router.push("/professor/home")}>
-          Ir para a página inicial do professor
-        </button>
         
-        <button className={styles.button} onClick={() => router.push("/logout")}>
+        <button className={styles.button} onClick={() => {
+          console.log("Usuário deslogado");
+          sessionStorage.removeItem("usuario")
+          router.replace("/");
+        }
+        }>
           Sair
         </button>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -29,16 +29,12 @@ const inicialProfissionalSaudePage = () => {
             <button className={styles.button}>Notificações</button>
             </Link>
             
-            <Link href="./verAluno">
-            <button className={styles.button}>Ver Aluno</button>
+            <Link href="./verAlunoCadastrado">
+            <button className={styles.button}>Ver Aluno Cadastrado</button>
             </Link>
             
             <Link href="./adicionarExame">
             <button className={styles.button}>Adicionar Exame</button>
-            </Link>
-            
-            <Link href="./relatorios">
-            <button className={styles.button}>Relatório</button>
             </Link>
           </div>
         </div>

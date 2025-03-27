@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Navbar from "../../Componentes/NavBar/navbar";
 import Footer from "@/app/Componentes/Footer/footer";
@@ -23,6 +23,7 @@ const InicialResponsavelPage: React.FC = () => {
     endereco: "",
     foto: null,
   });
+  const [usuario, setUsuario] = useState<{ nome: string; email: string } | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -30,6 +31,13 @@ const InicialResponsavelPage: React.FC = () => {
       setFormData((prevData) => ({ ...prevData, foto: URL.createObjectURL(file) }));
     }
   };
+
+  useEffect(() => {
+    const dados = sessionStorage.getItem("usuario");
+    if (dados) {
+      setUsuario(JSON.parse(dados));
+    }
+  }, []);
 
   return (
     <div className={styles.page}>
@@ -47,8 +55,7 @@ const InicialResponsavelPage: React.FC = () => {
             <input type="file" id="fotoUpload" className={styles.file_input} onChange={handleFileChange} accept="image/*" hidden />
           </div>
           <div>
-            <h2 className={styles.responsavel}>Responsável pelo aluno</h2>
-            <p className={styles.nome}>Nome do responsável</p>
+            <p className={styles.nome}>{usuario?.nome}</p>
           </div>
         </div>
 

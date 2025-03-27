@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import Navbar from '../../Componentes/NavBar/navbar';
+import Footer from '@/app/Componentes/Footer/footer';
 import { useRouter } from "next/navigation";
 
 interface Aluno {
@@ -23,7 +25,7 @@ const ListaAlunos: React.FC = () => {
     // Lista fixa de alunos simulando uma API
     const alunosCadastrados: Aluno[] = [
       { nome: "Amanda Freitas Silva Araújo", id: "1" },
-      { nome: "Artur Freitas Bonfim Araújo ALves", id: "2" },
+      { nome: "Bruno Oliveira Santos", id: "2" },
       { nome: "Carlos Eduardo Lima", id: "3" },
       { nome: "Débora Martins", id: "4" },
       { nome: "Elisa Costa", id: "5" },
@@ -52,6 +54,9 @@ const ListaAlunos: React.FC = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
+      <div className={styles.page}>
     <div className={styles.container}>
       <div className={styles.header}>
         <img src={fotoProfessor} alt="Foto do professor" className={styles.profilePic} />
@@ -103,6 +108,9 @@ const ListaAlunos: React.FC = () => {
       <button className={styles.voltarButton} onClick={() => router.push("/tela-inicial")}>
         Voltar à tela inicial
       </button>
+    </div>
+    </div>
+    <Footer/>
     </div>
   );
 };

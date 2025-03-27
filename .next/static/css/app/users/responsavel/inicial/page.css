@@ -1,0 +1,276 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/users/responsavel/inicial/page.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+.page_page__dzY40 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 100vh; /* Faz a página ocupar toda a altura da tela */
+
+}
+
+
+.page_sidebar__G2Xyc {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.page_title__L6tgh {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+.page_container__t16qL {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.page_profile_section__29cvx {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.page_profile_image__sttix {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.page_responsavel__rAF70 {
+    font-size: 18px;
+    font-weight: bold;
+}
+.page_profile_image__sttix {
+    width: 100px; /* Ajuste conforme necessário */
+    height: 100px;
+    border-radius: 50%; /* Para manter um formato circular */
+    object-fit: cover; /* Mantém a imagem bem ajustada */
+  }
+  .page_addPhotoCircle__dOh1b {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    border: 2px dashed #ccc;
+}
+.page_nome__IVA3h {
+    font-size: 16px;
+}
+
+.page_buttons_section__2_hmG {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 300px;
+}
+
+.page_button__leF_o {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.page_button__leF_o:hover {
+    background-color: #d9d9d9;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/users/Componentes/NavBar/navbar.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/* Container para navbar e menu lateral */
+.navbar_navbar_container__uJJin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  top: 0;
+}
+
+.navbar_navbar__XPxii {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar_logo__9NHC_ {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar_menu_lateral__9ZCNu {
+  position: fixed;
+  top: 0;
+  right: 0; 
+  height: 100vh; /* Ocupa toda a altura da tela */
+  
+  padding: 10px;
+  margin-bottom: 30px;
+  display: block; 
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/Componentes/MenuLateral/menuLateral.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.menuLateral_menu_container__u4GIo {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.menuLateral_menu_button__Liw92 {
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.menuLateral_menu_button__Liw92:hover {
+    color: black;
+}
+
+.menuLateral_menu_aberto__Oxzxp {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--light-gray);
+    border-radius: 0 16px 16px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menuLateral_menu_aberto__Oxzxp.menuLateral_ativo__DpANY {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.menuLateral_close_button__vSE_E {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menuLateral_profile_section__kTqly {
+    text-align: center;
+    padding: 20px;
+}
+
+.menuLateral_profile_image__fagc_ {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.menuLateral_profile_name__zUxaV {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.menuLateral_profile_subtitle__xwAFH {
+    font-size: 14px;
+    color: gray;
+}
+
+.menuLateral_menu_itens_list__k8jyR {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.menuLateral_menu_item__E5n8N {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.menuLateral_menu_item__E5n8N a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menuLateral_menu_item__E5n8N:hover {
+    transition: 0.5s;
+    color: rgb(var(--primary-blue));
+}
+
+.menuLateral_logout_button__7ozXb {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: rgb(var(--primary-blue));
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+.menuLateral_logout_button__7ozXb:hover {
+    transition: 0.5s;
+    background-color: grey;
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[5].use[3]!./app/Componentes/Footer/footer.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+.footer_page__JUALD {
+    bottom: 0;
+    left: 0; 
+    width: 100vw;
+    background-color: rgb(var(--secondary-blue));
+    color: white;
+    text-align:left;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+

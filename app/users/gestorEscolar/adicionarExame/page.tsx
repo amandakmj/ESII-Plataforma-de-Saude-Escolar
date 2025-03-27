@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import Footer from "@/app/Componentes/Footer/footer";
+import Navbar from "../../Componentes/NavBar/navbar";
 
 interface adicionarExame {
   titulo: string;
@@ -20,9 +22,7 @@ const adicionarExame: React.FC = () => {
     { titulo: "Cirurgias/Internações: nenhuma", status: "ainda não foi enviado" },
     { titulo: "Deficiências ou necessidades especiais: nenhuma", status: "ainda não foi enviado" },
     { titulo: "Plano de saúde: Bradesco tal", status: "ainda não foi enviado" },
-    { titulo: "Carteira de Vacinação", status: "ainda não foi enviado" },
-    { titulo: "Relatórios Médicos relevantes", status: "ainda não foi enviado" },
-    { titulo: "Autorização assinada pelos responsáveis", status: "ainda não foi enviado" },
+
   ]);
 
   useEffect(() => {
@@ -39,12 +39,19 @@ const adicionarExame: React.FC = () => {
   };
 
   return (
+    <div className={styles.page}>
+      <Navbar/>
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profilePic} />
+      {fotoResponsavel === "/default-profile.png" ? (
+  <div className={styles.addPhotoCircle}>Sem foto</div>
+) : (
+  <img src={fotoResponsavel} alt="Foto do responsável" className={styles.profile_image} />
+)}
+
         <h2>{nomeResponsavel}</h2>
       </div>
-      <button className={styles.alunoButton}>{nomeAluno}</button>
+      <p className={styles.aluno}>{nomeAluno}</p>
       <div className={styles.card}>
         {documentos.map((doc, index) => (
           <div key={index} className={styles.docContainer}>
@@ -58,6 +65,8 @@ const adicionarExame: React.FC = () => {
           </div>
         ))}
       </div>
+      </div>
+      <Footer/>
     </div>
   );
 };
