@@ -5,7 +5,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000";
 
 const apiUrls = {
     // Rotas de Login e Registro
-    login: `${API_BASE_URL}/login`,
+    login: `${API_BASE_URL}/site/login`,
   
     // Rotas de Alerta
     createAlert: `${API_BASE_URL}/create`,
