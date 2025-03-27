@@ -7,7 +7,7 @@ import Button, { ButtonColor } from "../Componentes/Button/button";
 import Footer from "../Componentes/Footer/footer";
 import { useRouter } from "next/navigation";
 import mockUsers from "../Mocks/usuariosMocks";
-import apiUrls from "../apiUrls";
+import apiUrls from "../utils/apiUrls";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

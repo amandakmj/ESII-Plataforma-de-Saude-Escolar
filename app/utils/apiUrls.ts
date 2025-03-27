@@ -1,9 +1,11 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000";
 
+// Caso seja uma rota com parâmetro basta fazer o seguinte para substituir
+// apiUrls.route.replace("{param}", value).replace("...")
+
 const apiUrls = {
     // Rotas de Login e Registro
     login: `${API_BASE_URL}/login`,
-    register: `${API_BASE_URL}/users/create`,
   
     // Rotas de Alerta
     createAlert: `${API_BASE_URL}/create`,
@@ -42,11 +44,11 @@ const apiUrls = {
     deleteSaudeAluno: `${API_BASE_URL}/delete_saude_id/{saude_id}`,
   
     // Rotas de Usuários
-    createUser: `${API_BASE_URL}/create`,
-    listUsers: `${API_BASE_URL}/`,
-    getUser: `${API_BASE_URL}/get/{usuario_id}`,
-    updateUser: `${API_BASE_URL}/update`,
-    deleteUser: `${API_BASE_URL}/delete/{usuario_id}`,
+    createUser: `${API_BASE_URL}/usuarios/create`,
+    listUsers: `${API_BASE_URL}/usuarios/`,
+    getUser: `${API_BASE_URL}/usuarios/get/{usuario_id}`,
+    updateUser: `${API_BASE_URL}/usuarios/update`,
+    deleteUser: `${API_BASE_URL}/usuarios/delete/{usuario_id}`,
   
     // Rotas de Turmas (para as turmas, já tem um prefixo /turmas)
     createClass: `${API_BASE_URL}/turmas/`,
