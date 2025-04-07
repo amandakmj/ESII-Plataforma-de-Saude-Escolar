@@ -6,7 +6,6 @@ import styles from "./page.module.css";
 import Navbar from "../Componentes/NavBar/navbar";
 import Footer from "../Componentes/Footer/footer";
 import Button, { ButtonColor } from "../Componentes/Button/button";
-import apiUrls from "../utils/apiUrls";  // Importando o arquivo com as URLs da API
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -28,7 +27,8 @@ const RegisterPage = () => {
     setErrors((prev) => ({ ...prev, [name]: "" })); // Limpa o erro ao digitar
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Validação antes de enviar o formulário
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Criando um objeto de erros vazio e tipado corretamente
@@ -52,47 +52,21 @@ const RegisterPage = () => {
       return;
     }
 
-    // Enviar os dados para o back-end
-    try {
-      const response = await fetch(apiUrls.createUser, { 
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome: formData.nome,
-          email: formData.email,
-          tipo_usuario: formData.userType,
-          segredo: formData.senha,
-        }),
-      });
+    console.log("Dados do usuário:", formData);
 
-      const data = await response.json();
-      
-      if (response.ok) {
-        console.log("Usuário criado:", data);
-        // Redirecionar com base no tipo de usuário
-        switch (formData.userType) {
-          case "parent":
-            router.push("/users/responsavel");
-            break;
-          case "instructor":
-            router.push("/users/professor");
-            break;
-          case "manager":
-            router.push("/users/gestorEscolar");
-            break;
-          case "health_professional":
-            router.push("/users/profissionalSaude");
-            break;
-        }
-      } else {
-        // Verificar se o erro é um objeto e extrair a mensagem como string
-        const errorMessage = typeof data.detail === "string" ? data.detail : "Erro ao criar usuário";
-        setErrors({ email: errorMessage });
-      }
-    } catch (error) {
-      console.error("Erro ao criar usuário:", error);
+    switch (formData.userType) {
+      case "responsavel":
+        router.push("/users/responsavel");
+        break;
+      case "professor":
+        router.push("/users/professor");
+        break;
+      case "gestorEscolar":
+        router.push("/users/gestorEscolar");
+        break;
+      case "profissionalSaude":
+        router.push("/users/profissionalSaude");
+        break;
     }
   };
 
@@ -140,10 +114,10 @@ const RegisterPage = () => {
                 onChange={handleChange}
               >
                 <option value="">Selecione...</option>
-                <option value="parent">Responsável pelo aluno</option>
-                <option value="instructor">Professor</option>
-                <option value="manager">Gestor Escolar</option>
-                <option value="health_professional">Profissional da saúde</option>
+                <option value="responsavel">Responsável pelo aluno</option>
+                <option value="professor">Professor</option>
+                <option value="gestorEscolar">Gestor Escolar</option>
+                <option value="profissionalSaude">Profissional da saúde</option>
               </select>
               {errors.userType && <p className={styles.error_message}>{errors.userType}</p>}
             </div>
