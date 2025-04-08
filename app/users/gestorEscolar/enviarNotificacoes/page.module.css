@@ -1,3 +1,4 @@
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,32 +6,30 @@
   padding: 20px;
   background-color: #f8f9fa;
   min-height: 100vh;
+  width: 100%;
+  max-width: 900px; /* aumentada para permitir mais largura */
+  gap: 30px; /* espaço entre elementos */
 }
 
 .header {
   display: flex;
   align-items: center;
+  justify-content: center; /* centraliza horizontalmente */
   gap: 10px;
-  margin-bottom: 20px;
   width: 100%;
-  max-width: 500px;
-}
-
-.profilePic {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  max-width: 700px;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .textarea {
   width: 100%;
-  max-width: 500px;
+  max-width: 700px; /* aumentada de 500px para 700px */
   height: 100px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -39,25 +38,9 @@
   background-color: #e3f2fd;
 }
 
-.button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-
 .notificacoesContainer {
-  margin-top: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 700px; /* aumentada de 500px para 700px */
 }
 
 .notificacao {
@@ -65,28 +48,42 @@
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.button {
+  margin-top: 10px;
+  padding: 12px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
 }
 
 .dataEnvio {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   color: #6c757d;
-}
-
-.semNotificacao {
-  color: gray;
-  text-align: center;
+  margin-top: 5px;
 }
 
 .voltarButton {
-  margin-top: 20px;
-  padding: 10px 20px;
+  margin-top: 30px;
+  padding: 12px 30px;
   background-color: #dc3545;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  transition: background-color 0.3s;
 }
 
 .voltarButton:hover {
@@ -95,11 +92,10 @@
 
 .page {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  min-height: 100vh;
   align-items: center;
   padding-top: 60px;
   padding-left: 20px;
   padding-right: 20px;
+  min-height: 100vh;
 }

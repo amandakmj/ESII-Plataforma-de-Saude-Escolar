@@ -17,17 +17,25 @@ const EnviarNotificacoesPage: React.FC = () => {
   const [mensagem, setMensagem] = useState("");
   const [notificacoes, setNotificacoes] = useState<Notificacao[]>([]);
   const [nomeResponsavel, setNomeResponsavel] = useState("Nome do Responsável");
-  const [fotoResponsavel, setFotoResponsavel] = useState("/default-profile.png");
 
   useEffect(() => {
-    const nomeSalvo = localStorage.getItem("nomeResponsavel") || "Nome do Responsável";
-    const fotoSalva = localStorage.getItem("fotoResponsavel") || "/default-profile.png";
-    setNomeResponsavel(nomeSalvo);
-    setFotoResponsavel(fotoSalva);
-
+    const dados = sessionStorage.getItem("usuario");
+    if (dados) {
+      try {
+        const usuarioObj = JSON.parse(dados);
+        setNomeResponsavel(usuarioObj.nome || "Nome do Responsável");
+      } catch (e) {
+        console.error("Erro ao ler os dados do usuário:", e);
+        setNomeResponsavel("Nome do Responsável");
+      }
+    } else {
+      setNomeResponsavel("Nome do Responsável");
+    }
+  
     const notificacoesSalvas = JSON.parse(localStorage.getItem("notificacoes") || "[]");
     setNotificacoes(notificacoesSalvas);
   }, []);
+  
 
   const enviarNotificacao = () => {
     if (mensagem.trim() === "") return;

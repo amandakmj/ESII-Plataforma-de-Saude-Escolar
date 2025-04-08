@@ -112,10 +112,20 @@ const CadastraAluno = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (validateForm()) {
-        // Aqui você pode enviar os dados para o banco de dados
+        // Recuperar lista atual de alunos ou iniciar lista vazia
+        const alunosSalvos = JSON.parse(localStorage.getItem('alunos') || '[]');
+    
+        // Adicionar novo aluno
+        const novoAluno = { ...formData };
+    
+        // Salvar lista atualizada no localStorage
+        localStorage.setItem('alunos', JSON.stringify([...alunosSalvos, novoAluno]));
+    
+        // Redireciona
         router.replace("/users/responsavel/inicial");
       }
-   };
+    };
+    
 
   return (
     <div>

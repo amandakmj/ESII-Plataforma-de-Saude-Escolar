@@ -20,9 +20,19 @@ const NotificacoesPage: React.FC = () => {
   const [nomeResponsavel, setNomeResponsavel] = useState("Nome do Responsável");
 
   useEffect(() => {
-    const nomeSalvo = localStorage.getItem("nomeUsuario") || "Nome não encontrado";
-    setNomeResponsavel(nomeSalvo);
-
+    const dados = sessionStorage.getItem("usuario");
+    if (dados) {
+      try {
+        const usuarioObj = JSON.parse(dados);
+        setNomeResponsavel(usuarioObj.nome || "Nome não encontrado");
+      } catch (e) {
+        console.error("Erro ao ler os dados do usuário:", e);
+        setNomeResponsavel("Nome não encontrado");
+      }
+    } else {
+      setNomeResponsavel("Nome não encontrado");
+    }
+  
     const notificacoesSalvas = JSON.parse(localStorage.getItem("notificacoes") || "[]");
     const notificacoesAtualizadas = notificacoesSalvas.map((notif: Notificacoes) => ({
       ...notif,
@@ -31,6 +41,7 @@ const NotificacoesPage: React.FC = () => {
     setNotificacoes(notificacoesAtualizadas);
     localStorage.setItem("Notificacoes", JSON.stringify(notificacoesAtualizadas));
   }, []);
+  
 
   return (
     <div className={styles.container}> 

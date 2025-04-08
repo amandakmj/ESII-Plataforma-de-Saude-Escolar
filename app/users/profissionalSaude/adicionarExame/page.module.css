@@ -21,6 +21,7 @@
   .header {
     display: flex;
     align-items: center;
+    flex-direction: column;
     width: 100%;
     max-width: 600px;
     margin-bottom: 20px;
@@ -32,6 +33,22 @@
     border-radius: 50%; /* Para manter um formato circular */
     object-fit: cover; /* Mantém a imagem bem ajustada */
   }
+  .confirmarButton {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirmarButton:hover {
+    background-color: #007bff;
+  }
+  
 
 
   .addPhotoCircle {

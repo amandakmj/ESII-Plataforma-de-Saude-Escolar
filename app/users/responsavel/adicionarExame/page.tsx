@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Footer from "@/app/Componentes/Footer/footer";
 import Navbar from "../../Componentes/NavBar/navbar";
-import mockAlunos from "@/app/Mocks/alunosMocks";
 
 
 interface adicionarExame {
@@ -26,18 +25,21 @@ const AdicionarExame: React.FC = () => {
     { titulo: "Plano de saúde: Bradesco tal", status: "ainda não foi enviado" },
 
   ]);
+
   useEffect(() => {
     const dados = sessionStorage.getItem("usuario");
     if (dados) {
       setUsuario(JSON.parse(dados));
     }
-
-
+  
     setTimeout(() => {
-      setAlunos(mockAlunos);
+      const alunosSalvos = JSON.parse(localStorage.getItem('alunos') || '[]');
+      setAlunos(alunosSalvos);
       setLoading(false);
     }, 1000);
   }, []);
+  
+
 
   const handleFileUpload = (alunoIndex: number, docIndex: number, file: File | null) => {
     setAlunos((prevAlunos) =>
@@ -71,7 +73,7 @@ const AdicionarExame: React.FC = () => {
         ) : (
           alunos.map((aluno, alunoIndex) => (
             <div key={alunoIndex} className={styles.card}>
-              <p className={styles.aluno}>{aluno.nome}</p>
+              <p className={styles.aluno}>{aluno.nomeAluno}</p>
               <div className={styles.card}>
                 {documentos && documentos.length > 0 ? (
                   documentos.map((doc: any, docIndex: number) => (
@@ -83,6 +85,12 @@ const AdicionarExame: React.FC = () => {
                         className={styles.fileInput}
                         onChange={(e) => handleFileUpload(alunoIndex, docIndex, e.target.files?.[0] || null)}
                       />
+                      <button
+                        className={styles.confirmarButton}
+                        onClick={() => alert(`Documentos confirmados para ${aluno.nomeAluno}`)}
+                      >
+                        Confirmar
+                      </button>
                     </div>
                   ))
                 ) : (

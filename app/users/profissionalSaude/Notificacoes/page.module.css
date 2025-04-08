@@ -1,57 +1,63 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f8f9fa;
-    min-height: 100vh;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 900px; /* aumentada a largura */
+  margin: 0 auto;
+}
   
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  .profilePic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  
-  .title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .subtitle {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .notificacoesContainer {
-    width: 100%;
-    max-width: 500px;
-  }
+.header {
+  display: flex;
+  justify-content: center; /* centraliza o conteúdo */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.profilePic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.notificacoesContainer {
+  width: 100%;
+}
   
   .notificacaoNaoLida {
     background-color: #90caf9;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
   }
   
   .notificacaoLida {
     background-color: #e9ecef;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
   }
   
   .dataEnvio {

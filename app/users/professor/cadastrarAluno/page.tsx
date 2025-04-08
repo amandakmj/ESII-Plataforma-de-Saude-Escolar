@@ -32,7 +32,6 @@ const CadastraAluno = () => {
       atendimentoUrgencia: boolean;
       compartilharDados: boolean;
       termosCondicoes: boolean;
-      foto: string | null;
     }>({
       nomeAluno: '',
       dataNascimento: '',
@@ -54,7 +53,6 @@ const CadastraAluno = () => {
       atendimentoUrgencia: false,
       compartilharDados: false,
       termosCondicoes: false,
-      foto: null,
     });
     
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -90,8 +88,7 @@ const CadastraAluno = () => {
       const { name, value } = e.target;
       setFormData((prevData) => ({ ...prevData, [name]: value }));
     };    
-  
-    
+
    
     const validateForm = () => {
       let newErrors: { [key: string]: string } = {};
@@ -102,7 +99,6 @@ const CadastraAluno = () => {
       if (!formData.altura) newErrors.altura = "* Altura é obrigatório.";
       if (!formData.endereco) newErrors.endereco = "* Endereço é obrigatório.";
       if (!formData.escola) newErrors.escola = "* Nome da escola é obrigatório.";
-      if (!formData.serieTurma) newErrors.serieTurma = "* Série/Turma é obrigatória.";
       if (!formData.matricula) newErrors.matricula = "* Matrícula é obrigatória.";
       if (!formData.alergias) newErrors.alergias = "* Alergias é obrigatória.";
       if (!formData.doencasCronicas) newErrors.doencasCronicas = "* Doença Crônica é obrigatória.";
@@ -116,10 +112,20 @@ const CadastraAluno = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (validateForm()) {
-        // Aqui você pode enviar os dados para o banco de dados
+        // Recuperar lista atual de alunos ou iniciar lista vazia
+        const alunosSalvos = JSON.parse(localStorage.getItem('alunos') || '[]');
+    
+        // Adicionar novo aluno
+        const novoAluno = { ...formData };
+    
+        // Salvar lista atualizada no localStorage
+        localStorage.setItem('alunos', JSON.stringify([...alunosSalvos, novoAluno]));
+    
+        // Redireciona
         router.replace("/users/responsavel/inicial");
       }
-   };
+    };
+    
 
   return (
     <div>
@@ -127,7 +133,8 @@ const CadastraAluno = () => {
     <div className={styles.page}>
     <h1 className={styles.pageTitle}>Cadastre o aluno abaixo:</h1>
       <div className={styles.container}>
-        
+        <div className={styles.profile_container}>
+        </div>
         <form className={styles.form} onSubmit={handleSubmit}>
           <label className={styles.label}>Nome Completo*</label>
           <input type="text" name="nomeAluno" className={styles.input_box} onChange={handleInputChange} />
@@ -171,7 +178,6 @@ const CadastraAluno = () => {
 
           <label className={styles.label}>Serie/Turma*</label>
           <input type="text" name="serie/turma" className={styles.input_box} onChange={handleInputChange} />
-          {errors.serieTurma && <p className={styles.error}>{errors.serieTurma}</p>}
 
 
           <label className={styles.label}>Matrícula*</label>
