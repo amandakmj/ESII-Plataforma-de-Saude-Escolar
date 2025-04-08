@@ -32,12 +32,22 @@ const ProfessorPage: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
-    // Simula a busca do nome no registro (substitua isso por um fetch real, se necessário)
-    const nomeSalvo = localStorage.getItem('nomeUsuario') || 'Nome não encontrado';
-    setNomeUsuario(nomeSalvo);
-
+    const usuario = sessionStorage.getItem("usuario");
+    if (usuario) {
+      try {
+        const usuarioObj = JSON.parse(usuario);
+        setNomeUsuario(usuarioObj.nome || "Nome não encontrado");
+      } catch (e) {
+        console.error("Erro ao ler o nome:", e);
+        setNomeUsuario("Nome não encontrado");
+      }
+    } else {
+      setNomeUsuario("Nome não encontrado");
+    }
+  
     setTurmas(["Turma A", "Turma B", "Turma C"]);
   }, []);
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

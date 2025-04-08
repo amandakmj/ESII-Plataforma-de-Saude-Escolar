@@ -1,6 +1,9 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/register/page": "app/register/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/users/responsavel/page": "app/users/responsavel/page.js",
-  "/users/gestorEscolar/page": "app/users/gestorEscolar/page.js"
+  "/users/gestorEscolar/page": "app/users/gestorEscolar/page.js",
+  "/users/responsavel/cadastrarAluno/page": "app/users/responsavel/cadastrarAluno/page.js",
+  "/users/responsavel/inicial/page": "app/users/responsavel/inicial/page.js",
+  "/users/responsavel/verAlunoCadastrado/page": "app/users/responsavel/verAlunoCadastrado/page.js",
+  "/users/responsavel/notificacoes/page": "app/users/responsavel/notificacoes/page.js"
 }

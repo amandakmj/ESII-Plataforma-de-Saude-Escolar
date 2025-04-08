@@ -99,7 +99,6 @@ const CadastraAluno = () => {
       if (!formData.altura) newErrors.altura = "* Altura é obrigatório.";
       if (!formData.endereco) newErrors.endereco = "* Endereço é obrigatório.";
       if (!formData.escola) newErrors.escola = "* Nome da escola é obrigatório.";
-      if (!formData.serieTurma) newErrors.serieTurma = "* Série/Turma é obrigatória.";
       if (!formData.matricula) newErrors.matricula = "* Matrícula é obrigatória.";
       if (!formData.alergias) newErrors.alergias = "* Alergias é obrigatória.";
       if (!formData.doencasCronicas) newErrors.doencasCronicas = "* Doença Crônica é obrigatória.";
@@ -169,7 +168,6 @@ const CadastraAluno = () => {
 
           <label className={styles.label}>Serie/Turma*</label>
           <input type="text" name="serie/turma" className={styles.input_box} onChange={handleInputChange} />
-          {errors.serieTurma && <p className={styles.error}>{errors.serieTurma}</p>}
 
 
           <label className={styles.label}>Matrícula*</label>

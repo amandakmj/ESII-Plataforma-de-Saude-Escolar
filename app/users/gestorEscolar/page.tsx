@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import router from 'next/router';
 import Footer from '@/app/Componentes/Footer/footer';
@@ -35,6 +35,23 @@ const gestorEscolarPage = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  const [nomeUsuario, setNomeUsuario] = useState<string>('');
+
+useEffect(() => {
+  const usuario = sessionStorage.getItem("usuario");
+  if (usuario) {
+    try {
+      const usuarioObj = JSON.parse(usuario);
+      setNomeUsuario(usuarioObj.nome || "Nome não encontrado");
+    } catch (e) {
+      console.error("Erro ao ler o nome:", e);
+      setNomeUsuario("Nome não encontrado");
+    }
+  } else {
+    setNomeUsuario("Nome não encontrado");
+  }
+}, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -57,7 +74,7 @@ const gestorEscolarPage = () => {
       <div className={styles.page}>
         <div className={styles.container}>
         
-          <h2 className={styles.name}>Nome gestor escolar</h2>
+          <h2 className={styles.name}>{nomeUsuario}</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
             
             <label className={styles.label}>CPF*</label>

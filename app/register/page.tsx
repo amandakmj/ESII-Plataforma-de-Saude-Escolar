@@ -83,7 +83,7 @@ const RegisterPage = () => {
           {/* Formulário */}
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.input_section}>
-              <p className={styles.text}>Nome Completo</p>
+              <p className={styles.text}>Nome Completo*</p>
               <input
                 type="text"
                 name="nome"
@@ -96,7 +96,7 @@ const RegisterPage = () => {
             </div>
 
             <div className={styles.input_section}>
-              <p className={styles.text}>Email</p>
+              <p className={styles.text}>Email*</p>
               <input
                 type="email"
                 name="email"
@@ -109,7 +109,7 @@ const RegisterPage = () => {
             </div>
 
             <div className={styles.input_section}>
-              <p className={styles.text}>Qual é o seu perfil de acesso?</p>
+              <p className={styles.text}>Qual é o seu perfil de acesso?*</p>
               <select
                 name="userType"
                 className={`${styles.input_selection} ${errors.userType ? styles.invalid : ""}`}
@@ -126,7 +126,7 @@ const RegisterPage = () => {
             </div>
 
             <div className={styles.input_section}>
-              <p className={styles.text}>Senha</p>
+              <p className={styles.text}>Senha*</p>
               <input
                 type="password"
                 name="senha"
@@ -137,6 +137,7 @@ const RegisterPage = () => {
               />
               {errors.senha && <p className={styles.error_message}>{errors.senha}</p>}
             </div>
+            <p className={styles.required_notice}>* Indica um item obrigatório</p>
 
             {/* Botão de envio */}
             <Button text="Confirmar" color={ButtonColor.Secondary} />

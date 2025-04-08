@@ -6,11 +6,23 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/users/profissionalSaude/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/profissionalSaude/page.css",
+      "static/chunks/app/users/profissionalSaude/page.js"
+    ],
     "/register/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/register/page.css",
       "static/chunks/app/register/page.js"
+    ],
+    "/users/professor/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/professor/page.css",
+      "static/chunks/app/users/professor/page.js"
     ],
     "/users/gestorEscolar/page": [
       "static/chunks/webpack.js",
@@ -21,8 +33,37 @@
     "/users/responsavel/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/users/responsavel/page.js",
-      "static/css/app/users/responsavel/page.css"
+      "static/css/app/users/responsavel/page.css",
+      "static/chunks/app/users/responsavel/page.js"
+    ],
+    "/users/responsavel/inicial/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/inicial/page.css",
+      "static/chunks/app/users/responsavel/inicial/page.js"
+    ],
+    "/users/responsavel/cadastrarAluno/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/cadastrarAluno/page.css",
+      "static/chunks/app/users/responsavel/cadastrarAluno/page.js"
+    ],
+    "/users/responsavel/verAlunoCadastrado/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/verAlunoCadastrado/page.css",
+      "static/chunks/app/users/responsavel/verAlunoCadastrado/page.js"
+    ],
+    "/users/responsavel/notificacoes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/users/responsavel/notificacoes/page.css",
+      "static/chunks/app/users/responsavel/notificacoes/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

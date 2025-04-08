@@ -25,20 +25,33 @@ const InicialResponsavelPage: React.FC = () => {
   });
   const [usuario, setUsuario] = useState<{ nome: string; email: string } | null>(null);
 
-  
+  const [nomeUsuario, setNomeUsuario] = useState("Nome não encontrado");
 
   useEffect(() => {
     const dados = sessionStorage.getItem("usuario");
     if (dados) {
-      setUsuario(JSON.parse(dados));
+      try {
+        const usuarioObj = JSON.parse(dados);
+        setUsuario(usuarioObj);
+        setNomeUsuario(usuarioObj.nome || "Nome não encontrado");
+      } catch (e) {
+        console.error("Erro ao ler os dados do usuário:", e);
+        setUsuario(null);
+        setNomeUsuario("Nome não encontrado");
+      }
+    } else {
+      setUsuario(null);
+      setNomeUsuario("Nome não encontrado");
     }
   }, []);
+  
 
   return (
     <div className={styles.page}>
       <Navbar />
+      <h2 className={styles.name}>{nomeUsuario}</h2>
       <div className={styles.container}>
-       
+
 
         <div className={styles.buttons_section}>
           <Link href="./cadastrarAluno">

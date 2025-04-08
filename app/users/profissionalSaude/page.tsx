@@ -27,6 +27,23 @@ const profissionalSaudePage = () => {
     
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     
+    const [nomeUsuario, setNomeUsuario] = useState<string>('');
+
+    useEffect(() => {
+      const usuario = sessionStorage.getItem("usuario");
+      if (usuario) {
+        try {
+          const usuarioObj = JSON.parse(usuario);
+          setNomeUsuario(usuarioObj.nome || "Nome não encontrado");
+        } catch (e) {
+          console.error("Erro ao ler o nome:", e);
+          setNomeUsuario("Nome não encontrado");
+        }
+      } else {
+        setNomeUsuario("Nome não encontrado");
+      }
+    }, []);
+    
     
     const validateForm = () => {
       let newErrors: { [key: string]: string } = {};
@@ -57,7 +74,7 @@ const profissionalSaudePage = () => {
       <div className={styles.page}>
         <div className={styles.container}>
            
-          <h2 className={styles.name}>Nome profissional de saude</h2>
+          <h2 className={styles.name}>{nomeUsuario}</h2>
           
           <form className={styles.form} onSubmit={handleSubmit}>
 

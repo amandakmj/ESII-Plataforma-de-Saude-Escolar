@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './page.module.css';
-import Navbar from "../Componentes/NavBar/navbar";
 import Footer from "../../Componentes/Footer/footer";
 import { useRouter } from 'next/navigation';
 
@@ -78,7 +77,6 @@ const ResponsavelPage: React.FC = () => {
 
   return (
     <div>
-      <Navbar/>
       <div className={styles.page}>
       <h1 className={styles.pageTitle}>Finalize seu cadastro preenchendo os dados abaixo:</h1>
         <div className={styles.container}>
