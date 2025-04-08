@@ -1,7 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/users/gestorEscolar/page": "app/users/gestorEscolar/page.js",
-  "/users/gestorEscolar/enviarNotificacoes/page": "app/users/gestorEscolar/enviarNotificacoes/page.js",
-  "/users/gestorEscolar/inicial/page": "app/users/gestorEscolar/inicial/page.js",
-  "/users/gestorEscolar/notificacoes/page": "app/users/gestorEscolar/notificacoes/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/register/page": "app/register/page.js",
+  "/users/responsavel/page": "app/users/responsavel/page.js",
+  "/users/gestorEscolar/page": "app/users/gestorEscolar/page.js"
 }

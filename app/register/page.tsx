@@ -52,8 +52,11 @@ const RegisterPage = () => {
       return;
     }
 
-    console.log("Dados do usuário:", formData);
-
+    const usuario = {
+      nome: formData.nome,
+      perfilDeAcesso: formData.userType,
+    };
+    sessionStorage.setItem("usuario", JSON.stringify(usuario));
     switch (formData.userType) {
       case "responsavel":
         router.push("/users/responsavel");

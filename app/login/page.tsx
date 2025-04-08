@@ -7,8 +7,6 @@ import Button, { ButtonColor } from "../Componentes/Button/button";
 import Footer from "../Componentes/Footer/footer";
 import { useRouter } from "next/navigation";
 import mockUsers from "../Mocks/usuariosMocks";
-import apiUrls from "../utils/apiUrls";
-
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     usuario: "",
@@ -45,15 +43,29 @@ const LoginPage = () => {
       setErrors((prevErrors) => ({ ...prevErrors, geral: "Usuário ou senha incorretos." }));
     }
   };
- 
-  // const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000";
+
+  const url = process.env.NEXT_PUBLIC_API_ULR ?? "http://localhost:8000"
   // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
   //   if (!validateForm()) return;
 
+  //   // Verifica se as credenciais correspondem a algum usuário mockado
+  //   const userFound = mockUsers.find(
+  //     (user) => user.usuario === formData.usuario && user.senha === formData.senha
+  //   );
+
+  //   if (userFound) {
+  //     const usuario = {
+  //       nome: userFound.usuario,
+  //       perfilDeAcesso: userFound.perfilDeAcesso,
+  //     };
+  //     sessionStorage.setItem("usuario", JSON.stringify(usuario));
+  //     router.replace(`/users/${userFound.perfilDeAcesso}/inicial`);
+  //   } else {
+  //     setErrors((prevErrors) => ({ ...prevErrors, geral: "Usuário ou senha incorretos." }));
   //   try {
   //     // TEMPORÁRIO
-  //     const response = await fetch(apiUrls.login, {
+  //     const response = await fetch(`${url}/site/login`, {
   //         method: "POST",
   //         headers: {
   //           "Content-Type": "application/x-www-form-urlencoded",
@@ -79,8 +91,9 @@ const LoginPage = () => {
   //   } catch (error: any) {
   //     setErrors((prevErrors) => ({...prevErrors, geral: error.message}));
   //   }
-  // }
+  // };
 
+  
   const validateForm = () => {
     let newErrors: { usuario?: string; senha?: string } = {};
 
