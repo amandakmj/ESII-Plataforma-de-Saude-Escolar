@@ -6,41 +6,29 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/users/responsavel/inicial/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/inicial/page.css",
-      "static/chunks/app/users/responsavel/inicial/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ],
-    "/users/responsavel/cadastrarAluno/page": [
+    "/register/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/cadastrarAluno/page.css",
-      "static/chunks/app/users/responsavel/cadastrarAluno/page.js"
+      "static/css/app/register/page.css",
+      "static/chunks/app/register/page.js"
     ],
-    "/users/responsavel/verAlunoCadastrado/page": [
+    "/users/gestorEscolar/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/verAlunoCadastrado/page.css",
-      "static/chunks/app/users/responsavel/verAlunoCadastrado/page.js"
+      "static/css/app/users/gestorEscolar/page.css",
+      "static/chunks/app/users/gestorEscolar/page.js"
     ],
-    "/users/responsavel/adicionarExame/page": [
+    "/users/gestorEscolar/registrarEscola/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/adicionarExame/page.css",
-      "static/chunks/app/users/responsavel/adicionarExame/page.js"
-    ],
-    "/users/responsavel/enviarNotificacoes/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/enviarNotificacoes/page.css",
-      "static/chunks/app/users/responsavel/enviarNotificacoes/page.js"
-    ],
-    "/users/responsavel/notificacoes/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/users/responsavel/notificacoes/page.css",
-      "static/chunks/app/users/responsavel/notificacoes/page.js"
+      "static/css/app/users/gestorEscolar/registrarEscola/page.css",
+      "static/chunks/app/users/gestorEscolar/registrarEscola/page.js"
     ]
   }
 }

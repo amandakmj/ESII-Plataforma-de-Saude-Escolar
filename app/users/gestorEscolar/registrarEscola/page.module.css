@@ -1,9 +1,16 @@
 .page {
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     padding-top: 80px;
     padding-bottom: 2%;
+}
+.pageTitle {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .container {

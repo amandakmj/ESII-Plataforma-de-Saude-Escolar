@@ -2,10 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 import Footer from '@/app/Componentes/Footer/footer';
 
 const gestorEscolarPage = () => {
+  const router = useRouter();
 
   const [formData, setFormData] = useState<{
     cpf: string;
@@ -60,9 +61,10 @@ useEffect(() => {
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (validateForm()) {
-        router.replace("/users/gestorEscolar/inicial");
+        router.replace("/users/gestorEscolar/registrarEscola");
       }
     };
+    
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (file) {
@@ -72,14 +74,16 @@ useEffect(() => {
   return (
     <div>
       <div className={styles.page}>
+      <h1 className={styles.pageTitle}>Finalize seu cadastro preenchendo os dados abaixo:</h1>
         <div className={styles.container}>
         
           <h2 className={styles.name}>{nomeUsuario}</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
             
             <label className={styles.label}>CPF*</label>
-            <input type="text" className={styles.input_box} />
+            <input type="text" name="cpf" value={formData.cpf} onChange={handleInputChange} className={styles.input_box} />
             {errors.cpf && <p className={styles.error}>{errors.cpf}</p>}
+
 
             <label className={styles.label}>Data de nascimento</label>
             <input type="date" className={styles.input_box} />
@@ -94,11 +98,11 @@ useEffect(() => {
             {errors.genero && <p className={styles.error}>{errors.genero}</p>}
 
             <label className={styles.label}>Cargo/Função*</label>
-            <input type="text" value="" className={styles.input_box} readOnly />
+            <input type="text" name="cargo" value={formData.cargo} onChange={handleInputChange} className={styles.input_box} />
             {errors.cargo && <p className={styles.error}>{errors.cargo}</p>}
 
             <label className={styles.label}>Telefone*</label>
-            <input type="text" className={styles.input_box} />
+            <input type="text" name="telefone" value={formData.telefone} onChange={handleInputChange} className={styles.input_box} />
             {errors.telefone && <p className={styles.error}>{errors.telefone}</p>}
 
             <label className={styles.label}>Endereço (cidade, estado, bairro, CEP)</label>

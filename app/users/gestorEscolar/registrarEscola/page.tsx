@@ -51,6 +51,7 @@ const registrarEscolaPage = () => {
     <div>
       {/* <Navbar/> */}
       <div className={styles.page}>
+      <h1 className={styles.pageTitle}>Finalize seu cadastro da escola preenchendo os dados abaixo:</h1>
         <div className={styles.container}>
           <h2 className={styles.name}>{nomeEscola}</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
